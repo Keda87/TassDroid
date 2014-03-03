@@ -1,7 +1,8 @@
-package co.id.keda87.tassdroid;
+package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import co.id.keda87.tassdroid.R;
 
 public class MyActivity extends Activity {
     /**

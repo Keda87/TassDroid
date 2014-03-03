@@ -23,7 +23,7 @@ import java.util.Date;
  */
 public class TassUtilities {
 
-    static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
+    private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
 
     /**
      * Fungsi untuk mengubah String menjadi hash dengan metode md5
