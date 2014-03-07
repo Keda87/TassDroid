@@ -81,7 +81,9 @@ public class MyActivity extends Activity {
         @Override
         protected void onPostExecute(Login login) {
             super.onPostExecute(login);
+
             if (login.status.equals("BERHASIL")) {
+                Toast.makeText(getApplicationContext(), R.string.login_page_alert_valid, Toast.LENGTH_LONG).show();
                 Log.d("HASIL LOGIN", "-\n" +
                         "STATUS: " + login.status + "\n" +
                         "KETUA KELAS: " + login.ketuaKelas);
