@@ -13,4 +13,7 @@ public class Login {
     @SerializedName("STATUS")
     public String status;
 
+    @SerializedName("KETUA_KELAS")
+    public String ketuaKelas;
+
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="co.id.keda87.tassdroid"
+          xmlns:tools="http://schemas.android.com/tools" package="co.id.keda87.tassdroid"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk
@@ -13,7 +13,9 @@
 
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity android:name=".activities.MyActivity"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+                  tools:ignore="NewApi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

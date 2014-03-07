@@ -24,9 +24,10 @@ import java.util.Date;
 public class TassUtilities {
 
     private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
+    public static final String FONT_PATH = "fonts/Roboto-Light.ttf";
 
     /**
-     * Fungsi untuk mengubah String menjadi hash dengan metode md5
+     * Fungsi untuk mengubah String menjadi md5 hash
      *
      * @param password : plain password mahasiswa di student portal
      * @return md5 hash result
@@ -90,7 +91,7 @@ public class TassUtilities {
     }
 
     /**
-     * Fungsi untuk mengeluarkan data json dari API
+     * Fungsi untuk membaca json dari API
      *
      * @param apiUrl alamat API yang akan dibaca
      * @return json hasil keluaran dari API
@@ -139,7 +140,7 @@ public class TassUtilities {
     }
 
     /**
-     * Fungsi API url generator, yang akan menghasilkan alamat url siap pakai
+     * Fungsi untuk mengenerate alamat url API siap pakai
      *
      * @param nim      : nim mahasiswa di student portal
      * @param password : password mahasiswa di student portal
@@ -162,8 +163,13 @@ public class TassUtilities {
     }
 
     public static void main(String[] args) {
+//        nim adit
         String nim = "6301114139";
         String pwd = "asaibae";
+
+//        nim percobaan
+//        String nim = "6301124173";
+//        String pwd = "240294";
 
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "login"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "nm"));

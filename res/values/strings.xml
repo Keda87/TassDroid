@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TassDroid</string>
+
+    <!--login string value-->
+    <string name="login_page_button_login">Login</string>
+    <string name="login_page_label_login">TassDroid</string>
+    <string name="login_page_hint_username">Username</string>
+    <string name="login_page_hint_password">Password</string>
+    <string name="login_page_alert_invalid">Invalid Login</string>
 </resources>
