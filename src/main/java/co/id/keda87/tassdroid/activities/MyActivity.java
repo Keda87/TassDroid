@@ -23,6 +23,18 @@ public class MyActivity extends Activity {
     private EditText inpUser, inpPass;
     private Button btLogin;
     private Gson gson;
+    private TassUtilities utility;
+
+    /**
+     * Fungsi untuk menampilkan Toast, dibuat fungsi ini karena
+     * untuk menghindari pengulangan dalam pembuatan Toast.
+     *
+     * @param message : Isi pesan yang akan ditampilkan dari values
+     * @return toast
+     */
+    private Toast getToastMessage(int message) {
+        return Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +43,7 @@ public class MyActivity extends Activity {
 
         //instance gson
         gson = new Gson();
+        utility = new TassUtilities();
 
         //instance widget
         lbLogin = (TextView) findViewById(R.id.lb_login);
@@ -56,11 +69,16 @@ public class MyActivity extends Activity {
         if (inpUser.getText().toString().trim().length() <= 0 || inpPass.getText().toString().trim().length() <= 0)
             return;
 
-        //login action
-        login.execute(inpUser.getText().toString().trim(), inpPass.getText().toString().trim());
+        if (utility.isConnected(getApplicationContext())) {
+            //login action
+            login.execute(inpUser.getText().toString().trim(), inpPass.getText().toString().trim());
 
-        inpUser.setText("");
-        inpPass.setText("");
+            inpUser.setText("");
+            inpPass.setText("");
+        } else {
+            getToastMessage(R.string.login_page_alert_no_connection).show();
+        }
+
     }
 
     private class DoLoginTask extends AsyncTask<String, Integer, Login> {
@@ -83,15 +101,15 @@ public class MyActivity extends Activity {
             super.onPostExecute(login);
 
             if (login.status.equals("BERHASIL")) {
-                Toast.makeText(getApplicationContext(), R.string.login_page_alert_valid, Toast.LENGTH_LONG).show();
+                getToastMessage(R.string.login_page_alert_valid).show();
                 Log.d("HASIL LOGIN", "-\n" +
                         "STATUS: " + login.status + "\n" +
                         "KETUA KELAS: " + login.ketuaKelas);
             } else {
-                Toast.makeText(getApplicationContext(), R.string.login_page_alert_invalid, Toast.LENGTH_LONG).show();
+                getToastMessage(R.string.login_page_alert_invalid).show();
                 Log.d("HASIL LOGIN", "INVALID LOGIN");
             }
-
         }
+
     }
 }

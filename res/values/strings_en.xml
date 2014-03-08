@@ -9,4 +9,5 @@
     <string name="login_page_hint_password">Password</string>
     <string name="login_page_alert_invalid">Invalid Login</string>
     <string name="login_page_alert_valid">Login Success</string>
+    <string name="login_page_alert_no_connection">Connection Unavailable</string>
 </resources>

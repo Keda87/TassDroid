@@ -24,19 +24,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0d15487-7991-49bb-8cba-bea887e661b5" name="Default" comment="Nambahin utilities">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/Roboto-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/Roboto-Thin.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/logo_tass.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/custom_button_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings_en.xml" afterPath="$PROJECT_DIR$/res/values/strings_en.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TassDroid.iws" />
@@ -101,11 +92,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TassUtilities.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TassUtilities.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="171" column="52" selection-start="5462" selection-end="5462" vertical-scroll-proportion="0.0" vertical-offset="2545" max-vertical-offset="2907">
+            <state line="41" column="8" selection-start="1156" selection-end="1156" vertical-scroll-proportion="-7.626866" vertical-offset="2980" max-vertical-offset="3315">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="92" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,47 +123,42 @@
       </file>
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+          <provider editor-type-id="text-editor">
+            <state line="54" column="61" selection-start="2377" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="592" max-vertical-offset="1088">
+              <folding />
+            </state>
+          </provider>
           <provider selected="true" editor-type-id="android-designer">
             <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state line="54" column="61" selection-start="2377" selection-end="2406" vertical-scroll-proportion="-13.04" vertical-offset="592" max-vertical-offset="1088">
-              <folding>
-                <element signature="e#776#808#0" expanded="true" />
-                <element signature="e#1208#1242#0" expanded="true" />
-                <element signature="e#1683#1717#0" expanded="true" />
-                <element signature="e#2043#2076#0" expanded="true" />
-              </folding>
-            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="custom_button_login.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/drawable/custom_button_login.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="38" selection-start="425" selection-end="425" vertical-scroll-proportion="-8.84" vertical-offset="0" max-vertical-offset="374">
+            <state line="13" column="38" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="57" selection-start="429" selection-end="429" vertical-scroll-proportion="-6.12" vertical-offset="0" max-vertical-offset="289">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MyActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="117" selection-start="2935" selection-end="2935" vertical-scroll-proportion="0.6077348" vertical-offset="1276" max-vertical-offset="1717">
+            <state line="115" column="26" selection-start="3687" selection-end="3687" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2874#2907#0" expanded="true" />
+                <element signature="e#3297#3328#0" expanded="true" />
+                <element signature="e#3556#3589#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings_en.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings_en.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="72" selection-start="585" selection-end="585" vertical-scroll-proportion="-7.48" vertical-offset="0" max-vertical-offset="323">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -187,15 +184,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="90" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -216,12 +204,14 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/drawable/custom_button_login.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java" />
+        <option value="$PROJECT_DIR$/res/values/strings_en.xml" />
         <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" />
       </list>
     </option>
   </component>
@@ -236,7 +226,7 @@
     <option name="x" value="-4" />
     <option name="y" value="-4" />
     <option name="width" value="1374" />
-    <option name="height" value="776" />
+    <option name="height" value="732" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -264,6 +254,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -435,123 +427,9 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable-xhdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable-mdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable-ldpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable-hdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TassDroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fonts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -581,7 +459,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Assesment 2" />
-    <property name="SearchEverywhereHistory" value="main&#10;strings&#10;str" />
+    <property name="SearchEverywhereHistory" value="Tass&#10;mani&#10;main&#10;strings&#10;str" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -644,19 +522,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -682,6 +547,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -799,13 +677,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1374" height="776" extended-state="6" />
+    <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28971255" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.837386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -815,16 +692,17 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3306189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37841946" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37785017" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21827795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28971255" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -855,16 +733,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="14" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="30" selection-start="794" selection-end="794" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="493">
@@ -887,26 +755,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <folding>
-            <element signature="e#776#808#0" expanded="true" />
-            <element signature="e#1208#1242#0" expanded="true" />
-            <element signature="e#1683#1717#0" expanded="true" />
-            <element signature="e#2043#2076#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="374">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -933,26 +796,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <folding>
-            <element signature="e#776#808#0" expanded="true" />
-            <element signature="e#1208#1242#0" expanded="true" />
-            <element signature="e#1683#1717#0" expanded="true" />
-            <element signature="e#2043#2076#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="374">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -982,8 +840,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1013,8 +871,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1044,8 +902,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1075,8 +933,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1106,8 +964,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1137,8 +995,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1198,33 +1056,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="90" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/custom_button_login.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="38" selection-start="425" selection-end="425" vertical-scroll-proportion="-8.84" vertical-offset="0" max-vertical-offset="374">
+        <state line="13" column="38" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="text-editor">
+        <state line="54" column="61" selection-start="2377" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="592" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="54" column="61" selection-start="2377" selection-end="2406" vertical-scroll-proportion="-13.04" vertical-offset="592" max-vertical-offset="1088">
-          <folding>
-            <element signature="e#776#808#0" expanded="true" />
-            <element signature="e#1208#1242#0" expanded="true" />
-            <element signature="e#1683#1717#0" expanded="true" />
-            <element signature="e#2043#2076#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java">
@@ -1234,27 +1080,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/res/values/strings_en.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="57" selection-start="429" selection-end="429" vertical-scroll-proportion="-6.12" vertical-offset="0" max-vertical-offset="289">
+        <state line="11" column="72" selection-start="585" selection-end="585" vertical-scroll-proportion="-7.48" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="92" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="26" selection-start="3687" selection-end="3687" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
+          <folding>
+            <element signature="e#3297#3328#0" expanded="true" />
+            <element signature="e#3556#3589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="86" selection-start="868" selection-end="868" vertical-scroll-proportion="0.23880596" vertical-offset="192" max-vertical-offset="527">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="52" selection-start="5462" selection-end="5462" vertical-scroll-proportion="0.0" vertical-offset="2545" max-vertical-offset="2907">
+        <state line="41" column="8" selection-start="1156" selection-end="1156" vertical-scroll-proportion="-7.626866" vertical-offset="2980" max-vertical-offset="3315">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="117" selection-start="2935" selection-end="2935" vertical-scroll-proportion="0.6077348" vertical-offset="1276" max-vertical-offset="1717">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2874#2907#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

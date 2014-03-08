@@ -1,6 +1,9 @@
 package co.id.keda87.tassdroid.helper;
 
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 
@@ -25,6 +28,30 @@ public class TassUtilities {
 
     private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
     public static final String FONT_PATH = "fonts/Roboto-Light.ttf";
+    private Context context;
+
+
+    /**
+     * Fungsi untuk cek ketersediaan koneksi internet/wifi
+     * @param context   : context aplikasi
+     * @return true jika terhubung ke internet
+     */
+    public boolean isConnected(Context context) {
+        this.context = context;
+
+        ConnectivityManager conn = (ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(conn != null) {
+            NetworkInfo[] info = conn.getAllNetworkInfo();
+            if(info != null) {
+                for(NetworkInfo ob : info) {
+                    if (ob.getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     /**
      * Fungsi untuk mengubah String menjadi md5 hash
