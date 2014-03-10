@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools" package="co.id.keda87.tassdroid"
           android:versionCode="1"
-          android:versionName="1.0">
+          android:versionName="1.0"
+          android:installLocation="preferExternal">
+
     <uses-sdk
             android:minSdkVersion="10"
             android:targetSdkVersion="19"/>
@@ -12,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+        <!--login activity-->
         <activity android:name=".activities.MyActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
@@ -21,5 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!--main menu activity-->
+        <activity android:name=".activities.MainMenuActivity"
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+                  tools:ignore="NewApi"/>
     </application>
 </manifest>

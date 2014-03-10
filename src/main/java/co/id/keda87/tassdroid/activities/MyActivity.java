@@ -1,6 +1,7 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Login;
 import com.google.gson.Gson;
@@ -24,6 +26,9 @@ public class MyActivity extends Activity {
     private Button btLogin;
     private Gson gson;
     private TassUtilities utility;
+    private SessionManager session;
+
+    private String username, password;
 
     /**
      * Fungsi untuk menampilkan Toast, dibuat fungsi ini karena
@@ -41,9 +46,10 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //instance gson
+        //instance
         gson = new Gson();
         utility = new TassUtilities();
+        session = new SessionManager(getApplicationContext());
 
         //instance widget
         lbLogin = (TextView) findViewById(R.id.lb_login);
@@ -62,6 +68,15 @@ public class MyActivity extends Activity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (session.isLoggedIn()) {
+            Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+            startActivity(i);
+        }
+    }
+
     public void doLogin(View view) {
         DoLoginTask login = new DoLoginTask();
 
@@ -71,7 +86,10 @@ public class MyActivity extends Activity {
 
         if (utility.isConnected(getApplicationContext())) {
             //login action
-            login.execute(inpUser.getText().toString().trim(), inpPass.getText().toString().trim());
+
+            username = inpUser.getText().toString().trim();
+            password = inpPass.getText().toString().trim();
+            login.execute(username, password);
 
             inpUser.setText("");
             inpPass.setText("");
@@ -102,9 +120,21 @@ public class MyActivity extends Activity {
 
             if (login.status.equals("BERHASIL")) {
                 getToastMessage(R.string.login_page_alert_valid).show();
-                Log.d("HASIL LOGIN", "-\n" +
-                        "STATUS: " + login.status + "\n" +
-                        "KETUA KELAS: " + login.ketuaKelas);
+                Log.d("HASIL LOGIN", "STATUS: " + login.status + "KETUA KELAS: " + login.ketuaKelas);
+
+
+                //create session
+                session.createSession(
+                        username,
+                        password,
+                        login.ketuaKelas
+                );
+                Log.d("USER - PASS", username + " - " + password);
+
+                //move to main_menu activity
+                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                startActivity(i);
+
             } else {
                 getToastMessage(R.string.login_page_alert_invalid).show();
                 Log.d("HASIL LOGIN", "INVALID LOGIN");
