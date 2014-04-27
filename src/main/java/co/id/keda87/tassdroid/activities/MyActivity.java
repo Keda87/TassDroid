@@ -80,13 +80,14 @@ public class MyActivity extends Activity {
     public void doLogin(View view) {
         DoLoginTask login = new DoLoginTask();
 
-        //check if empty
+        //check if form empty
         if (inpUser.getText().toString().trim().length() <= 0 || inpPass.getText().toString().trim().length() <= 0)
             return;
 
+        //check connection availability
         if (utility.isConnected(getApplicationContext())) {
-            //login action
 
+            //login action
             username = inpUser.getText().toString().trim();
             password = inpPass.getText().toString().trim();
             login.execute(username, password);
@@ -109,7 +110,7 @@ public class MyActivity extends Activity {
             Log.d("URL API LOGIN", urlLoginApi + " user: " + params[0] + ":" + params[1]);
 
             //parse json to object
-            login = gson.fromJson(TassUtilities.getPlainJSON(urlLoginApi), Login.class);
+            login = gson.fromJson(TassUtilities.doGetJson(urlLoginApi), Login.class);
 
             return login;
         }
@@ -140,6 +141,5 @@ public class MyActivity extends Activity {
                 Log.d("HASIL LOGIN", "INVALID LOGIN");
             }
         }
-
     }
 }

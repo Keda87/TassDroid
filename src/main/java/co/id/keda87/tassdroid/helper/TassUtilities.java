@@ -6,13 +6,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -33,17 +34,18 @@ public class TassUtilities {
 
     /**
      * Fungsi untuk cek ketersediaan koneksi internet/wifi
-     * @param context   : context aplikasi
+     *
+     * @param context : context aplikasi
      * @return true jika terhubung ke internet
      */
     public boolean isConnected(Context context) {
         this.context = context;
 
         ConnectivityManager conn = (ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(conn != null) {
+        if (conn != null) {
             NetworkInfo[] info = conn.getAllNetworkInfo();
-            if(info != null) {
-                for(NetworkInfo ob : info) {
+            if (info != null) {
+                for (NetworkInfo ob : info) {
                     if (ob.getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
@@ -66,6 +68,8 @@ public class TassUtilities {
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
+            Log.e("KESALAHAN", e.getMessage());
+        } catch (Exception e) {
             Log.e("KESALAHAN", e.getMessage());
         }
 
@@ -118,39 +122,36 @@ public class TassUtilities {
     }
 
     /**
-     * Fungsi untuk membaca json dari API
+     * Fungsi untuk mengambil data JSON dari API
+     * menggunakan method GET
      *
-     * @param apiUrl alamat API yang akan dibaca
-     * @return json hasil keluaran dari API
+     * @param uri merupakan alamat API yang akan dipanggil
+     * @return hasil JSON dari alamat API
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public static String getPlainJSON(String apiUrl) {
-        StringBuilder builder = null;
+    public static String doGetJson(String uri) {
+        StringBuffer sb = null;
+        String NEW_LINE = System.getProperty("line.separator");
+
         try {
-            URL url = new URL(apiUrl);
-            URLConnection urlc = url.openConnection();
+            HttpClient client = new DefaultHttpClient();
+            HttpGet request = new HttpGet(uri);
+            HttpResponse response = client.execute(request);
 
-            try (InputStreamReader inStream = new InputStreamReader(urlc.getInputStream());
-                 BufferedReader buff = new BufferedReader(inStream)) {
-
-                builder = new StringBuilder();
-                while (true) {
-                    String nextLine = buff.readLine();
-                    String NL = System.getProperty("line.separator");
-                    if (nextLine != null) {
-                        builder.append(nextLine).append(NL);
-                    } else {
-                        break;
-                    }
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
+                sb = new StringBuffer();
+                String line = "";
+                while ((line = br.readLine()) != null) {
+                    sb.append(line).append(NEW_LINE);
                 }
             }
-
-        } catch (MalformedURLException ex) {
-            Log.e("KESALAHAN", ex.getMessage());
-        } catch (IOException ex) {
-            Log.e("KESALAHAN", ex.getMessage());
+        } catch (IOException e) {
+            Log.e("KESALAHAN", e.getMessage());
+        } catch (Exception e) {
+            Log.e("KESALAHAN", e.getMessage());
         }
-        return builder.toString();
+
+        return sb.toString();
     }
 
     /**
@@ -184,6 +185,8 @@ public class TassUtilities {
                 return getTassApiUrl(nim, password, type, random);
             case "dftap":
                 return getTassApiUrl(nim, password, type, random);
+            case "biodata":
+                return getTassApiUrl(nim, password, type, random);
             default:
                 return getTassApiUrl(nim, password, type, random);
         }
@@ -201,5 +204,6 @@ public class TassUtilities {
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "login"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "nm"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
     }
 }
