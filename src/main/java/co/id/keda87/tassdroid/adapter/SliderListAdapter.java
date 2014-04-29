@@ -24,6 +24,11 @@ public class SliderListAdapter extends BaseAdapter {
     private Context context;
     private List<SliderItem> sliderItems;
 
+    public SliderListAdapter(Context context, List<SliderItem> sliderItems) {
+        this.context = context;
+        this.sliderItems = sliderItems;
+    }
+
     @Override
     public int getCount() {
         return sliderItems.size();

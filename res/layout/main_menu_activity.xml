@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
+    <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/tvNama" android:layout_gravity="center_horizontal"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/tvNim" android:layout_gravity="center_horizontal"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/tvKM" android:layout_gravity="center_horizontal"/>
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:onClick="doLogout"/>
-</LinearLayout>
+            android:id="@+id/frame_container">
+    </FrameLayout>
+
+    <ListView
+            android:id="@+id/list_slider"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:dividerHeight="1dp"
+            android:divider="@android:color/black"
+            android:background="@android:color/holo_red_dark"
+            android:listSelector=""/>
+
+</android.support.v4.widget.DrawerLayout>
+

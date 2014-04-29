@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TassDroid</string>
+    <string name="app_item">Settings</string>
 
     <!--login activity string value-->
     <string name="login_page_button_login">Login</string>
@@ -24,5 +25,19 @@
         <item>Lecture Attendance Approval</item>
         <item>Setting</item>
         <item>Change Password</item>
+    </string-array>
+
+    <string-array name="nav_drawer_icons">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
     </string-array>
 </resources>
