@@ -43,6 +43,7 @@ public class MainMenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_menu_activity);
 
         //get title each menu
         this.drawerTitle = this.title = getTitle();
@@ -53,10 +54,11 @@ public class MainMenuActivity extends Activity {
         //load slider item icon
         this.sliderMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
 
+        //instance widget
         this.drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         this.drawerList = (ListView) findViewById(R.id.list_slider);
-        this.sliderNav = new ArrayList<>();
 
+        this.sliderNav = new ArrayList<>();
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[0], this.sliderMenuIcon.getResourceId(0, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[1], this.sliderMenuIcon.getResourceId(1, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[2], this.sliderMenuIcon.getResourceId(2, -1)));
@@ -76,7 +78,7 @@ public class MainMenuActivity extends Activity {
         this.sliderMenuIcon.recycle();
 
         //create instance slider list adapter
-        this.sliderAdapter = new SliderListAdapter(getApplicationContext(), this.sliderNav);
+        this.sliderAdapter = new SliderListAdapter(this, this.sliderNav);
 
         //set adapter into list drawer
         this.drawerList.setAdapter(this.sliderAdapter);

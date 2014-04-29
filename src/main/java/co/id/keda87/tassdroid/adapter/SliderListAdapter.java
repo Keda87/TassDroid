@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.SliderItem;
 
 import java.util.List;
@@ -54,6 +56,10 @@ public class SliderListAdapter extends BaseAdapter {
         //instance slider widget
         ImageView sliderIcon = (ImageView) convertView.findViewById(R.id.iconSlider);
         TextView sliderText = (TextView) convertView.findViewById(R.id.textSlider);
+
+        //set fonts
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), TassUtilities.FONT_PATH);
+        sliderText.setTypeface(tf);
 
         //set widget value
         sliderIcon.setImageResource(sliderItems.get(position).icon);

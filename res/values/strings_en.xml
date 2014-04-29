@@ -3,14 +3,17 @@
     <string name="app_name">TassDroid</string>
     <string name="app_item">Settings</string>
 
+    <!--error message-->
+    <string name="login_page_alert_invalid">Invalid Login</string>
+    <string name="login_page_alert_no_connection">Connection Unavailable</string>
+    <string name="error_time_request">Server connectivity error</string>
+
     <!--login activity string value-->
     <string name="login_page_button_login">Login</string>
     <string name="login_page_label_login">TassDroid</string>
     <string name="login_page_hint_username">Username</string>
     <string name="login_page_hint_password">Password</string>
-    <string name="login_page_alert_invalid">Invalid Login</string>
     <string name="login_page_alert_valid">Login Success</string>
-    <string name="login_page_alert_no_connection">Connection Unavailable</string>
 
      <!--nav drawer menu items string value-->
     <string-array name="nav_drawer_items">
@@ -28,16 +31,16 @@
     </string-array>
 
     <string-array name="nav_drawer_icons">
+        <item>@drawable/ic_profile</item>
         <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_keuangan</item>
+        <item>@drawable/ic_tak</item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_kalender</item>
     </string-array>
 </resources>

@@ -16,6 +16,7 @@ import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Login;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 public class MyActivity extends Activity {
     /**
@@ -65,7 +66,6 @@ public class MyActivity extends Activity {
         inpUser.setTypeface(tf);
         inpPass.setTypeface(tf);
         btLogin.setTypeface(tf);
-
     }
 
     @Override
@@ -91,13 +91,9 @@ public class MyActivity extends Activity {
             username = inpUser.getText().toString().trim();
             password = inpPass.getText().toString().trim();
             login.execute(username, password);
-
-            inpUser.setText("");
-            inpPass.setText("");
         } else {
             getToastMessage(R.string.login_page_alert_no_connection).show();
         }
-
     }
 
     private class DoLoginTask extends AsyncTask<String, Integer, Login> {
@@ -110,7 +106,11 @@ public class MyActivity extends Activity {
             Log.d("URL API LOGIN", urlLoginApi + " user: " + params[0] + ":" + params[1]);
 
             //parse json to object
-            login = gson.fromJson(TassUtilities.doGetJson(urlLoginApi), Login.class);
+            try {
+                login = gson.fromJson(TassUtilities.doGetJson(urlLoginApi), Login.class);
+            } catch (JsonSyntaxException e) {
+                getToastMessage(R.string.error_time_request).show();
+            }
 
             return login;
         }
@@ -123,7 +123,6 @@ public class MyActivity extends Activity {
                 getToastMessage(R.string.login_page_alert_valid).show();
                 Log.d("HASIL LOGIN", "STATUS: " + login.status + "KETUA KELAS: " + login.ketuaKelas);
 
-
                 //create session
                 session.createSession(
                         username,
@@ -131,6 +130,9 @@ public class MyActivity extends Activity {
                         login.ketuaKelas
                 );
                 Log.d("USER - PASS", username + " - " + password);
+
+                inpUser.setText("");
+                inpPass.setText("");
 
                 //move to main_menu activity
                 Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
