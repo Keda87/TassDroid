@@ -15,10 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.SliderListAdapter;
-import co.id.keda87.tassdroid.fragment.FProfile;
+import co.id.keda87.tassdroid.fragment.FHome;
+import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.pojos.SliderItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -40,10 +42,16 @@ public class MainMenuActivity extends Activity {
     private List<SliderItem> sliderNav;
     private SliderListAdapter sliderAdapter;
 
+    private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
+
+        //instance session manager
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> userSession = sessionManager.getUserDetails();
 
         //get title each menu
         this.drawerTitle = this.title = getTitle();
@@ -62,18 +70,12 @@ public class MainMenuActivity extends Activity {
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[0], this.sliderMenuIcon.getResourceId(0, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[1], this.sliderMenuIcon.getResourceId(1, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[2], this.sliderMenuIcon.getResourceId(2, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[3], this.sliderMenuIcon.getResourceId(3, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[4], this.sliderMenuIcon.getResourceId(4, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[5], this.sliderMenuIcon.getResourceId(5, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[6], this.sliderMenuIcon.getResourceId(6, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[7], this.sliderMenuIcon.getResourceId(7, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[8], this.sliderMenuIcon.getResourceId(8, -1)));
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[9], this.sliderMenuIcon.getResourceId(9, -1)));
-
         //check if user is a class leader, will add into slider
-        if (true) {
-            this.sliderNav.add(new SliderItem(this.sliderMenuTitle[10], this.sliderMenuIcon.getResourceId(10, -1)));
+        if (userSession.get(SessionManager.KEY_KM).equals("1")) {
+            this.sliderNav.add(new SliderItem(this.sliderMenuTitle[4], this.sliderMenuIcon.getResourceId(4, -1)));
         }
+        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[3], this.sliderMenuIcon.getResourceId(3, -1)));
+        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[5], this.sliderMenuIcon.getResourceId(5, -1)));
 
         this.sliderMenuIcon.recycle();
 
@@ -127,7 +129,8 @@ public class MainMenuActivity extends Activity {
             return true;
         }
         switch (item.getItemId()) {
-            case R.id.app_setting:
+            case R.id.app_item_logout:
+                sessionManager.destroySession();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -137,7 +140,7 @@ public class MainMenuActivity extends Activity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean drawerOpen = this.drawerLayout.isDrawerOpen(this.drawerList);
-        menu.findItem(R.id.app_setting).setVisible(!drawerOpen);
+        menu.findItem(R.id.app_item_logout).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -168,7 +171,7 @@ public class MainMenuActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new FProfile();
+                fragment = new FHome();
                 break;
             default:
                 break;

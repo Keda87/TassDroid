@@ -13,7 +13,7 @@ import co.id.keda87.tassdroid.R;
  * Date: 4/27/14
  * Time: 7:25 PM
  */
-public class FProfile extends Fragment {
+public class FHome extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

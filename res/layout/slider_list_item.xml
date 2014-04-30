@@ -4,20 +4,26 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@drawable/list_selector">
 
     <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:id="@+id/iconSlider"
             android:layout_gravity="center_vertical"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"/>
 
     <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/text_color"
             android:id="@+id/textSlider"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"/>
 </LinearLayout>
