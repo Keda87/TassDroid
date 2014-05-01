@@ -109,6 +109,7 @@ public class MyActivity extends Activity {
             try {
                 login = gson.fromJson(TassUtilities.doGetJson(urlLoginApi), Login.class);
             } catch (JsonSyntaxException e) {
+                Log.e("KESALAHAN", "error rentang waktu client dan server");
                 getToastMessage(R.string.error_time_request).show();
             }
 
