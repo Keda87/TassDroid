@@ -58,14 +58,11 @@ public class MyActivity extends Activity {
         inpPass = (EditText) findViewById(R.id.et_pass);
         btLogin = (Button) findViewById(R.id.bt_login);
 
-        //instance font
-        Typeface tf = Typeface.createFromAsset(getAssets(), TassUtilities.FONT_PATH);
-
         //set font on widgets
-        lbLogin.setTypeface(tf);
-        inpUser.setTypeface(tf);
-        inpPass.setTypeface(tf);
-        btLogin.setTypeface(tf);
+        lbLogin.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
+        inpUser.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
+        inpPass.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
+        btLogin.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
     }
 
     @Override

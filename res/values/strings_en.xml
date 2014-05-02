@@ -15,7 +15,7 @@
     <string name="login_page_hint_password">Password</string>
     <string name="login_page_alert_valid">Login Success</string>
 
-     <!--nav drawer menu items string value-->
+     <!--nav drawer menu items string values-->
     <string-array name="nav_drawer_items">
         <item>Home</item>
         <item>Academic Calendar</item>
@@ -24,7 +24,7 @@
         <item>BAP Approval</item>
         <item>Settings</item>
     </string-array>
-
+    <!--nav drawe menu items icon values-->
     <string-array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_kalender</item>
@@ -33,4 +33,11 @@
         <item>@drawable/ic_bap</item>
         <item>@drawable/ic_settings</item>
     </string-array>
+
+    <!--fragment home-->
+    <string name="mnBio">Bio</string>
+    <string name="mnJadwalKuliah">Schedule</string>
+    <string name="mnAbsen">Attendance</string>
+    <string name="mnNilaiMentah">Raw Score</string>
+    <string name="mnTugas">Tasks</string>
 </resources>

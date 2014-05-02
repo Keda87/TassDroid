@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.helper;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -28,9 +29,27 @@ import java.util.Date;
 public class TassUtilities {
 
     private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
-    public static final String FONT_PATH = "fonts/Roboto-Light.ttf";
+    public static final String FONT_PATH_LIGHT = "fonts/Roboto-Light.ttf";
+    public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
     private Context context;
 
+    /**
+     * Fungsi untuk melakukan instance external font
+     *
+     * @param ctx application context
+     * @param type font type, 0 = LIGHT, 1 = BOLD
+     * @return roboto typeface
+     */
+    public static Typeface getFontFace(Context ctx, int type) {
+        switch (type) {
+            case 0:
+                return Typeface.createFromAsset(ctx.getAssets(), FONT_PATH_LIGHT);
+            case 1:
+                return Typeface.createFromAsset(ctx.getAssets(), FONT_PATH_BOLD);
+            default:
+                return Typeface.createFromAsset(ctx.getAssets(), FONT_PATH_LIGHT);
+        }
+    }
 
     /**
      * Fungsi untuk cek ketersediaan koneksi internet/wifi

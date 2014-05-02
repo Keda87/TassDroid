@@ -58,8 +58,7 @@ public class SliderListAdapter extends BaseAdapter {
         TextView sliderText = (TextView) convertView.findViewById(R.id.textSlider);
 
         //set fonts
-        Typeface tf = Typeface.createFromAsset(context.getAssets(), TassUtilities.FONT_PATH);
-        sliderText.setTypeface(tf);
+        sliderText.setTypeface(TassUtilities.getFontFace(this.context, 0));
 
         //set widget value
         sliderIcon.setImageResource(sliderItems.get(position).icon);
