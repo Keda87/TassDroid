@@ -9,6 +9,7 @@
             android:minSdkVersion="14"
             android:targetSdkVersion="19"/>
 
+    <!--application permission-->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -17,8 +18,7 @@
         <!--login activity-->
         <activity android:name=".activities.MyActivity"
                   android:label="@string/app_name"
-                  android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
-                  tools:ignore="NewApi">
+                  android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -27,7 +27,14 @@
 
         <!--main menu activity-->
         <activity android:name=".activities.MainMenuActivity"
-                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
-                  tools:ignore="NewApi"/>
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
+
+        <!--set theme into menu activity-->
+        <activity android:name=".activities.ActivityBiodata" android:theme="@style/theme_activity_bio"/>
+        <activity android:name=".activities.ActivityJadwal" android:theme="@style/theme_activity_jadwal"/>
+        <activity android:name=".activities.ActivityAbsen" android:theme="@style/theme_activity_absen"/>
+        <activity android:name=".activities.ActivityTugas" android:theme="@style/theme_activity_tugas"/>
+        <activity android:name=".activities.ActivityNilai" android:theme="@style/theme_activity_nilai"/>
+
     </application>
 </manifest>

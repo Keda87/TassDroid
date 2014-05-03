@@ -51,7 +51,7 @@ public class MainMenuActivity extends Activity {
         setContentView(R.layout.main_menu_activity);
 
         //instance session manager
-        sessionManager = new SessionManager(getApplicationContext());
+        this.sessionManager = new SessionManager(getApplicationContext());
         HashMap<String, String> userSession = sessionManager.getUserDetails();
 
         //get title each menu
@@ -176,8 +176,7 @@ public class MainMenuActivity extends Activity {
 
         if (position == 0) {
             fragment = new FHome();
-            Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
-            Log.d("FRAGMENT", "Fragment home created" + this.sliderNav.size());
+            Log.d("FRAGMENT", "Fragment home created");
         } else if (position == 1) {
             Toast.makeText(getApplicationContext(), "Academic Calendar", Toast.LENGTH_LONG).show();
             Log.d("FRAGMENT", "Fragment academic calendar created");

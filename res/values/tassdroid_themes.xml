@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--theme applied to ActivityBiodata-->
+    <style name="theme_activity_bio" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionbar_bio_activity</item>
+    </style>
+    <!--ActionBar style for ActivityBiodata-->
+    <style name="actionbar_bio_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#8e44ad</item>
+    </style>
+
+    <!--theme applied to ActivityJadwal-->
+    <style name="theme_activity_jadwal" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionbar_jadwal_activity</item>
+    </style>
+    <style name="actionbar_jadwal_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#2c3e50</item>
+    </style>
+
+    <!--theme applied to ActivityAbsen-->
+    <style name="theme_activity_absen" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionbar_absen_activity</item>
+    </style>
+    <style name="actionbar_absen_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#27ae60</item>
+    </style>
+
+    <!--theme applied to ActivityNilai-->
+    <style name="theme_activity_nilai" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionbar_nilai_activity</item>
+    </style>
+    <style name="actionbar_nilai_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#2980b9</item>
+    </style>
+
+    <!--theme applied to ActivityTugas-->
+    <style name="theme_activity_tugas" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionbar_tugas_activity</item>
+    </style>
+    <style name="actionbar_tugas_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#d35400</item>
+    </style>
+</resources>

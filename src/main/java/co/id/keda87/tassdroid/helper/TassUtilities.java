@@ -31,7 +31,6 @@ public class TassUtilities {
     private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
     public static final String FONT_PATH_LIGHT = "fonts/Roboto-Light.ttf";
     public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
-    private Context context;
 
     /**
      * Fungsi untuk melakukan instance external font
@@ -58,9 +57,7 @@ public class TassUtilities {
      * @return true jika terhubung ke internet
      */
     public boolean isConnected(Context context) {
-        this.context = context;
-
-        ConnectivityManager conn = (ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager conn = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (conn != null) {
             NetworkInfo[] info = conn.getAllNetworkInfo();
             if (info != null) {
