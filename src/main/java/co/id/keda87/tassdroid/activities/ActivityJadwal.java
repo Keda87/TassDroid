@@ -20,6 +20,9 @@ public class ActivityJadwal extends Activity {
 
         //enable up navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //set activity title
+        getActionBar().setTitle(getResources().getString(R.string.mnJadwalKuliah));
     }
 
     @Override

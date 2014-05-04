@@ -30,11 +30,26 @@
                   android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
         <!--set theme into menu activity-->
-        <activity android:name=".activities.ActivityBiodata" android:theme="@style/theme_activity_bio"/>
-        <activity android:name=".activities.ActivityJadwal" android:theme="@style/theme_activity_jadwal"/>
-        <activity android:name=".activities.ActivityAbsen" android:theme="@style/theme_activity_absen"/>
-        <activity android:name=".activities.ActivityTugas" android:theme="@style/theme_activity_tugas"/>
-        <activity android:name=".activities.ActivityNilai" android:theme="@style/theme_activity_nilai"/>
+        <activity
+                android:name=".activities.ActivityBiodata"
+                android:theme="@style/theme_activity_bio"
+                android:icon="@drawable/ic_bio"/>
+        <activity
+                android:name=".activities.ActivityJadwal"
+                android:theme="@style/theme_activity_jadwal"
+                android:icon="@drawable/ic_jadwal"/>
+        <activity
+                android:name=".activities.ActivityAbsen"
+                android:theme="@style/theme_activity_absen"
+                android:icon="@drawable/ic_absen"/>
+        <activity
+                android:name=".activities.ActivityTugas"
+                android:theme="@style/theme_activity_tugas"
+                android:icon="@drawable/ic_tugas"/>
+        <activity
+                android:name=".activities.ActivityNilai"
+                android:theme="@style/theme_activity_nilai"
+                android:icon="@drawable/ic_nilai"/>
 
     </application>
 </manifest>

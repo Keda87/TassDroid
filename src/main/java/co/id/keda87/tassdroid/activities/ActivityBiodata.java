@@ -21,6 +21,9 @@ public class ActivityBiodata extends Activity {
 
         //enable up navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //set activity title
+        getActionBar().setTitle(getResources().getString(R.string.mnBio));
     }
 
     @Override
