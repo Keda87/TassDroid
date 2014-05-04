@@ -6,7 +6,7 @@
     <!--error message-->
     <string name="login_page_alert_invalid">Invalid Login</string>
     <string name="login_page_alert_no_connection">Connection Unavailable</string>
-    <string name="error_time_request">Server connectivity error</string>
+    <string name="error_time_request">Internal server error</string>
 
     <!--login activity string value-->
     <string name="login_page_button_login">Login</string>

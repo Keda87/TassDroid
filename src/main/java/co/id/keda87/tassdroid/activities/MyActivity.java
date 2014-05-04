@@ -107,7 +107,6 @@ public class MyActivity extends Activity {
                 login = gson.fromJson(TassUtilities.doGetJson(urlLoginApi), Login.class);
             } catch (JsonSyntaxException e) {
                 Log.e("KESALAHAN", "error rentang waktu client dan server");
-                getToastMessage(R.string.error_time_request).show();
             }
 
             return login;
@@ -117,28 +116,33 @@ public class MyActivity extends Activity {
         protected void onPostExecute(Login login) {
             super.onPostExecute(login);
 
-            if (login.status.equals("BERHASIL")) {
-                getToastMessage(R.string.login_page_alert_valid).show();
-                Log.d("HASIL LOGIN", "STATUS: " + login.status + "KETUA KELAS: " + login.ketuaKelas);
+            if (login != null) {
+                if (login.status.equals("BERHASIL")) {
+                    getToastMessage(R.string.login_page_alert_valid).show();
+                    Log.d("HASIL LOGIN", "STATUS: " + login.status + "KETUA KELAS: " + login.ketuaKelas);
 
-                //create session
-                session.createSession(
-                        username,
-                        password,
-                        login.ketuaKelas
-                );
-                Log.d("USER - PASS", username + " - " + password);
+                    //create session
+                    session.createSession(
+                            username,
+                            password,
+                            login.ketuaKelas
+                    );
+                    Log.d("USER - PASS", username + " - " + password);
 
-                inpUser.setText("");
-                inpPass.setText("");
+                    inpUser.setText("");
+                    inpPass.setText("");
 
-                //move to main_menu activity
-                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
-                startActivity(i);
+                    //move to main_menu activity
+                    Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                    startActivity(i);
 
+                } else {
+                    getToastMessage(R.string.login_page_alert_invalid).show();
+                    Log.d("HASIL LOGIN", "INVALID LOGIN");
+                }
             } else {
-                getToastMessage(R.string.login_page_alert_invalid).show();
-                Log.d("HASIL LOGIN", "INVALID LOGIN");
+                getToastMessage(R.string.error_time_request).show();
+                Log.e("HASIL LOGIN", "Server error");
             }
         }
     }
