@@ -2,7 +2,6 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,11 +77,11 @@ public class MyActivity extends Activity {
         DoLoginTask login = new DoLoginTask();
 
         //check if form empty
-        if (inpUser.getText().toString().trim().length() <= 0 || inpPass.getText().toString().trim().length() <= 0)
+        if (inpUser.getText().toString().isEmpty() || inpPass.getText().toString().isEmpty())
             return;
 
         //check connection availability
-        if (utility.isConnected(getApplicationContext())) {
+        if (utility.isConnected(view.getContext())) {
 
             //login action
             username = inpUser.getText().toString().trim();
@@ -99,7 +98,7 @@ public class MyActivity extends Activity {
         @Override
         protected Login doInBackground(String... params) {
             //get login API
-            String urlLoginApi = TassUtilities.uriBuilder(params[0].toString(), params[1].toString(), "login");
+            String urlLoginApi = TassUtilities.uriBuilder(params[0], params[1], "login");
             Log.d("URL API LOGIN", urlLoginApi + " user: " + params[0] + ":" + params[1]);
 
             //parse json to object

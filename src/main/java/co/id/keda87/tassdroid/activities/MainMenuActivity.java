@@ -166,7 +166,7 @@ public class MainMenuActivity extends Activity {
     /**
      * Method to display fragment depend on ListItem position
      *
-     * @param position
+     * @param position list menu item depend on user level
      */
     private void displayView(int position) {
         Fragment fragment = null;

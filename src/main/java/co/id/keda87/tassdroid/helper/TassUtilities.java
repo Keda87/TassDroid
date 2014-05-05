@@ -35,7 +35,7 @@ public class TassUtilities {
     /**
      * Fungsi untuk melakukan instance external font
      *
-     * @param ctx application context
+     * @param ctx  application context
      * @param type font type, 0 = LIGHT, 1 = BOLD
      * @return roboto typeface
      */
@@ -78,7 +78,7 @@ public class TassUtilities {
      * @return md5 hash result
      */
     public static String md5(String password) {
-        StringBuffer sbuf = null;
+        StringBuffer sbuf;
         MessageDigest md = null;
 
         try {
@@ -89,14 +89,14 @@ public class TassUtilities {
             Log.e("KESALAHAN", e.getMessage());
         }
 
-        md.update(password.getBytes());
+        if (md != null) {
+            md.update(password.getBytes());
+        }
         byte bytePwd[] = md.digest();
 
-        if (sbuf == null) {
-            sbuf = new StringBuffer();
-            for (int i = 0; i < bytePwd.length; i++) {
-                sbuf.append(Integer.toString((bytePwd[i] & 0xff) + 0x100, 16).substring(1));
-            }
+        sbuf = new StringBuffer();
+        for (byte aBytePwd : bytePwd) {
+            sbuf.append(Integer.toString((aBytePwd & 0xff) + 0x100, 16).substring(1));
         }
         return sbuf.toString();
     }
@@ -108,8 +108,7 @@ public class TassUtilities {
      */
     private static int randomGenerator() {
         int random = (int) (Math.random() * 10);
-        int a = random == 0 ? random + 1 : random;
-        return a;
+        return random == 0 ? random + 1 : random;
     }
 
     /**
@@ -119,18 +118,17 @@ public class TassUtilities {
      * @return token dengan bentuk md5 hash
      */
     private static String generateToken(int rand) {
-        int a = rand;
-        String hasil = "";
-        String c = "";
+        String hasil;
+        String c;
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yy HH");//format tanggal
         Date sekarang = new Date();//tanggal hari ini
         String now = sdf.format(sekarang);
 
-        if (a > 0) {
-            int b = a % 2;
+        if (rand > 0) {
+            int b = rand % 2;
             c = b == 0 ? "aIomd" : "0t54d";
-            hasil = c + a + now;
+            hasil = c + rand + now;
             return md5(hasil);
         } else {
             return hasil = "inputanbukanangkatetapistring";
@@ -156,7 +154,7 @@ public class TassUtilities {
 
             try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
                 sb = new StringBuffer();
-                String line = "";
+                String line;
                 while ((line = br.readLine()) != null) {
                     sb.append(line).append(NEW_LINE);
                 }
