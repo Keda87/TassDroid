@@ -19,7 +19,7 @@ import co.id.keda87.tassdroid.helper.TassUtilities;
  * Date: 4/27/14
  * Time: 7:25 PM
  */
-public class FHome extends Fragment implements View.OnClickListener {
+public class FragmentHome extends Fragment implements View.OnClickListener {
 
     private Button btBio, btJadwal, btAbsen, btNilai, btTugas;
     private Context context;

@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.SliderListAdapter;
-import co.id.keda87.tassdroid.fragment.FHome;
+import co.id.keda87.tassdroid.fragment.*;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.pojos.SliderItem;
 
@@ -170,24 +170,26 @@ public class MainMenuActivity extends Activity {
      */
     private void displayView(int position) {
         Fragment fragment = null;
+
+        //list menu position depend on access level for user or KM
         int BAP_POSITION = this.sliderNav.size() == 6 ? 3 : -1;
         int TAK_POSITION = this.sliderNav.size() == 6 ? 4 : 3;
         int SETTINGS_POSITION = this.sliderNav.size() == 6 ? 5 : 4;
 
         if (position == 0) {
-            fragment = new FHome();
+            fragment = new FragmentHome();
             Log.d("FRAGMENT", "Fragment home created");
         } else if (position == 1) {
-            Toast.makeText(getApplicationContext(), "Academic Calendar", Toast.LENGTH_LONG).show();
+            fragment = new FragmentKalender();
             Log.d("FRAGMENT", "Fragment academic calendar created");
         } else if (position == 2) {
-            Toast.makeText(getApplicationContext(), "Financial status", Toast.LENGTH_LONG).show();
+            fragment = new FragmentKeuangan();
             Log.d("FRAGMENT", "Fragment financial status created");
         } else if (position == BAP_POSITION) {
-            Toast.makeText(getApplicationContext(), "BAP", Toast.LENGTH_LONG).show();
+            fragment = new FragmentBap();
             Log.d("FRAGMENT", "Fragment BAP approval created");
         } else if (position == TAK_POSITION) {
-            Toast.makeText(getApplicationContext(), "TAK", Toast.LENGTH_LONG).show();
+            fragment = new FragmentTak();
             Log.d("FRAGMENT", "Fragment TAK created");
         } else if (position == SETTINGS_POSITION) {
             Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_LONG).show();
