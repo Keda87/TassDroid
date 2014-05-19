@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="name" value="app: co.id.keda87.tassdroid" />
+        <option name="packageNamePattern" value="co.id.keda87.tassdroid" />
+      </filter>
+    </filters>
+  </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
       <GlobalState>
@@ -21,15 +29,18 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="url" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: co.id.keda87.tassdroid" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0d15487-7991-49bb-8cba-bea887e661b5" name="Default" comment="Nambahin utilities">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/StatusKeuangan.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/co/id/keda87/tassdroid/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/co/id/keda87/tassdroid/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/fragment/FragmentKeuangan.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/fragment/FragmentKeuangan.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" afterPath="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TassDroid.iws" />
@@ -48,7 +59,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -84,9 +95,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <breakpoint_rules />
-    <ui_properties />
+    <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -94,22 +104,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="slider_list_item.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/slider_list_item.xml">
-          <provider editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="578">
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="colors.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="12" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -118,25 +117,8 @@
       <file leaf-file-name="list_item_bg_pressed.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/drawable/list_item_bg_pressed.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="60" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_item_bg_normal.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable/list_item_bg_normal.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="48" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom_button_login.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable/custom_button_login.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="11" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="374">
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+              <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -145,16 +127,70 @@
       <file leaf-file-name="MainMenuActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="86" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3298">
+            <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3298">
+              <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TassUtilities.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TassUtilities.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="29" selection-start="445" selection-end="445" vertical-scroll-proportion="0.675841" vertical-offset="0" max-vertical-offset="3893">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3057" max-vertical-offset="3995">
+              <caret line="191" column="25" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatusKeuangan.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/StatusKeuangan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="612">
+              <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentKeuangan.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/fragment/FragmentKeuangan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.71428573" vertical-offset="1130" max-vertical-offset="1496">
+              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="1870">
+              <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="425">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SliderItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/SliderItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="408">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -163,10 +199,9 @@
       <file leaf-file-name="MyActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="57" selection-start="3809" selection-end="3809" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="2601">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1870" max-vertical-offset="2601">
+              <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,6 +245,8 @@
         <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/StatusKeuangan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/fragment/FragmentKeuangan.java" />
       </list>
     </option>
   </component>
@@ -240,7 +277,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -252,6 +289,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -267,7 +306,7 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -277,23 +316,27 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojos" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -303,27 +346,23 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -333,27 +372,57 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TassDroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tassdroid" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tassdroid" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -363,17 +432,15 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tassdroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -402,7 +469,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="833" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/TassDroid-Bootstrap/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TassDroid-Bootstrap/pom.xml" />
     <property name="SearchEverywhereHistory" value="utili&#10;activ&#10;string&#10;stri&#10;main&#10;Tass&#10;mani&#10;strings&#10;str" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="OverrideImplement.combined" value="true" />
@@ -435,7 +502,7 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
@@ -459,6 +526,7 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -560,6 +628,7 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="false" name="TassDroid" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -568,9 +637,9 @@
       <option name="MODE" value="specific_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
+      <option name="PREFERRED_AVD" value="GingerEmu" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
@@ -579,6 +648,7 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <RunnerSettings RunnerId="AndroidDebugRunner" />
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
@@ -598,22 +668,13 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -631,32 +692,35 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5553772" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4032" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40288925" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4016" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4012841" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2265861" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22617246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28971255" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28971255" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
   </component>
@@ -680,142 +744,144 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/drawable/custom_button_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="62" selection-start="5983" selection-end="5983" vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="3298">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="43" selection-start="1795" selection-end="1795" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="3927">
+        <state vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="3927">
+          <caret line="55" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
+          <caret line="5" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="73" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="493">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="493">
+          <caret line="9" column="73" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="408" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="408">
+          <caret line="14" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2482" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2482">
+          <caret line="20" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="357">
+          <caret line="5" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="73" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="493">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="493">
+          <caret line="9" column="73" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="408" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="408">
+          <caret line="14" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="16" selection-start="2782" selection-end="2782" vertical-scroll-proportion="0.0" vertical-offset="1553" max-vertical-offset="2210" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1553" max-vertical-offset="2210">
+          <caret line="103" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="408" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="408">
+          <caret line="14" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="569" selection-end="569" vertical-scroll-proportion="0.40338984" vertical-offset="0" max-vertical-offset="590" />
+        <state vertical-scroll-proportion="0.40338984" vertical-offset="0" max-vertical-offset="590">
+          <caret line="14" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="text-editor">
-        <state line="54" column="61" selection-start="2377" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="592" max-vertical-offset="1088">
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="592" max-vertical-offset="1088">
+          <caret line="54" column="61" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="344" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="344">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/proguard-project.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="16" selection-start="424" selection-end="424" vertical-scroll-proportion="0.2647059" vertical-offset="0" max-vertical-offset="578" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="20" selection-start="208" selection-end="208" vertical-scroll-proportion="0.312187" vertical-offset="0" max-vertical-offset="599" />
+        <state vertical-scroll-proportion="0.2647059" vertical-offset="0" max-vertical-offset="578">
+          <caret line="9" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/scopes/scope_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_2_4.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://C:/Program Files/Android/android-sdk/sources/android-19/android/os/AsyncTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="533" column="53" selection-start="21509" selection-end="21509" vertical-scroll-proportion="0.33222038" vertical-offset="8267" max-vertical-offset="10863" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/SliderItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="109" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408" />
+        <state vertical-scroll-proportion="0.33222038" vertical-offset="8267" max-vertical-offset="10863">
+          <caret line="533" column="53" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="37" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="8" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -847,35 +913,47 @@
     </entry>
     <entry file="file://C:/Program Files/Android/android-sdk/sources/android-19/com/android/internal/os/ZygoteInit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="749" column="48" selection-start="26079" selection-end="26079" vertical-scroll-proportion="0.6733524" vertical-offset="11750" max-vertical-offset="12835" />
+        <state vertical-scroll-proportion="0.6733524" vertical-offset="11750" max-vertical-offset="12835">
+          <caret line="749" column="48" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://C:/Program Files/Android/android-sdk/sources/android-19/android/app/ActivityThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2210" column="0" selection-start="94409" selection-end="94409" vertical-scroll-proportion="0.3323782" vertical-offset="35244" max-vertical-offset="83164" />
+        <state vertical-scroll-proportion="0.3323782" vertical-offset="35244" max-vertical-offset="83164">
+          <caret line="2210" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main_menu_activity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="901" selection-end="901" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="561" />
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="561">
+          <caret line="24" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/list_selector.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="48" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="238" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="238">
+          <caret line="8" column="48" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://C:/Program Files/Android/android-sdk/sources/android-19/android/content/ContextWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="24" selection-start="2596" selection-end="2596" vertical-scroll-proportion="0.24394463" vertical-offset="505" max-vertical-offset="10812" />
+        <state vertical-scroll-proportion="0.24394463" vertical-offset="505" max-vertical-offset="10812">
+          <caret line="81" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/adapter/SliderListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="32" selection-start="1818" selection-end="1818" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1071" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1071">
+          <caret line="62" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/ic_kalender.png">
@@ -908,83 +986,125 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="37" selection-start="2167" selection-end="2167" vertical-scroll-proportion="0.9863388" vertical-offset="693" max-vertical-offset="1904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings_en.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="41" selection-start="139" selection-end="139" vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="714">
+        <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="714">
+          <caret line="3" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="44" selection-start="160" selection-end="160" vertical-scroll-proportion="0.1994135" vertical-offset="0" max-vertical-offset="341" />
+        <state vertical-scroll-proportion="0.1994135" vertical-offset="0" max-vertical-offset="341">
+          <caret line="4" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/slider_list_item.xml">
-      <provider editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="578">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/list_item_bg_normal.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="48" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/custom_button_login.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="374">
+        <state vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="374">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/list_item_bg_pressed.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="60" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="12" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/SliderItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="86" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3298">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3057" max-vertical-offset="3995">
+          <caret line="191" column="25" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="57" selection-start="3809" selection-end="3809" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="2601">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="2346">
+          <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/TassUtilities.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/activities/MainMenuActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="29" selection-start="445" selection-end="445" vertical-scroll-proportion="0.675841" vertical-offset="0" max-vertical-offset="3893">
+        <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3298">
+          <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/pojos/StatusKeuangan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/helper/SessionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="1870">
+          <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/id/keda87/tassdroid/fragment/FragmentKeuangan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71428573" vertical-offset="1130" max-vertical-offset="1496">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

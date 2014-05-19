@@ -201,6 +201,10 @@ public class TassUtilities {
                 return getTassApiUrl(nim, password, type, random);
             case "biodata":
                 return getTassApiUrl(nim, password, type, random);
+            case "keuangan":
+                return getTassApiUrl(nim, password, type, random);
+            case "tak":
+                return getTassApiUrl(nim, password, type, random);
             default:
                 return getTassApiUrl(nim, password, type, random);
         }
@@ -219,5 +223,7 @@ public class TassUtilities {
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "nm"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "keuangan"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "tak"));
     }
 }
