@@ -71,11 +71,11 @@ public class MainMenuActivity extends Activity {
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[0], this.sliderMenuIcon.getResourceId(0, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[1], this.sliderMenuIcon.getResourceId(1, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[2], this.sliderMenuIcon.getResourceId(2, -1)));
+        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[3], this.sliderMenuIcon.getResourceId(3, -1)));
         //check if user is a class leader, will add into slider
         if (userSession.get(SessionManager.KEY_KM).equals("1")) {
             this.sliderNav.add(new SliderItem(this.sliderMenuTitle[4], this.sliderMenuIcon.getResourceId(4, -1)));
         }
-        this.sliderNav.add(new SliderItem(this.sliderMenuTitle[3], this.sliderMenuIcon.getResourceId(3, -1)));
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[5], this.sliderMenuIcon.getResourceId(5, -1)));
 
         this.sliderMenuIcon.recycle();
@@ -166,14 +166,14 @@ public class MainMenuActivity extends Activity {
     /**
      * Method to display fragment depend on ListItem position
      *
-     * @param position list menu item depend on user level
+     * @param position display fragment view depend on user select
      */
     private void displayView(int position) {
         Fragment fragment = null;
 
         //list menu position depend on access level for user or KM
-        int BAP_POSITION = this.sliderNav.size() == 6 ? 3 : -1;
-        int TAK_POSITION = this.sliderNav.size() == 6 ? 4 : 3;
+        int TAK_POSITION = this.sliderNav.size() == 6 ? 3 : -1;
+        int BAP_POSITION = this.sliderNav.size() == 6 ? 4 : 3;
         int SETTINGS_POSITION = this.sliderNav.size() == 6 ? 5 : 4;
 
         if (position == 0) {
@@ -186,11 +186,16 @@ public class MainMenuActivity extends Activity {
             fragment = new FragmentKeuangan();
             Log.d("FRAGMENT", "Fragment financial status created");
         } else if (position == BAP_POSITION) {
-            fragment = new FragmentBap();
-            Log.d("FRAGMENT", "Fragment BAP approval created");
+            if (BAP_POSITION == 4) {
+                fragment = new FragmentBap();
+                Log.d("FRAGMENT", "Fragment BAP mode KM");
+            } else {
+                fragment = new FragmentTak();
+                Log.d("FRAGMENT", "Fragment TAK mode biasa");
+            }
         } else if (position == TAK_POSITION) {
             fragment = new FragmentTak();
-            Log.d("FRAGMENT", "Fragment TAK created");
+            Log.d("FRAGMENT", "Fragment TAK mode KM");
         } else if (position == SETTINGS_POSITION) {
             Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_LONG).show();
             Log.d("FRAGMENT", "Fragment Settings created");
