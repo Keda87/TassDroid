@@ -40,4 +40,8 @@
     <string name="mnAbsen">Attendance</string>
     <string name="mnNilaiMentah">Raw Score</string>
     <string name="mnTugas">Tasks</string>
+
+    <!--list adapter keuangan-->
+    <string name="adapter_keuangan_kuitansi">Receipt</string>
+    <string name="adapter_keuangan_semester">SEMESTER</string>
 </resources>

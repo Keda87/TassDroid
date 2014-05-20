@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.adapter.KeuanganListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.StatusKeuangan;
@@ -28,12 +30,13 @@ public class FragmentKeuangan extends Fragment {
 
     private Gson gson;
     private SessionManager sessionManager;
+    private ListView lvStatusKeuangan;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //instance
-        gson = new Gson();
-        sessionManager = new SessionManager(getActivity());
+        this.gson = new Gson();
+        this.sessionManager = new SessionManager(getActivity());
 
         return inflater.inflate(R.layout.fragment_keuangan, null);
     }
@@ -50,6 +53,11 @@ public class FragmentKeuangan extends Fragment {
                 userCredential.get(SessionManager.KEY_USERNAME),
                 userCredential.get(SessionManager.KEY_PASSWORD)
         );
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     private class KeuanganTask extends AsyncTask<String, Void, List<StatusKeuangan>> {
@@ -70,9 +78,9 @@ public class FragmentKeuangan extends Fragment {
             super.onPostExecute(statusKeuangans);
 
             if (statusKeuangans != null) {
-                for (StatusKeuangan keuangan : statusKeuangans) {
-                    Log.d("HASIL KEUANGAN", keuangan.semester + " " + keuangan.jumlahBayar + " : " + keuangan.namaTarif);
-                }
+                lvStatusKeuangan = (ListView) getActivity().findViewById(R.id.lvKeuangan);
+                lvStatusKeuangan.setAdapter(new KeuanganListAdapter(statusKeuangans, getActivity().getApplicationContext()));
+                Log.d("HASIL KEUANGAN", "Data ditampung di listview");
             } else {
                 Toast.makeText(getActivity(), "kesalahan", Toast.LENGTH_SHORT).show();
                 Log.d("HASIL KEUANGAN", "error");
