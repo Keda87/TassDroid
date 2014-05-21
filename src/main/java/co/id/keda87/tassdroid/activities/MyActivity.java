@@ -25,21 +25,9 @@ public class MyActivity extends Activity {
     private EditText inpUser, inpPass;
     private Button btLogin;
     private Gson gson;
-    private TassUtilities utility;
     private SessionManager session;
 
     private String username, password;
-
-    /**
-     * Fungsi untuk menampilkan Toast, dibuat fungsi ini karena
-     * untuk menghindari pengulangan dalam pembuatan Toast.
-     *
-     * @param message : Isi pesan yang akan ditampilkan dari values
-     * @return toast
-     */
-    private Toast getToastMessage(int message) {
-        return Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +36,6 @@ public class MyActivity extends Activity {
 
         //instance
         gson = new Gson();
-        utility = new TassUtilities();
         session = new SessionManager(getApplicationContext());
 
         //instance widget
@@ -81,14 +68,14 @@ public class MyActivity extends Activity {
             return;
 
         //check connection availability
-        if (utility.isConnected(view.getContext())) {
+        if (TassUtilities.isConnected(getApplicationContext())) {
 
             //login action
             username = inpUser.getText().toString().trim();
             password = inpPass.getText().toString().trim();
             login.execute(username, password);
         } else {
-            getToastMessage(R.string.login_page_alert_no_connection).show();
+            TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
         }
     }
 
@@ -117,7 +104,7 @@ public class MyActivity extends Activity {
 
             if (login != null) {
                 if (login.status.equals("BERHASIL")) {
-                    getToastMessage(R.string.login_page_alert_valid).show();
+                    TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_valid, 0);
                     Log.d("HASIL LOGIN", "STATUS: " + login.status + "KETUA KELAS: " + login.ketuaKelas);
 
                     //create session
@@ -126,7 +113,6 @@ public class MyActivity extends Activity {
                             password,
                             login.ketuaKelas
                     );
-                    Log.d("USER - PASS", username + " - " + password);
 
                     inpUser.setText("");
                     inpPass.setText("");
@@ -136,11 +122,11 @@ public class MyActivity extends Activity {
                     startActivity(i);
 
                 } else {
-                    getToastMessage(R.string.login_page_alert_invalid).show();
+                    TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_invalid, 0);
                     Log.d("HASIL LOGIN", "INVALID LOGIN");
                 }
             } else {
-                getToastMessage(R.string.error_time_request).show();
+                TassUtilities.showToastMessage(getApplicationContext(), R.string.error_time_request, 0);
                 Log.e("HASIL LOGIN", "Server error");
             }
         }

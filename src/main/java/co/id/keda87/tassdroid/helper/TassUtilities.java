@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -33,6 +34,18 @@ public class TassUtilities {
     public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
 
     /**
+     * Fungsi untuk menampilkan Toast, dibuat fungsi ini karena
+     * untuk menghindari pengulangan dalam pembuatan Toast.
+     *
+     * @param context : context pada activity / fragment
+     * @param message : isi pesan yang akan ditampilkan
+     * @param length  : durasi toast akan ditampilkan, 0 untuk SHORT dan 1 untuk LONG
+     */
+    public static void showToastMessage(Context context, int message, int length) {
+        Toast.makeText(context, message, length == 0 ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
+    }
+
+    /**
      * Fungsi untuk melakukan instance external font
      *
      * @param ctx  application context
@@ -56,7 +69,7 @@ public class TassUtilities {
      * @param context : context aplikasi
      * @return true jika terhubung ke internet
      */
-    public boolean isConnected(Context context) {
+    public static boolean isConnected(Context context) {
         ConnectivityManager conn = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (conn != null) {
             NetworkInfo[] info = conn.getAllNetworkInfo();
