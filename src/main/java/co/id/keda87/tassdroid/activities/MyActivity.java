@@ -1,6 +1,7 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MyActivity extends Activity {
     private Button btLogin;
     private Gson gson;
     private SessionManager session;
+    private ProgressDialog dialog;
 
     private String username, password;
 
@@ -42,6 +44,10 @@ public class MyActivity extends Activity {
         inpUser = (EditText) findViewById(R.id.et_user);
         inpPass = (EditText) findViewById(R.id.et_pass);
         btLogin = (Button) findViewById(R.id.bt_login);
+
+        dialog = new ProgressDialog(this);
+        dialog.setMessage(getResources().getString(R.string.login_page_dialog_signin));
+        dialog.setCancelable(false);
 
         //set font on widgets
         lbLogin.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
@@ -61,7 +67,6 @@ public class MyActivity extends Activity {
 
     public void doLogin(View view) {
         DoLoginTask login = new DoLoginTask();
-
         //check if form empty
         if (inpUser.getText().toString().isEmpty() || inpPass.getText().toString().isEmpty())
             return;
@@ -78,7 +83,7 @@ public class MyActivity extends Activity {
         }
     }
 
-    private class DoLoginTask extends AsyncTask<String, Integer, Login> {
+    private class DoLoginTask extends AsyncTask<String, Void, Login> {
         Login login = null;
 
         @Override
@@ -98,8 +103,18 @@ public class MyActivity extends Activity {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
         protected void onPostExecute(Login login) {
             super.onPostExecute(login);
+
+            if (dialog.isShowing() || dialog != null) {
+                dialog.dismiss();
+            }
 
             if (login != null) {
                 if (login.status.equals("BERHASIL")) {
