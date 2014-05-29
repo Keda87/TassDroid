@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
@@ -119,6 +118,8 @@ public class MyActivity extends Activity {
 
                     //move to main_menu activity
                     Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//closing all activities
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//add new flag to start new activity
                     startActivity(i);
 
                 } else {

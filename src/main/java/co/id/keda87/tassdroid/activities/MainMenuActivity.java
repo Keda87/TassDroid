@@ -46,6 +46,11 @@ public class MainMenuActivity extends Activity {
     private SessionManager sessionManager;
 
     @Override
+    public void onBackPressed() {
+        Log.d("TOMBOL KEMBALI", "Tombol kembali ditekan, tapi gk bisa keluar :P");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);

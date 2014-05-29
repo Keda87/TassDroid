@@ -99,7 +99,7 @@ public class SessionManager {
      * maka akan dikembalikan ke login activity
      */
     public void loginCheck() {
-        if (!this.isLoggedIn()) {
+        if (this.isLoggedIn()) {
 
             //move to Login Activity
             Intent intent = new Intent(context, MyActivity.class);

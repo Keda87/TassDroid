@@ -1,13 +1,11 @@
 package co.id.keda87.tassdroid.fragment;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.ListView;
 import android.widget.Toast;
 import co.id.keda87.tassdroid.R;
@@ -27,13 +25,33 @@ import java.util.List;
  * Date: 5/5/14
  * Time: 11:12 AM
  */
-public class FragmentKeuangan extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class FragmentKeuangan extends Fragment {
 
     private Gson gson;
     private SessionManager sessionManager;
     private ListView lvStatusKeuangan;
-    private SwipeRefreshLayout swipeRefresh;
     private HashMap<String, String> userCredential;
+    private ProgressDialog dialog;
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        getActivity().getMenuInflater().inflate(R.menu.menu_refresh_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.app_item_refresh:
+                if (TassUtilities.isConnected(getActivity().getApplicationContext())) {
+                    new KeuanganTask().execute(
+                            this.userCredential.get(SessionManager.KEY_USERNAME),
+                            this.userCredential.get(SessionManager.KEY_PASSWORD)
+                    );
+                }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,15 +63,12 @@ public class FragmentKeuangan extends Fragment implements SwipeRefreshLayout.OnR
         this.userCredential = sessionManager.getUserDetails();
 
         //instance widget
-        lvStatusKeuangan = (ListView) view.findViewById(R.id.lvKeuangan);
-        this.swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+        this.lvStatusKeuangan = (ListView) view.findViewById(R.id.lvKeuangan);
+        this.dialog = new ProgressDialog(getActivity());
 
-        //set swipe listener
-        this.swipeRefresh.setOnRefreshListener(this);
-        this.swipeRefresh.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+        this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
+        this.dialog.setCancelable(true);
+        this.lvStatusKeuangan.setClickable(false);
 
         return view;
     }
@@ -69,19 +84,6 @@ public class FragmentKeuangan extends Fragment implements SwipeRefreshLayout.OnR
                     this.userCredential.get(SessionManager.KEY_PASSWORD)
             );
         } else {
-            TassUtilities.showToastMessage(getActivity(), R.string.login_page_alert_no_connection, 0);
-        }
-    }
-
-    @Override
-    public void onRefresh() {
-        if (TassUtilities.isConnected(getActivity())) {
-            new KeuanganTask().execute(
-                    this.userCredential.get(SessionManager.KEY_USERNAME),
-                    this.userCredential.get(SessionManager.KEY_PASSWORD)
-            );
-        } else {
-            swipeRefresh.setRefreshing(false);
             TassUtilities.showToastMessage(getActivity(), R.string.login_page_alert_no_connection, 0);
         }
     }
@@ -105,12 +107,20 @@ public class FragmentKeuangan extends Fragment implements SwipeRefreshLayout.OnR
 
             if (statusKeuangans != null) {
                 lvStatusKeuangan.setAdapter(new KeuanganListAdapter(statusKeuangans, getActivity().getApplicationContext()));
-                swipeRefresh.setRefreshing(false);
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
                 Log.d("HASIL KEUANGAN", "Data ditampung di listview");
             } else {
                 Toast.makeText(getActivity(), "kesalahan", Toast.LENGTH_SHORT).show();
                 Log.d("HASIL KEUANGAN", "error");
             }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
         }
     }
 }

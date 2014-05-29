@@ -19,10 +19,12 @@ public class KeuanganListAdapter extends BaseAdapter {
 
     private List<StatusKeuangan> keuangans;
     private LayoutInflater inflater;
+    private Context context;
 
     public KeuanganListAdapter(List<StatusKeuangan> keuangans, Context context) {
         this.keuangans = keuangans;
-        this.inflater = LayoutInflater.from(context);
+        this.context = context;
+        this.inflater = LayoutInflater.from(this.context);
     }
 
     @Override
@@ -68,10 +70,10 @@ public class KeuanganListAdapter extends BaseAdapter {
         int colorPosition = position % colors.length;
         convertView.setBackgroundColor(colors[colorPosition]);
 
-        holder.tvSemesterTahun.setText("SEMESTER " + keuangans.get(position).semester + " : " + keuangans.get(position).tahunAjaran);
+        holder.tvSemesterTahun.setText(this.context.getResources().getString(R.string.adapter_keuangan_semester) + " " + keuangans.get(position).semester + " : " + keuangans.get(position).tahunAjaran);
         holder.tvStatus.setText(keuangans.get(position).status);
-        holder.tvKetNominal.setText(keuangans.get(position).namaTarif + " - " + keuangans.get(position).jumlahBayar);
-        holder.tvKuitansi.setText("No Kuitansi" + " : " + keuangans.get(position).nomorKuitansi);
+        holder.tvKetNominal.setText(keuangans.get(position).namaTarif + " - " + TassUtilities.toRupiah(keuangans.get(position).jumlahBayar));
+        holder.tvKuitansi.setText(this.context.getResources().getString(R.string.adapter_keuangan_kuitansi) + " : " + keuangans.get(position).nomorKuitansi);
         return convertView;
     }
 

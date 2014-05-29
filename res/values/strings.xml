@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">TassDroid</string>
     <string name="app_item_logout">Logout</string>
+    <string name="app_item_refresh">Refresh</string>
 
     <!--error message-->
     <string name="login_page_alert_invalid">Invalid Login</string>
@@ -44,4 +45,5 @@
     <!--list adapter keuangan-->
     <string name="adapter_keuangan_kuitansi">Receipt</string>
     <string name="adapter_keuangan_semester">SEMESTER</string>
+    <string name="dialog_loading">Loading..</string>
 </resources>
