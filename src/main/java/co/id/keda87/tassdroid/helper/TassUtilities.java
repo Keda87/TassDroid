@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -32,6 +34,22 @@ public class TassUtilities {
     private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
     public static final String FONT_PATH_LIGHT = "fonts/Roboto-Light.ttf";
     public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
+
+    /**
+     * Fungsi untuk merubah ke dalam bentuk Rupiah
+     * @param currency nilai currency yang akan diubah dengan tipe data String
+     * @return hasil convert ke dalam bentuk rupiah
+     */
+    public static String toRupiah(String currency) {
+        DecimalFormat df = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+
+        dfs.setCurrencySymbol("Rp. ");
+        dfs.setMonetaryDecimalSeparator(',');
+        dfs.setGroupingSeparator('.');
+        df.setDecimalFormatSymbols(dfs);
+        return df.format(Double.parseDouble(currency));
+    }
 
     /**
      * Fungsi untuk menampilkan Toast, dibuat fungsi ini karena
@@ -98,8 +116,6 @@ public class TassUtilities {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             Log.e("KESALAHAN", e.getMessage());
-        } catch (Exception e) {
-            Log.e("KESALAHAN", e.getMessage());
         }
 
         if (md != null) {
@@ -157,8 +173,9 @@ public class TassUtilities {
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static String doGetJson(String uri) {
-        StringBuffer sb = null;
+        StringBuffer sb;
         String NEW_LINE = System.getProperty("line.separator");
+        String hasil = null;
 
         try {
             HttpClient client = new DefaultHttpClient();
@@ -172,13 +189,14 @@ public class TassUtilities {
                     sb.append(line).append(NEW_LINE);
                 }
             }
+            hasil = sb.toString();
         } catch (IOException e) {
             Log.e("KESALAHAN", e.getMessage());
         } catch (Exception e) {
             Log.e("KESALAHAN", e.getMessage());
         }
 
-        return sb.toString();
+        return hasil;
     }
 
     /**
