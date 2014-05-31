@@ -37,6 +37,7 @@ public class TassUtilities {
 
     /**
      * Fungsi untuk merubah ke dalam bentuk Rupiah
+     *
      * @param currency nilai currency yang akan diubah dengan tipe data String
      * @return hasil convert ke dalam bentuk rupiah
      */
@@ -180,6 +181,7 @@ public class TassUtilities {
         try {
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet(uri);
+            request.setHeader("Content-type", "application/json");
             HttpResponse response = client.execute(request);
 
             try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
@@ -192,6 +194,9 @@ public class TassUtilities {
             hasil = sb.toString();
         } catch (IOException e) {
             Log.e("KESALAHAN", e.getMessage());
+            if (e.getMessage().indexOf("Connection reset by peer") > 0) {
+                Log.d("REQUEST", "Kirim request kembali setelah connection reset by peer");
+            }
         } catch (Exception e) {
             Log.e("KESALAHAN", e.getMessage());
         }

@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.fragment;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class FragmentKeuangan extends Fragment {
     private ListView lvStatusKeuangan;
     private HashMap<String, String> userCredential;
     private ProgressDialog dialog;
+    private KeuanganTask keuanganTask = null;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -68,6 +70,14 @@ public class FragmentKeuangan extends Fragment {
 
         this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
         this.dialog.setCancelable(true);
+        this.dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                keuanganTask.cancel(true);
+                dialog.dismiss();
+                Log.d("TASK", "AsyncTask telah di cancel");
+            }
+        });
         this.lvStatusKeuangan.setClickable(false);
 
         return view;
@@ -79,7 +89,8 @@ public class FragmentKeuangan extends Fragment {
 
         //start asynctask
         if (TassUtilities.isConnected(getActivity())) {
-            new KeuanganTask().execute(
+            keuanganTask = new KeuanganTask();
+            keuanganTask.execute(
                     this.userCredential.get(SessionManager.KEY_USERNAME),
                     this.userCredential.get(SessionManager.KEY_PASSWORD)
             );
@@ -98,29 +109,42 @@ public class FragmentKeuangan extends Fragment {
 
             //json to object status keuangan
             StatusKeuangan[] keuangans = gson.fromJson(TassUtilities.doGetJson(urlKeuangan), StatusKeuangan[].class);
-            return Arrays.asList(keuangans);
+            if (keuangans == null) {
+                keuangans = gson.fromJson(TassUtilities.doGetJson(urlKeuangan), StatusKeuangan[].class);
+                Log.d("PARSE", "Hasil parse ternyata masih null, parse lagi");
+            }
+
+            List<StatusKeuangan> uang = Arrays.asList(keuangans);
+            if (uang == null) {
+                uang = Arrays.asList(keuangans);
+                Log.d("PARSE", "Hasil convert ternyata masih null, convert lagi");
+            }
+            return uang;
         }
 
         @Override
         protected void onPostExecute(List<StatusKeuangan> statusKeuangans) {
             super.onPostExecute(statusKeuangans);
 
+            if (dialog.isShowing() || dialog != null) {
+                dialog.dismiss();
+            }
+
             if (statusKeuangans != null) {
                 lvStatusKeuangan.setAdapter(new KeuanganListAdapter(statusKeuangans, getActivity().getApplicationContext()));
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
-                }
                 Log.d("HASIL KEUANGAN", "Data ditampung di listview");
             } else {
-                Toast.makeText(getActivity(), "kesalahan", Toast.LENGTH_SHORT).show();
-                Log.d("HASIL KEUANGAN", "error");
+                Toast.makeText(getActivity(), R.string.error_time_request, Toast.LENGTH_SHORT).show();
+                Log.d("HASIL KEUANGAN", "statuskeuangas bernilai null");
             }
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            dialog.show();
+            if (!dialog.isShowing()) {
+                dialog.show();
+            }
         }
     }
 }
