@@ -26,7 +26,7 @@
         <item>BAP Approval</item>
         <item>Settings</item>
     </string-array>
-    <!--nav drawe menu items icon values-->
+    <!--nav drawer menu items icon values-->
     <string-array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_kalender</item>
@@ -47,4 +47,8 @@
     <string name="adapter_keuangan_kuitansi">Receipt</string>
     <string name="adapter_keuangan_semester">SEMESTER</string>
     <string name="dialog_loading">Loading..</string>
+
+    <!--fragment tak-->
+    <string name="f_tak_label_bagian">Section:</string>
+    <string name="f_tak_label_poin">POINT:</string>
 </resources>

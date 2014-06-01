@@ -66,9 +66,8 @@ public class KeuanganListAdapter extends BaseAdapter {
         }
 
         //applying striped ListView
-        int[] colors = new int[]{0x30FF0000, 0x300000FF};
-        int colorPosition = position % colors.length;
-        convertView.setBackgroundColor(colors[colorPosition]);
+        int colorPosition = position % TassUtilities.colorsStripped.length;
+        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
 
         holder.tvSemesterTahun.setText(this.context.getResources().getString(R.string.adapter_keuangan_semester) + " " + keuangans.get(position).semester + " : " + keuangans.get(position).tahunAjaran);
         holder.tvStatus.setText(keuangans.get(position).status);
