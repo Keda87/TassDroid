@@ -34,6 +34,7 @@ public class TassUtilities {
     private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
     public static final String FONT_PATH_LIGHT = "fonts/Roboto-Light.ttf";
     public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
+    public static final int[] colorsStripped = new int[]{0x30FF0000, 0x300000FF}; //konstanta warna stripped di listview
 
     /**
      * Fungsi untuk merubah ke dalam bentuk Rupiah
