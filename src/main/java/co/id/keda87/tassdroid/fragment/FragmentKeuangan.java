@@ -3,6 +3,7 @@ package co.id.keda87.tassdroid.fragment;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -130,12 +131,17 @@ public class FragmentKeuangan extends Fragment {
                 dialog.dismiss();
             }
 
-            if (statusKeuangans != null) {
-                lvStatusKeuangan.setAdapter(new KeuanganListAdapter(statusKeuangans, getActivity().getApplicationContext()));
-                Log.d("HASIL KEUANGAN", "Data ditampung di listview");
-            } else {
-                Toast.makeText(getActivity(), R.string.error_time_request, Toast.LENGTH_SHORT).show();
-                Log.d("HASIL KEUANGAN", "statuskeuangas bernilai null");
+            try {
+                if (statusKeuangans != null) {
+                    lvStatusKeuangan.setAdapter(new KeuanganListAdapter(statusKeuangans, getActivity().getApplicationContext()));
+                    Log.d("HASIL KEUANGAN", "Data ditampung di listview");
+                } else {
+                    Toast.makeText(getActivity(), R.string.error_time_request, Toast.LENGTH_SHORT).show();
+                    Log.d("HASIL KEUANGAN", "statuskeuangas bernilai null");
+                }
+            } catch (Resources.NotFoundException e) {
+                TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
+                Log.e("KESALAHAN", e.getMessage());
             }
         }
 
