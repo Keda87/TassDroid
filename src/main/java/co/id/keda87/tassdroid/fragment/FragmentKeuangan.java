@@ -116,7 +116,7 @@ public class FragmentKeuangan extends Fragment {
                     lvStatusKeuangan.setAdapter(new KeuanganListAdapter(statusKeuangans, getActivity().getApplicationContext()));
                     Log.d("HASIL KEUANGAN", "Data ditampung di listview");
                 } else {
-                    Toast.makeText(getActivity(), R.string.error_time_request, Toast.LENGTH_SHORT).show();
+                    TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                     Log.d("HASIL KEUANGAN", "statuskeuangas bernilai null");
                 }
             } catch (Resources.NotFoundException e) {
