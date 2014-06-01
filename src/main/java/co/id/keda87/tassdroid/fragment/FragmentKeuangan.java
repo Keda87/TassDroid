@@ -37,26 +37,6 @@ public class FragmentKeuangan extends Fragment {
     private KeuanganTask keuanganTask = null;
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        getActivity().getMenuInflater().inflate(R.menu.menu_refresh_fragment, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.app_item_refresh:
-                if (TassUtilities.isConnected(getActivity().getApplicationContext())) {
-                    new KeuanganTask().execute(
-                            this.userCredential.get(SessionManager.KEY_USERNAME),
-                            this.userCredential.get(SessionManager.KEY_PASSWORD)
-                    );
-                }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_keuangan, container, false);
 
