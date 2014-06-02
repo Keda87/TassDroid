@@ -49,6 +49,7 @@
     <string name="dialog_loading">Loading..</string>
 
     <!--fragment tak-->
-    <string name="f_tak_label_bagian">Section:</string>
+    <string name="f_tak_label_bagian">SECTION:</string>
     <string name="f_tak_label_poin">POINT:</string>
+    <string name="f_tak_label_total_poin">POINT TOTALS:</string>
 </resources>

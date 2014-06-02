@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TakListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -33,6 +34,7 @@ public class FragmentTak extends Fragment {
     private Gson gson;
     private SessionManager sessionManager;
     private ListView lvTranskripTak;
+    private TextView tvTotalTak;
     private HashMap<String, String> userCredential;
     private ProgressDialog dialog;
     private TakTask takTask = null;
@@ -47,9 +49,11 @@ public class FragmentTak extends Fragment {
         this.userCredential = sessionManager.getUserDetails();
 
         //instance widget
+        this.tvTotalTak = (TextView) view.findViewById(R.id.tvTotalPoin);
         this.lvTranskripTak = (ListView) view.findViewById(R.id.lvTak);
         this.dialog = new ProgressDialog(getActivity());
 
+        this.tvTotalTak.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
         this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
         this.dialog.setCancelable(true);
         this.dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -121,6 +125,11 @@ public class FragmentTak extends Fragment {
 
             if (transkripTaks != null) {
                 lvTranskripTak.setAdapter(new TakListAdapter(getActivity(), transkripTaks));
+                int totalTak = 0;
+                for (TranskripTak tak : transkripTaks) {
+                    totalTak += Integer.parseInt(tak.poin);
+                }
+                tvTotalTak.setText(getResources().getString(R.string.f_tak_label_total_poin) + " " + totalTak);
                 Log.d("HASIL TAK", "Data telah ditampung ke listview");
             } else {
                 TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);

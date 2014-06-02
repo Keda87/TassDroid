@@ -2,7 +2,6 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import co.id.keda87.tassdroid.R;
 

@@ -12,45 +12,54 @@
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true" android:id="@+id/linearLayout"
             android:layout_marginTop="3dp" android:layout_marginLeft="3dp" android:layout_marginRight="3dp">
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="SIDANG UMUM : Pembahasan REKOMENDASI dan Penetapan AD/ART, GBHO, dan PUK"
-                android:id="@+id/tvKegiatan" android:layout_marginLeft="5dp"/>
+                android:id="@+id/tvKegiatan" android:layout_marginLeft="3dp"/>
     </LinearLayout>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/f_tak_label_bagian"
-            android:id="@+id/tvLabelBagian" android:layout_below="@+id/linearLayout"
-            android:layout_alignLeft="@+id/linearLayout" android:layout_alignStart="@+id/linearLayout"
-            android:layout_marginLeft="5dp"/>
+            android:id="@+id/tvLabelBagian"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_marginLeft="3dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-section value-"
-            android:id="@+id/tvBagian" android:layout_below="@+id/linearLayout"
-            android:layout_toRightOf="@+id/tvLabelBagian" android:layout_marginLeft="3dp"/>
+            android:id="@+id/tvBagian"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toRightOf="@+id/tvLabelBagian"
+            android:layout_marginLeft="3dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/f_tak_label_poin"
             android:id="@+id/tvLabelPoin"
-            android:layout_below="@+id/tvLabelBagian" android:layout_alignLeft="@+id/tvLabelBagian"
+            android:layout_below="@+id/tvBagian"
+            android:layout_alignLeft="@+id/tvLabelBagian"
             android:layout_alignStart="@+id/tvLabelBagian"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="20"
-            android:id="@+id/tvPoin" android:layout_below="@+id/tvBagian"
-            android:layout_toRightOf="@+id/tvLabelPoin" android:layout_marginLeft="3dp"/>
+            android:id="@+id/tvPoin"
+            android:layout_below="@+id/tvBagian"
+            android:layout_toRightOf="@+id/tvLabelPoin"
+            android:layout_marginLeft="3dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2012"
             android:id="@+id/tvTahun"
-            android:layout_alignBottom="@+id/tvPoin" android:layout_alignRight="@+id/linearLayout"
+            android:layout_alignBottom="@+id/tvPoin"
+            android:layout_alignRight="@+id/linearLayout"
             android:layout_alignEnd="@+id/linearLayout"/>
 </RelativeLayout>
