@@ -19,9 +19,7 @@ import co.id.keda87.tassdroid.pojos.TranskripTak;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -118,6 +116,14 @@ public class FragmentTak extends Fragment {
         @Override
         protected void onPostExecute(List<TranskripTak> transkripTaks) {
             super.onPostExecute(transkripTaks);
+
+            //Sorting TAK list by year
+            Collections.sort(transkripTaks, new Comparator<TranskripTak>() {
+                @Override
+                public int compare(TranskripTak tak1, TranskripTak tak2) {
+                    return tak1.tahun.compareTo(tak2.tahun);
+                }
+            });
 
             if (dialog.isShowing() || dialog != null) {
                 dialog.dismiss();
