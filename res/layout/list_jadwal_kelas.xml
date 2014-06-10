@@ -4,4 +4,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="MI1234 - INE"
+            android:id="@+id/tvKdMkKdDosen" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginLeft="3dp" android:layout_marginTop="2dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="THU, 09:00 - 11:00"
+            android:id="@+id/tvHariJam" android:layout_below="@+id/tvKdMkKdDosen" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginLeft="3dp" android:layout_marginTop="2dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="B2"
+            android:id="@+id/tvRuang" android:layout_alignBottom="@+id/tvHariJam"
+            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+            android:layout_marginRight="3dp"/>
 </RelativeLayout>
