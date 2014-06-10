@@ -1,7 +1,6 @@
 package co.id.keda87.tassdroid.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,14 +49,16 @@ public class JadwalListAdapter extends BaseAdapter {
             holder = new ViewHolder();
 
             //instance widget
-            holder.kode = (TextView) convertView.findViewById(R.id.tvKdMkKdDosen);
+            holder.kode = (TextView) convertView.findViewById(R.id.tvMatkulKode);
             holder.jam = (TextView) convertView.findViewById(R.id.tvHariJam);
             holder.ruang = (TextView) convertView.findViewById(R.id.tvRuang);
+            holder.dosen = (TextView) convertView.findViewById(R.id.tvDosen);
 
             //set typeface
             holder.kode.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.jam.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
-            holder.ruang.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 1));
+            holder.ruang.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
+            holder.dosen.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -68,16 +69,16 @@ public class JadwalListAdapter extends BaseAdapter {
         convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
 
         //set textview value
-        holder.kode.setText(jadwals.get(position).kodeMk + " - " + jadwals.get(position).kodeDosen);
+        holder.kode.setText(jadwals.get(position).mataKuliah + " - " + jadwals.get(position).kodeMk);
         String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? jadwals.get(position).hari : TassUtilities.toDayID(jadwals.get(position).hari);
-        Log.d("LOCALE DEFAULT", Locale.getDefault().getDisplayLanguage());
         holder.jam.setText(hari + ", " + jadwals.get(position).waktuMulai.substring(0, 5) + " - " + jadwals.get(position).waktuSelesai.substring(0, 5));
         holder.ruang.setText(jadwals.get(position).kodeRuang);
+        holder.dosen.setText(jadwals.get(position).namaDosen + " (" + jadwals.get(position).kodeDosen + ")");
 
         return convertView;
     }
 
     static class ViewHolder {
-        TextView kode, jam, ruang;
+        TextView kode, jam, ruang, dosen;
     }
 }

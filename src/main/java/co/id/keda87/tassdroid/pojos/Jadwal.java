@@ -29,4 +29,7 @@ public class Jadwal {
 
     @SerializedName("nama")
     public String namaDosen;
+
+    @SerializedName("nama_matakuliah")
+    public String mataKuliah;
 }

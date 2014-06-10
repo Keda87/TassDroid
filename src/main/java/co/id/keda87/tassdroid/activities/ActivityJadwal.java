@@ -19,6 +19,7 @@ import com.google.gson.JsonSyntaxException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -39,6 +40,7 @@ public class ActivityJadwal extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal);
+        Log.d("LOCALE DEFAULT", Locale.getDefault().getDisplayLanguage());
 
         //instance
         this.lvJadwal = (ListView) findViewById(R.id.lvJadwalKelas);
