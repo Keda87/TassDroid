@@ -249,6 +249,37 @@ public class TassUtilities {
         }
     }
 
+    /**
+     * Fungsi untuk merubah hari ke format bahasa indonesia
+     *
+     * @param day   : hari dalam format inggris
+     * @return hari : hasil keluaran String berupa hari dalam bahasa indonesia
+     */
+    public static String toDayID(String day) {
+        String hari = null;
+        switch (day) {
+            case "MON":
+                hari = "SENIN";
+                break;
+            case "TUE":
+                hari = "SELASA";
+                break;
+            case "WED":
+                hari = "RABU";
+                break;
+            case "THU":
+                hari = "KAMIS";
+                break;
+            case "FRI":
+                hari = "JUMAT";
+                break;
+            case "SAT":
+                hari = "SABTU";
+                break;
+        }
+        return hari;
+    }
+
     public static void main(String[] args) {
 //        nim adit
         String nim = "6301114139";
