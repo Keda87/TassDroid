@@ -253,28 +253,55 @@ public class TassUtilities {
      * Fungsi untuk merubah hari ke format bahasa indonesia
      *
      * @param day : hari dalam format inggris
+     * @param lang: convert dalam bentuk apa, en: merubah ke format english id: merubah ke format indonesia
      * @return hari : hasil keluaran String berupa hari dalam bahasa indonesia
      */
-    public static String toDayID(String day) {
+    public static String toDayID(String day, String lang) {
         String hari = null;
-        switch (day) {
-            case "MON":
-                hari = "SENIN";
+        switch (lang) {
+            case "en":
+                switch (day) {
+                    case "MON":
+                        hari = "MONDAY";
+                        break;
+                    case "TUE":
+                        hari = "TUESDAY";
+                        break;
+                    case "WED":
+                        hari = "WEDNESDAY";
+                        break;
+                    case "THU":
+                        hari = "THURSDAY";
+                        break;
+                    case "FRI":
+                        hari = "FRIDAY";
+                        break;
+                    case "SAT":
+                        hari = "SATURDAY";
+                        break;
+                }
                 break;
-            case "TUE":
-                hari = "SELASA";
-                break;
-            case "WED":
-                hari = "RABU";
-                break;
-            case "THU":
-                hari = "KAMIS";
-                break;
-            case "FRI":
-                hari = "JUMAT";
-                break;
-            case "SAT":
-                hari = "SABTU";
+            case "id":
+                switch (day) {
+                    case "MON":
+                        hari = "SENIN";
+                        break;
+                    case "TUE":
+                        hari = "SELASA";
+                        break;
+                    case "WED":
+                        hari = "RABU";
+                        break;
+                    case "THU":
+                        hari = "KAMIS";
+                        break;
+                    case "FRI":
+                        hari = "JUMAT";
+                        break;
+                    case "SAT":
+                        hari = "SABTU";
+                        break;
+                }
                 break;
         }
         return hari;
