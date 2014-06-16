@@ -3,10 +3,13 @@ package co.id.keda87.tassdroid.activities;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.NilaiListAdapter;
@@ -34,6 +37,7 @@ public class ActivityNilai extends Activity {
     private HashMap<String, String> userCredential;
     private ProgressDialog dialog;
     private NilaiTask nilaiTask;
+    private List<NilaiMentah> nilaiList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,17 @@ public class ActivityNilai extends Activity {
                 nilaiTask.cancel(true);
                 dialog.dismiss();
                 Log.d("TASK", "AsyncTask nilai mentah telah di cancel");
+            }
+        });
+
+        this.lvNilaiMentah.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                NilaiMentah detailNilai = nilaiList.get(position);
+                Intent intent = new Intent(ActivityNilai.this, ActivityNilaiDetail.class);
+                startActivity(intent);
+                Log.d("LISTVIEW NILAI", "Clicked...");
             }
         });
 
@@ -98,7 +113,6 @@ public class ActivityNilai extends Activity {
             String apiNilai = TassUtilities.uriBuilder(params[0], params[1], "nm");
 
             //parse json to object
-            List<NilaiMentah> nilaiList = null;
             try {
                 NilaiMentah[] nilaiMentah = gson.fromJson(TassUtilities.doGetJson(apiNilai), NilaiMentah[].class);
                 nilaiList = Arrays.asList(nilaiMentah);

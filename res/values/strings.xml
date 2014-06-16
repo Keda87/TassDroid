@@ -51,5 +51,8 @@
     <!--fragment tak-->
     <string name="f_tak_label_bagian">SECTION:</string>
     <string name="f_tak_label_poin">POINT:</string>
-    <string name="f_tak_label_total_poin">POINT TOTALS:</string>
+    <string name="f_tak_label_total_poin">POINT TOTAL:</string>
+
+    <!--activity detail nilai-->
+    <string name="detail_nilai">Score Details</string>
 </resources>

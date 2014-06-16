@@ -6,4 +6,5 @@
     <color name="text_color">#ffffff</color>
     <color name="app_background">#FFF3DD</color>
     <color name="theme_main_activity">#F15C58</color>
+    <color name="nilai_detail">#B52735</color>
 </resources>

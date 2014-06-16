@@ -50,6 +50,10 @@
                 android:name=".activities.ActivityNilai"
                 android:theme="@style/theme_activity_nilai"
                 android:icon="@drawable/ic_nilai"/>
+        <activity
+                android:name=".activities.ActivityNilaiDetail"
+                android:theme="@style/theme_activity_nilai"
+                android:icon="@drawable/ic_nilai"/>
 
     </application>
 </manifest>

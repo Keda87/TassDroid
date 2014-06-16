@@ -52,4 +52,7 @@
     <string name="f_tak_label_bagian">BAGIAN:</string>
     <string name="f_tak_label_poin">POIN:</string>
     <string name="f_tak_label_total_poin">TOTAL POIN:</string>
+
+    <!--activity detail nilai-->
+    <string name="detail_nilai">Detail Nilai</string>
 </resources>
