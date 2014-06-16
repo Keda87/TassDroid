@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class NilaiMentah implements Parcelable {
 
+    public NilaiMentah() {
+    }
+
     @SerializedName("kodemk")
     public String kodeMk;
 
@@ -49,6 +52,48 @@ public class NilaiMentah implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.kodeMk);
+        dest.writeString(this.mataKuliah);
+        dest.writeString(this.sks);
+        dest.writeString(this.semester);
+        dest.writeString(this.kelas);
+        dest.writeString(this.kodeDosen);
+        dest.writeString(this.kajian1);
+        dest.writeString(this.kajian2);
+        dest.writeString(this.kajian3);
+        dest.writeString(this.tugas);
+        dest.writeString(this.praktikum);
+        dest.writeString(this.nilaiIndex);
+        dest.writeString(this.jumlahAlpha);
+        dest.writeString(this.keterangan);
+    }
 
+    public static final Creator<NilaiMentah> CREATOR = new Creator<NilaiMentah>() {
+        @Override
+        public NilaiMentah createFromParcel(Parcel source) {
+            return new NilaiMentah(source);
+        }
+
+        @Override
+        public NilaiMentah[] newArray(int size) {
+            return new NilaiMentah[size];
+        }
+    };
+
+    public NilaiMentah(Parcel in) {
+        this.kodeMk = in.readString();
+        this.mataKuliah = in.readString();
+        this.sks = in.readString();
+        this.semester = in.readString();
+        this.kelas = in.readString();
+        this.kodeDosen = in.readString();
+        this.kajian1 = in.readString();
+        this.kajian2 = in.readString();
+        this.kajian3 = in.readString();
+        this.tugas = in.readString();
+        this.praktikum = in.readString();
+        this.nilaiIndex = in.readString();
+        this.jumlahAlpha = in.readString();
+        this.keterangan = in.readString();
     }
 }

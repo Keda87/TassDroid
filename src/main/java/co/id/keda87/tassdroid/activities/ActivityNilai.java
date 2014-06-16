@@ -67,8 +67,12 @@ public class ActivityNilai extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NilaiMentah detailNilai = nilaiList.get(position);
+
+                //intent
                 Intent intent = new Intent(ActivityNilai.this, ActivityNilaiDetail.class);
+                intent.putExtra("currentDetailNilai", detailNilai);
                 startActivity(intent);
+
                 Log.d("LISTVIEW NILAI", "Clicked...");
             }
         });
