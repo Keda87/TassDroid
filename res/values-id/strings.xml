@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TassDroid</string>
+    <string name="app_item_logout">Keluar</string>
+    <string name="app_item_refresh">Muat ulang</string>
+
+    <!--error message-->
+    <string name="login_page_alert_invalid">Akses gagal</string>
+    <string name="login_page_alert_no_connection">Tidak ada koneksi</string>
+    <string name="error_time_request">Kesalahan pada server</string>
+
+    <!--login activity string value-->
+    <string name="login_page_button_login">Masuk</string>
+    <string name="login_page_label_login">TassDroid</string>
+    <string name="login_page_hint_username">Username</string>
+    <string name="login_page_hint_password">Password</string>
+    <string name="login_page_alert_valid">Berhasil masuk</string>
+    <string name="login_page_dialog_signin">Otentikasi..</string>
+
+    <!--nav drawer menu items string values-->
+    <string-array name="nav_drawer_items">
+        <item>Beranda</item>
+        <item>Kalender Akademik</item>
+        <item>Status Keuangan</item>
+        <item>TAK</item>
+        <item>Terima BAP</item>
+        <item>Pengaturan</item>
+    </string-array>
+    <!--nav drawer menu items icon values-->
+    <string-array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_kalender</item>
+        <item>@drawable/ic_keuangan</item>
+        <item>@drawable/ic_tak</item>
+        <item>@drawable/ic_bap</item>
+        <item>@drawable/ic_settings</item>
+    </string-array>
+
+    <!--fragment home-->
+    <string name="mnBio">Biodata</string>
+    <string name="mnJadwalKuliah">Jadwal</string>
+    <string name="mnAbsen">Absensi</string>
+    <string name="mnNilaiMentah">Nilai Mentah</string>
+    <string name="mnTugas">Tugas</string>
+
+    <!--list adapter keuangan-->
+    <string name="adapter_keuangan_kuitansi">Kuitansi</string>
+    <string name="adapter_keuangan_semester">SEMESTER</string>
+    <string name="dialog_loading">Memuat..</string>
+
+    <!--fragment tak-->
+    <string name="f_tak_label_bagian">BAGIAN:</string>
+    <string name="f_tak_label_poin">POIN:</string>
+    <string name="f_tak_label_total_poin">TOTAL POIN:</string>
+</resources>

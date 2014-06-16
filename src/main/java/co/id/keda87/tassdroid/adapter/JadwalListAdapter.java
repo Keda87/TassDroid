@@ -70,8 +70,11 @@ public class JadwalListAdapter extends BaseAdapter {
 
         //set textview value
         holder.kode.setText(jadwals.get(position).mataKuliah + " - " + jadwals.get(position).kodeMk);
+
+        //detect current locale on device
         String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? TassUtilities.toDayID(jadwals.get(position).hari, "en") : TassUtilities.toDayID(jadwals.get(position).hari, "id");
         holder.jam.setText(hari + ", " + jadwals.get(position).waktuMulai.substring(0, 5) + " - " + jadwals.get(position).waktuSelesai.substring(0, 5));
+
         holder.ruang.setText(jadwals.get(position).kodeRuang);
         holder.dosen.setText(jadwals.get(position).namaDosen + " (" + jadwals.get(position).kodeDosen + ")");
 

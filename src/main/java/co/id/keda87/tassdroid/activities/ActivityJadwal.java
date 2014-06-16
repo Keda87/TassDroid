@@ -48,7 +48,6 @@ public class ActivityJadwal extends Activity {
         this.sessionManager = new SessionManager(this);
         this.userCredential = sessionManager.getUserDetails();
         this.dialog = new ProgressDialog(this);
-        this.jadwalTask = new JadwalKelasTask();
 
         this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
         this.dialog.setCancelable(true);
@@ -74,7 +73,8 @@ public class ActivityJadwal extends Activity {
         super.onStart();
         //start asynctask
         if (TassUtilities.isConnected(this)) {
-            jadwalTask.execute(
+            this.jadwalTask = new JadwalKelasTask();
+            this.jadwalTask.execute(
                     this.userCredential.get(SessionManager.KEY_USERNAME),
                     this.userCredential.get(SessionManager.KEY_PASSWORD)
             );
@@ -137,6 +137,12 @@ public class ActivityJadwal extends Activity {
                 TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "jadwals bernilai null");
             }
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Log.d("ASYNC", "async dalam keadaan cancel");
         }
     }
 }
