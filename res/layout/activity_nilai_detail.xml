@@ -8,7 +8,7 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/card">
         <TextView
                 android:layout_width="fill_parent"
@@ -22,5 +22,82 @@
                 android:textColor="@color/text_color"
                 android:padding="5dp"
                 android:gravity="center"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_semester"
+                android:id="@+id/tvDLsem"
+                android:layout_below="@+id/tvDmatkul"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="5dp" android:paddingTop="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_sks"
+                android:id="@+id/tvDLsks"
+                android:layout_below="@+id/tvDLsem"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_kelas"
+                android:id="@+id/tvDLkls"
+                android:layout_below="@+id/tvDLsks"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_kode_dosen"
+                android:id="@+id/tvDLkddsn"
+                android:layout_below="@+id/tvDLkls"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="4dp" android:paddingLeft="5dp" android:paddingBottom="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": KDR"
+                android:id="@+id/tvDkddsn"
+                android:layout_alignTop="@+id/tvDLkddsn"
+                android:layout_toRightOf="@+id/tvDLkddsn"
+                android:layout_marginLeft="5dp"
+                android:paddingBottom="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": PIS 12-03"
+                android:id="@+id/tvDkls"
+                android:layout_above="@+id/tvDLkddsn"
+                android:layout_toRightOf="@+id/tvDLkddsn"
+                android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 4"
+                android:id="@+id/tvDsks"
+                android:layout_above="@+id/tvDkls"
+                android:layout_alignLeft="@+id/tvDkls"
+                android:layout_alignStart="@+id/tvDkls"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 3"
+                android:id="@+id/tvDsem"
+                android:layout_above="@+id/tvDsks"
+                android:layout_alignLeft="@+id/tvDsks"
+                android:layout_alignStart="@+id/tvDsks" android:paddingTop="3dp"/>
     </RelativeLayout>
 </LinearLayout>

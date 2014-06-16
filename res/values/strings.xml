@@ -55,4 +55,9 @@
 
     <!--activity detail nilai-->
     <string name="detail_nilai">Score Details</string>
+    <string name="detail_semester">Semester</string>
+    <string name="detail_kelas">Class</string>
+    <string name="detail_kode_dosen">Lecture Code</string>
+    <string name="detail_sks">SKS</string>
+    <!--<string name=""></string>-->
 </resources>
