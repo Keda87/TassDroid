@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -110,8 +111,26 @@ public class ActivityNilai extends Activity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.app_item_refresh:
+                if (TassUtilities.isConnected(this)) { //check if connection available
+                    //start asynctask
+                    this.nilaiTask = new NilaiTask();
+                    this.nilaiTask.execute(
+                            this.userCredential.get(SessionManager.KEY_USERNAME),
+                            this.userCredential.get(SessionManager.KEY_PASSWORD)
+                    );
+                } else {
+                    TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                }
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_refresh, menu);
+        return true;
     }
 
     private class NilaiTask extends AsyncTask<String, Void, List<NilaiMentah>> {
