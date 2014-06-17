@@ -31,10 +31,10 @@ import java.util.Date;
  */
 public class TassUtilities {
 
-    private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
     public static final String FONT_PATH_LIGHT = "fonts/Roboto-Light.ttf";
     public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
     public static final int[] colorsStripped = new int[]{0x30FF0000, 0x300000FF}; //konstanta warna stripped di listview
+    private static final String BASE_API_URL = "http://tass.telkomuniversity.ac.id/telkomuniversity.php/api?key=";
 
     /**
      * Fungsi untuk merubah ke dalam bentuk Rupiah
@@ -252,7 +252,7 @@ public class TassUtilities {
     /**
      * Fungsi untuk merubah hari ke format bahasa indonesia
      *
-     * @param day : hari dalam format inggris
+     * @param day   : hari dalam format inggris
      * @param lang: convert dalam bentuk apa, en: merubah ke format english id: merubah ke format indonesia
      * @return hari : hasil keluaran String berupa hari dalam bahasa indonesia
      */

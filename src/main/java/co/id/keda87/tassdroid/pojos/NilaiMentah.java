@@ -9,9 +9,17 @@ import com.google.gson.annotations.SerializedName;
  */
 public class NilaiMentah implements Parcelable {
 
-    public NilaiMentah() {
-    }
+    public static final Creator<NilaiMentah> CREATOR = new Creator<NilaiMentah>() {
+        @Override
+        public NilaiMentah createFromParcel(Parcel source) {
+            return new NilaiMentah(source);
+        }
 
+        @Override
+        public NilaiMentah[] newArray(int size) {
+            return new NilaiMentah[size];
+        }
+    };
     @SerializedName("kodemk")
     public String kodeMk;
 
@@ -45,6 +53,26 @@ public class NilaiMentah implements Parcelable {
 
     public String keterangan;
 
+    public NilaiMentah() {
+    }
+
+    public NilaiMentah(Parcel in) {
+        this.kodeMk = in.readString();
+        this.mataKuliah = in.readString();
+        this.sks = in.readString();
+        this.semester = in.readString();
+        this.kelas = in.readString();
+        this.kodeDosen = in.readString();
+        this.kajian1 = in.readString();
+        this.kajian2 = in.readString();
+        this.kajian3 = in.readString();
+        this.tugas = in.readString();
+        this.praktikum = in.readString();
+        this.nilaiIndex = in.readString();
+        this.jumlahAlpha = in.readString();
+        this.keterangan = in.readString();
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -66,34 +94,5 @@ public class NilaiMentah implements Parcelable {
         dest.writeString(this.nilaiIndex);
         dest.writeString(this.jumlahAlpha);
         dest.writeString(this.keterangan);
-    }
-
-    public static final Creator<NilaiMentah> CREATOR = new Creator<NilaiMentah>() {
-        @Override
-        public NilaiMentah createFromParcel(Parcel source) {
-            return new NilaiMentah(source);
-        }
-
-        @Override
-        public NilaiMentah[] newArray(int size) {
-            return new NilaiMentah[size];
-        }
-    };
-
-    public NilaiMentah(Parcel in) {
-        this.kodeMk = in.readString();
-        this.mataKuliah = in.readString();
-        this.sks = in.readString();
-        this.semester = in.readString();
-        this.kelas = in.readString();
-        this.kodeDosen = in.readString();
-        this.kajian1 = in.readString();
-        this.kajian2 = in.readString();
-        this.kajian3 = in.readString();
-        this.tugas = in.readString();
-        this.praktikum = in.readString();
-        this.nilaiIndex = in.readString();
-        this.jumlahAlpha = in.readString();
-        this.keterangan = in.readString();
     }
 }

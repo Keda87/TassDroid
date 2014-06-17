@@ -55,4 +55,15 @@
 
     <!--activity detail nilai-->
     <string name="detail_nilai">Detail Nilai</string>
+    <string name="detail_semester">Semester</string>
+    <string name="detail_kelas">Kelas</string>
+    <string name="detail_kode_dosen">Kode Dosen</string>
+    <string name="detail_sks">SKS</string>
+    <string name="detail_kajian">Kajian</string>
+    <string name="detail_alpa">Alpa</string>
+    <string name="detail_nilai_kajian1">Kajian 1</string>
+    <string name="detail_nilai_kajian2">Kajian 2</string>
+    <string name="detail_nilai_kajian3">Kajian 3</string>
+    <string name="detail_nilai_tugas">Tugas</string>
+    <string name="detail_nilai_praktikum">Praktikum</string>
 </resources>

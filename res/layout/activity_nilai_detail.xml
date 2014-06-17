@@ -9,7 +9,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/card">
+            android:background="@drawable/kard">
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_below="@+id/tvDLkls"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="4dp" android:paddingLeft="5dp" android:paddingBottom="3dp"/>
+                android:paddingLeft="5dp" android:paddingBottom="3dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,6 +98,130 @@
                 android:id="@+id/tvDsem"
                 android:layout_above="@+id/tvDsks"
                 android:layout_alignLeft="@+id/tvDsks"
-                android:layout_alignStart="@+id/tvDsks" android:paddingTop="3dp"/>
+                android:layout_alignStart="@+id/tvDsks"
+                android:paddingTop="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_alpa"
+                android:id="@+id/tvDLalpa"
+                android:layout_below="@+id/tvDLkddsn"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 8"
+                android:id="@+id/tvDalpa"
+                android:layout_below="@+id/tvDkddsn"
+                android:layout_alignLeft="@+id/tvDkddsn"
+                android:layout_alignStart="@+id/tvDkddsn"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kard"
+            android:layout_marginTop="5dp">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_nilai"
+                android:id="@+id/tvDdetail"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/nilai_detail"
+                android:textColor="@color/text_color"
+                android:padding="5dp"
+                android:gravity="center"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_nilai_kajian1"
+                android:id="@+id/tvDLkaj1"
+                android:layout_below="@+id/tvDdetail"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_nilai_kajian2"
+                android:id="@+id/tvDLkaj2"
+                android:layout_below="@+id/tvDLkaj1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_nilai_kajian3"
+                android:id="@+id/tvDLkaj3"
+                android:layout_below="@+id/tvDLkaj2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_nilai_tugas"
+                android:id="@+id/tvDLtgs"
+                android:layout_below="@+id/tvDLkaj3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_nilai_praktikum"
+                android:id="@+id/tvDLprak"
+                android:layout_below="@+id/tvDLtgs"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 87"
+                android:id="@+id/tvDkj1" android:layout_alignTop="@+id/tvDLkaj1"
+                android:layout_toRightOf="@+id/tvDLkaj1" android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 47"
+                android:id="@+id/tvDkj2" android:layout_below="@+id/tvDkj1"
+                android:layout_alignLeft="@+id/tvDkj1" android:layout_alignStart="@+id/tvDkj1"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 92"
+                android:id="@+id/tvDkj3" android:layout_below="@+id/tvDkj2"
+                android:layout_alignLeft="@+id/tvDkj2" android:layout_alignStart="@+id/tvDkj2"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 33"
+                android:id="@+id/tvDtgs" android:layout_below="@+id/tvDkj3"
+                android:layout_alignLeft="@+id/tvDkj3" android:layout_alignStart="@+id/tvDkj3"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=": 28"
+                android:id="@+id/tvDprk" android:layout_below="@+id/tvDtgs"
+                android:layout_alignLeft="@+id/tvDtgs" android:layout_alignStart="@+id/tvDtgs"/>
     </RelativeLayout>
 </LinearLayout>

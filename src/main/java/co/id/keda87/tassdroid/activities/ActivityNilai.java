@@ -19,6 +19,7 @@ import co.id.keda87.tassdroid.pojos.NilaiMentah;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +51,7 @@ public class ActivityNilai extends Activity {
         this.sessionManager = new SessionManager(this);
         this.userCredential = sessionManager.getUserDetails();
         this.dialog = new ProgressDialog(this);
+        this.nilaiList = new ArrayList<>();
 
         this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
         this.dialog.setCancelable(true);
@@ -87,15 +89,18 @@ public class ActivityNilai extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        //start asynctask
-        if (TassUtilities.isConnected(this)) {
-            this.nilaiTask = new NilaiTask();
-            this.nilaiTask.execute(
-                    this.userCredential.get(SessionManager.KEY_USERNAME),
-                    this.userCredential.get(SessionManager.KEY_PASSWORD)
-            );
-        } else {
-            TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+
+        if (this.nilaiList.isEmpty()) { //check if listview empty
+            if (TassUtilities.isConnected(this)) { //check if connection available
+                //start asynctask
+                this.nilaiTask = new NilaiTask();
+                this.nilaiTask.execute(
+                        this.userCredential.get(SessionManager.KEY_USERNAME),
+                        this.userCredential.get(SessionManager.KEY_PASSWORD)
+                );
+            } else {
+                TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+            }
         }
     }
 

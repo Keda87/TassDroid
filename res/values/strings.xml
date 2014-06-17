@@ -59,5 +59,11 @@
     <string name="detail_kelas">Class</string>
     <string name="detail_kode_dosen">Lecture Code</string>
     <string name="detail_sks">SKS</string>
-    <!--<string name=""></string>-->
+    <string name="detail_kajian">Assesment</string>
+    <string name="detail_alpa">Absent</string>
+    <string name="detail_nilai_kajian1">Assesment 1</string>
+    <string name="detail_nilai_kajian2">Assesment 2</string>
+    <string name="detail_nilai_kajian3">Assesment 3</string>
+    <string name="detail_nilai_tugas">Task</string>
+    <string name="detail_nilai_praktikum">Practicum</string>
 </resources>
