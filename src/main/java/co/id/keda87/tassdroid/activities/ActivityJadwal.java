@@ -156,11 +156,5 @@ public class ActivityJadwal extends Activity {
                 Log.e("KESALAHAN", "jadwals bernilai null");
             }
         }
-
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-            Log.d("ASYNC", "async dalam keadaan cancel");
-        }
     }
 }

@@ -8,6 +8,7 @@
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lvKeuangan"/>
+                android:id="@+id/lvKeuangan"
+                android:listSelector="@android:color/transparent"/>
 
 </LinearLayout>
