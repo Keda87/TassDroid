@@ -121,6 +121,7 @@ public class FragmentKeuangan extends Fragment {
                     Log.d("HASIL KEUANGAN", "statuskeuangas bernilai null");
                 }
             } catch (Resources.NotFoundException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN", e.getMessage());
             }

@@ -118,19 +118,20 @@ public class ActivityJadwal extends Activity {
             //url jadwal API
             String apiJadwal = TassUtilities.uriBuilder(params[0], params[1], "jadwal");
 
-            //parse json to object
+//            parse json to object gson
             List<Jadwal> jadwalList = null;
             try {
                 Jadwal[] jadwaKelas = gson.fromJson(TassUtilities.doGetJson(apiJadwal), Jadwal[].class);
                 jadwalList = Arrays.asList(jadwaKelas);
             } catch (JsonSyntaxException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
             } catch (NullPointerException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
-
             return jadwalList;
         }
 

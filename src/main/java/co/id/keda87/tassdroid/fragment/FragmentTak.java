@@ -96,9 +96,11 @@ public class FragmentTak extends Fragment {
                 TranskripTak[] tak = gson.fromJson(TassUtilities.doGetJson(apiTak), TranskripTak[].class);
                 takList = Arrays.asList(tak);
             } catch (JsonSyntaxException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
             } catch (NullPointerException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN NULL", e.getMessage());
             }

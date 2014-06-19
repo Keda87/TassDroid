@@ -145,9 +145,11 @@ public class ActivityNilai extends Activity {
                 NilaiMentah[] nilaiMentah = gson.fromJson(TassUtilities.doGetJson(apiNilai), NilaiMentah[].class);
                 nilaiList = Arrays.asList(nilaiMentah);
             } catch (JsonSyntaxException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
             } catch (NullPointerException e) {
+                dialog.dismiss();
                 TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
