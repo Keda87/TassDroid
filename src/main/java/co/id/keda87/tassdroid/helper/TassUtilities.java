@@ -6,12 +6,17 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.Toast;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -179,10 +184,17 @@ public class TassUtilities {
         String NEW_LINE = System.getProperty("line.separator");
         String hasil = null;
 
+        //set request timeout
+        HttpParams httpParams = new BasicHttpParams();
+        int timeout = (int) (30 * DateUtils.SECOND_IN_MILLIS);
+        HttpConnectionParams.setConnectionTimeout(httpParams, timeout);
+        HttpConnectionParams.setSoTimeout(httpParams, timeout);
+
+        HttpClient client = new DefaultHttpClient(httpParams);
+        HttpGet request = new HttpGet(uri);
+        request.setHeader("Content-type", "application/json");
+
         try {
-            HttpClient client = new DefaultHttpClient();
-            HttpGet request = new HttpGet(uri);
-            request.setHeader("Content-type", "application/json");
             HttpResponse response = client.execute(request);
 
             try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
@@ -193,13 +205,15 @@ public class TassUtilities {
                 }
             }
             hasil = sb.toString();
+        } catch (ClientProtocolException e) {
+            Log.e("KESALAHAN CLIENT PROTOCOL", e.getMessage() == null ? "FAG Client Protocol Exception" : e.getMessage());
         } catch (IOException e) {
-            Log.e("KESALAHAN", e.getMessage());
-            if (e.getMessage().indexOf("Connection reset by peer") > 0) {
-                Log.d("REQUEST", "Kirim request kembali setelah connection reset by peer");
-            }
+            Log.e("KESALAHAN IO", e.getMessage() == null ? "FAG IO Exception" : e.getMessage());
         } catch (Exception e) {
-            Log.e("KESALAHAN", e.getMessage());
+            Log.e("KESALAHAN", e.getMessage() == null ? "FAG ALL Exception" : e.getMessage());
+        } finally {
+            client.getConnectionManager().shutdown();
+            Log.d("CONNECTION", "Koneksi ditutup..");
         }
 
         return hasil;
