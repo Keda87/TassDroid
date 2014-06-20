@@ -99,10 +99,6 @@ public class FragmentTak extends Fragment {
                 dialog.dismiss();
                 TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
-            } catch (NullPointerException e) {
-                dialog.dismiss();
-                TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
-                Log.e("KESALAHAN NULL", e.getMessage());
             }
             return takList;
         }

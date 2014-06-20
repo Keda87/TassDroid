@@ -127,10 +127,6 @@ public class ActivityJadwal extends Activity {
                 dialog.dismiss();
                 TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN JSON", e.getMessage());
-            } catch (NullPointerException e) {
-                dialog.dismiss();
-                TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
-                Log.e("KESALAHAN JSON", e.getMessage());
             }
             return jadwalList;
         }
