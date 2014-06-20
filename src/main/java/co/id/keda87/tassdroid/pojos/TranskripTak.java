@@ -2,10 +2,12 @@ package co.id.keda87.tassdroid.pojos;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Comparator;
+
 /**
  * Created by Keda87 on 5/28/2014.
  */
-public class TranskripTak {
+public class TranskripTak implements Comparable<TranskripTak> {
 
     public String no;
 
@@ -26,4 +28,15 @@ public class TranskripTak {
     @SerializedName("nama_bagian")
     public String namaBagian;
 
+    @Override
+    public int compareTo(TranskripTak another) {
+        return 0;
+    }
+
+    public static Comparator<TranskripTak> TahunComparator = new Comparator<TranskripTak>() {
+        @Override
+        public int compare(TranskripTak lhs, TranskripTak rhs) {
+            return lhs.tahun.compareTo(rhs.tahun);
+        }
+    };
 }
