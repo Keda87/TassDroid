@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class KeuanganListAdapter extends BaseAdapter {
 
-    private List<StatusKeuangan> keuangans;
+    private StatusKeuangan[] keuangans;
     private LayoutInflater inflater;
     private Context context;
 
-    public KeuanganListAdapter(List<StatusKeuangan> keuangans, Context context) {
+    public KeuanganListAdapter(StatusKeuangan[] keuangans, Context context) {
         this.keuangans = keuangans;
         this.context = context;
         this.inflater = LayoutInflater.from(this.context);
@@ -29,12 +29,12 @@ public class KeuanganListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return keuangans.size();
+        return keuangans.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return keuangans.get(position);
+        return keuangans[position];
     }
 
     @Override
@@ -69,10 +69,10 @@ public class KeuanganListAdapter extends BaseAdapter {
         int colorPosition = position % TassUtilities.colorsStripped.length;
         convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
 
-        holder.tvSemesterTahun.setText(this.context.getResources().getString(R.string.adapter_keuangan_semester) + " " + keuangans.get(position).semester + " : " + keuangans.get(position).tahunAjaran);
-        holder.tvStatus.setText(keuangans.get(position).status);
-        holder.tvKetNominal.setText(keuangans.get(position).namaTarif + " - " + TassUtilities.toRupiah(keuangans.get(position).jumlahBayar));
-        holder.tvKuitansi.setText(this.context.getResources().getString(R.string.adapter_keuangan_kuitansi) + " : " + keuangans.get(position).nomorKuitansi);
+        holder.tvSemesterTahun.setText(this.context.getResources().getString(R.string.adapter_keuangan_semester) + " " + keuangans[position].semester + " : " + keuangans[position].tahunAjaran);
+        holder.tvStatus.setText(keuangans[position].status);
+        holder.tvKetNominal.setText(keuangans[position].namaTarif + " - " + TassUtilities.toRupiah(keuangans[position].jumlahBayar));
+        holder.tvKuitansi.setText(this.context.getResources().getString(R.string.adapter_keuangan_kuitansi) + " : " + keuangans[position].nomorKuitansi);
         return convertView;
     }
 

@@ -10,29 +10,27 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.NilaiMentah;
 
-import java.util.List;
-
 /**
  * Created by Keda87 on 6/16/2014.
  */
 public class NilaiListAdapter extends BaseAdapter {
 
-    private List<NilaiMentah> nilaiMentahs;
+    private NilaiMentah[] nilaiMentahs;
     private LayoutInflater inflater;
 
-    public NilaiListAdapter(Context context, List<NilaiMentah> nilaiMentahs) {
+    public NilaiListAdapter(Context context, NilaiMentah[] nilaiMentahs) {
         this.nilaiMentahs = nilaiMentahs;
         this.inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return this.nilaiMentahs.size();
+        return this.nilaiMentahs.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return this.nilaiMentahs.get(position);
+        return this.nilaiMentahs[position];
     }
 
     @Override
@@ -66,9 +64,9 @@ public class NilaiListAdapter extends BaseAdapter {
         convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
 
         //set value
-        holder.judul.setText(this.nilaiMentahs.get(position).mataKuliah);
-        holder.keterangan.setText(this.nilaiMentahs.get(position).keterangan);
-        holder.indexNilai.setText(this.nilaiMentahs.get(position).nilaiIndex);
+        holder.judul.setText(this.nilaiMentahs[position].mataKuliah);
+        holder.keterangan.setText(this.nilaiMentahs[position].keterangan);
+        holder.indexNilai.setText(this.nilaiMentahs[position].nilaiIndex);
 
         return convertView;
     }

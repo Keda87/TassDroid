@@ -10,29 +10,27 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.TranskripTak;
 
-import java.util.List;
-
 /**
  * Created by Keda87 on 5/28/2014.
  */
 public class TakListAdapter extends BaseAdapter {
 
-    private List<TranskripTak> taks;
+    private TranskripTak[] taks;
     private LayoutInflater inflater;
 
-    public TakListAdapter(Context ctx, List<TranskripTak> taks) {
+    public TakListAdapter(Context ctx, TranskripTak[] taks) {
         this.taks = taks;
         this.inflater = LayoutInflater.from(ctx);
     }
 
     @Override
     public int getCount() {
-        return this.taks.size();
+        return this.taks.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return this.taks.get(position);
+        return this.taks[position];
     }
 
     @Override
@@ -68,10 +66,10 @@ public class TakListAdapter extends BaseAdapter {
         convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
 
         //set value
-        holder.teksPoin.setText(taks.get(position).poin);
-        holder.teksKegiatan.setText(taks.get(position).namaJenisKegiatan);
-        holder.teksTahun.setText(taks.get(position).tahun);
-        holder.teksBagian.setText(taks.get(position).namaBagian);
+        holder.teksPoin.setText(taks[position].poin);
+        holder.teksKegiatan.setText(taks[position].namaJenisKegiatan);
+        holder.teksTahun.setText(taks[position].tahun);
+        holder.teksBagian.setText(taks[position].namaBagian);
         return convertView;
     }
 
