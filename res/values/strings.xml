@@ -46,7 +46,6 @@
     <!--list adapter keuangan-->
     <string name="adapter_keuangan_kuitansi">Receipt</string>
     <string name="adapter_keuangan_semester">SEMESTER</string>
-    <string name="dialog_loading">Loading..</string>
 
     <!--fragment tak-->
     <string name="f_tak_label_bagian">SECTION:</string>
@@ -66,6 +65,7 @@
     <string name="detail_nilai_kajian3">Assesment 3</string>
     <string name="detail_nilai_tugas">Task</string>
     <string name="detail_nilai_praktikum">Practicum</string>
+    <string name="label_kosong">No data loaded</string>
 
     <!--activity tugas-->
     <string-array name="judul_tab_tugas">
