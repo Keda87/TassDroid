@@ -66,4 +66,10 @@
     <string name="detail_nilai_kajian3">Kajian 3</string>
     <string name="detail_nilai_tugas">Tugas</string>
     <string name="detail_nilai_praktikum">Praktikum</string>
+
+    <!--activity tugas-->
+    <string-array name="judul_tab_tugas">
+        <item>Individu</item>
+        <item>Kelompok</item>
+    </string-array>
 </resources>

@@ -1,9 +1,13 @@
 package co.id.keda87.tassdroid.activities;
 
-import android.app.Activity;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.adapter.TugasPagerAdapter;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,12 +15,35 @@ import co.id.keda87.tassdroid.R;
  * Date: 5/3/14
  * Time: 8:48 PM
  */
-public class ActivityTugas extends Activity {
+public class ActivityTugas extends FragmentActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
+
+    private ViewPager viewPager;
+    private TugasPagerAdapter tugasPagerAdapter;
+    private ActionBar actionBar;
+    private String[] tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tugas);
+
+        //create instance
+        this.viewPager = (ViewPager) findViewById(R.id.pager);
+        this.actionBar = getActionBar();
+        this.tugasPagerAdapter = new TugasPagerAdapter(getSupportFragmentManager());
+        this.tabs = getResources().getStringArray(R.array.judul_tab_tugas);
+
+        this.viewPager.setAdapter(this.tugasPagerAdapter);
+        this.actionBar.setHomeButtonEnabled(false);
+        this.actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        //adding tabs
+        for (String tab : this.tabs) {
+            this.actionBar.addTab(this.actionBar.newTab().setText(tab).setTabListener(this));
+        }
+
+        //set pager action listener
+        this.viewPager.setOnPageChangeListener(this);
 
         //enable up navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -33,5 +60,31 @@ public class ActivityTugas extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        this.viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i2) {
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+        this.actionBar.setSelectedNavigationItem(i);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
     }
 }
