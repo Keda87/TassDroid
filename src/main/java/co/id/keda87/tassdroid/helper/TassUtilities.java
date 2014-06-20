@@ -196,6 +196,7 @@ public class TassUtilities {
 
         try {
             HttpResponse response = client.execute(request);
+            Log.d("CONNECTION", "Kirim request ke server..");
 
             try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
                 sb = new StringBuffer();

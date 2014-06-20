@@ -1,8 +1,6 @@
 package co.id.keda87.tassdroid.fragment;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TakListAdapter;
@@ -19,7 +18,8 @@ import co.id.keda87.tassdroid.pojos.TranskripTak;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,8 +34,11 @@ public class FragmentTak extends Fragment {
     private ListView lvTranskripTak;
     private TextView tvTotalTak;
     private HashMap<String, String> userCredential;
-    private ProgressDialog dialog;
-    private TakTask takTask = null;
+    private ProgressBar pbTak;
+    private TakTask takTask;
+    private TextView tvTakKosong;
+    private boolean connected;
+    private TranskripTak[] takList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,24 +48,18 @@ public class FragmentTak extends Fragment {
         this.gson = new Gson();
         this.sessionManager = new SessionManager(getActivity());
         this.userCredential = sessionManager.getUserDetails();
+        this.takList = new TranskripTak[0];
 
         //instance widget
+        this.tvTakKosong = (TextView) view.findViewById(R.id.tvTakKosong);
         this.tvTotalTak = (TextView) view.findViewById(R.id.tvTotalPoin);
         this.lvTranskripTak = (ListView) view.findViewById(R.id.lvTak);
-        this.dialog = new ProgressDialog(getActivity());
+        this.pbTak = (ProgressBar) view.findViewById(R.id.pbTak);
+        this.connected = TassUtilities.isConnected(getActivity());
 
+        this.tvTakKosong.setVisibility(View.GONE);
+        this.tvTakKosong.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
         this.tvTotalTak.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
-        this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
-        this.dialog.setCancelable(true);
-        this.dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                takTask.cancel(true);
-                dialog.dismiss();
-                Log.d("TASK", "AsyncTask telah di cancel");
-            }
-        });
-        this.lvTranskripTak.setClickable(false);
 
         return view;
     }
@@ -71,33 +68,38 @@ public class FragmentTak extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //start asynctask
-        if (TassUtilities.isConnected(getActivity())) {
-            takTask = new TakTask();
-            takTask.execute(
+        if (connected) { //check if connection available
+            //start asynctask
+            this.takTask = new TakTask();
+            this.takTask.execute(
                     this.userCredential.get(SessionManager.KEY_USERNAME),
                     this.userCredential.get(SessionManager.KEY_PASSWORD)
             );
         } else {
+            this.tvTakKosong.setVisibility(View.VISIBLE);
+            this.pbTak.setVisibility(View.GONE);
             TassUtilities.showToastMessage(getActivity(), R.string.login_page_alert_no_connection, 0);
         }
     }
 
-    private class TakTask extends AsyncTask<String, Void, List<TranskripTak>> {
+    private class TakTask extends AsyncTask<String, Void, TranskripTak[]> {
 
         @Override
-        protected List<TranskripTak> doInBackground(String... params) {
+        protected TranskripTak[] doInBackground(String... params) {
             //url tak
             String apiTak = TassUtilities.uriBuilder(params[0], params[1], "tak");
 
-            //parse json to object
-            List<TranskripTak> takList = null;
+            //json to object status keuangan
             try {
-                TranskripTak[] tak = gson.fromJson(TassUtilities.doGetJson(apiTak), TranskripTak[].class);
-                takList = Arrays.asList(tak);
+                takList = gson.fromJson(TassUtilities.doGetJson(apiTak), TranskripTak[].class);
             } catch (JsonSyntaxException e) {
-                dialog.dismiss();
-                TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvTakKosong.setVisibility(View.VISIBLE);
+                        TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
+                    }
+                });
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
             return takList;
@@ -106,29 +108,32 @@ public class FragmentTak extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (!dialog.isShowing()) {
-                dialog.show();
-            }
+            pbTak.setVisibility(View.VISIBLE);
         }
 
         @Override
-        protected void onPostExecute(List<TranskripTak> transkripTaks) {
+        protected void onPostExecute(TranskripTak[] transkripTaks) {
             super.onPostExecute(transkripTaks);
 
             //Sorting TAK list by year
-            Collections.sort(transkripTaks, new Comparator<TranskripTak>() {
-                @Override
-                public int compare(TranskripTak tak1, TranskripTak tak2) {
-                    return tak1.tahun.compareTo(tak2.tahun);
-                }
-            });
+            Arrays.sort(transkripTaks, TranskripTak.TahunComparator);
 
-            if (dialog.isShowing() || dialog != null) {
-                dialog.dismiss();
-            }
+            pbTak.setVisibility(View.GONE);
 
             if (transkripTaks != null) {
-                lvTranskripTak.setAdapter(new TakListAdapter(getActivity(), transkripTaks));
+                TakListAdapter adapterTak = new TakListAdapter(getActivity(), transkripTaks);
+                lvTranskripTak.setAdapter(adapterTak);
+
+                if (adapterTak.getCount() > 0) { //check if nilai list not empty
+                    lvTranskripTak.setVisibility(View.VISIBLE);
+                    Log.d("HASIL TAK", "Data telah ditampung ke ListView");
+                } else { //if listview empty show label desc & hide listview
+                    tvTakKosong.setVisibility(View.VISIBLE);
+                    lvTranskripTak.setVisibility(View.GONE);
+                    Log.d("HASIL TAK", "Data kosong..");
+                }
+
+                //acumulate all tak points
                 int totalTak = 0;
                 for (TranskripTak tak : transkripTaks) {
                     totalTak += Integer.parseInt(tak.poin);
@@ -136,6 +141,7 @@ public class FragmentTak extends Fragment {
                 tvTotalTak.setText(getResources().getString(R.string.f_tak_label_total_poin) + " " + totalTak);
                 Log.d("HASIL TAK", "Data telah ditampung ke listview");
             } else {
+                tvTakKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
                 TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "transkripTaks bernilai null");
             }

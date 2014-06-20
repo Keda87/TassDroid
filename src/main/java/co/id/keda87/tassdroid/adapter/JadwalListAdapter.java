@@ -10,7 +10,6 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Jadwal;
 
-import java.util.List;
 import java.util.Locale;
 
 /**

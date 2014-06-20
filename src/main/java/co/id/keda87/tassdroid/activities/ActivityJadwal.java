@@ -36,7 +36,7 @@ public class ActivityJadwal extends Activity {
     private JadwalKelasTask jadwalTask;
     private TextView tvUnload;
     private ProgressBar pbJadwal;
-    Jadwal[] jadwalKelas;
+    private Jadwal[] jadwalKelas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +129,12 @@ public class ActivityJadwal extends Activity {
                     this.pbJadwal.setVisibility(View.GONE);
                     this.lvJadwal.setVisibility(View.VISIBLE);
                     Log.d("REFRESH", "Gak konek dan gak kosong");
+                    TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                } else if (!konek && this.jadwalKelas.length == 0) {
+                    this.tvUnload.setVisibility(View.VISIBLE);
+                    this.pbJadwal.setVisibility(View.GONE);
+                    this.lvJadwal.setVisibility(View.GONE);
+                    Log.d("REFRESH", "Gak konek dan kosong");
                     TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
                 }
                 return true;

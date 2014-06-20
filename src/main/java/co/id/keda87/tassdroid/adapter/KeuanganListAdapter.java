@@ -10,8 +10,6 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.StatusKeuangan;
 
-import java.util.List;
-
 /**
  * Created by Keda87 on 5/20/2014.
  */

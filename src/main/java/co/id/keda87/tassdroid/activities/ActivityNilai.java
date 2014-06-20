@@ -1,8 +1,6 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.NilaiListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -20,10 +20,7 @@ import co.id.keda87.tassdroid.pojos.NilaiMentah;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,9 +34,11 @@ public class ActivityNilai extends Activity {
     private Gson gson;
     private SessionManager sessionManager;
     private HashMap<String, String> userCredential;
-    private ProgressDialog dialog;
+    private ProgressBar pbNilai;
     private NilaiTask nilaiTask;
-    private List<NilaiMentah> nilaiList;
+    private NilaiMentah[] nilaiList;
+    private TextView tvNilaiKosong;
+    private boolean connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,32 +50,26 @@ public class ActivityNilai extends Activity {
         this.gson = new Gson();
         this.sessionManager = new SessionManager(this);
         this.userCredential = sessionManager.getUserDetails();
-        this.dialog = new ProgressDialog(this);
-        this.nilaiList = new ArrayList<>();
+        this.pbNilai = (ProgressBar) findViewById(R.id.pbNilai);
+        this.nilaiList = new NilaiMentah[0];
+        this.tvNilaiKosong = (TextView) findViewById(R.id.tvNilaiKosong);
 
-        this.dialog.setMessage(getResources().getString(R.string.dialog_loading));
-        this.dialog.setCancelable(true);
-        this.dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                nilaiTask.cancel(true);
-                dialog.dismiss();
-                Log.d("TASK", "AsyncTask nilai mentah telah di cancel");
-            }
-        });
+        this.tvNilaiKosong.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.tvNilaiKosong.setVisibility(View.GONE);
+        this.connected = TassUtilities.isConnected(this);
 
         this.lvNilaiMentah.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                NilaiMentah detailNilai = nilaiList.get(position);
+                NilaiMentah detailNilai = nilaiList[position];
 
                 //intent
                 Intent intent = new Intent(ActivityNilai.this, ActivityNilaiDetail.class);
                 intent.putExtra("currentDetailNilai", detailNilai);
                 startActivity(intent);
 
-                Log.d("LISTVIEW NILAI", "Clicked...");
+                Log.d("LISTVIEW NILAI", detailNilai.mataKuliah + " Clicked...");
             }
         });
 
@@ -91,8 +84,8 @@ public class ActivityNilai extends Activity {
     protected void onStart() {
         super.onStart();
 
-        if (this.nilaiList.isEmpty()) { //check if listview empty
-            if (TassUtilities.isConnected(this)) { //check if connection available
+        if (this.nilaiList.length == 0) { //check if listview empty
+            if (connected) { //check if connection available
                 //start asynctask
                 this.nilaiTask = new NilaiTask();
                 this.nilaiTask.execute(
@@ -100,8 +93,35 @@ public class ActivityNilai extends Activity {
                         this.userCredential.get(SessionManager.KEY_PASSWORD)
                 );
             } else {
+                this.tvNilaiKosong.setVisibility(View.VISIBLE);
+                this.pbNilai.setVisibility(View.GONE);
                 TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
             }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //if the array already filled and connection not available, show the listview
+        if (this.nilaiList.length > 0 && !connected) {
+            this.lvNilaiMentah.setVisibility(View.VISIBLE);
+            this.pbNilai.setVisibility(View.GONE);
+            this.tvNilaiKosong.setVisibility(View.GONE);
+            Log.d("RESUME", "Gak konek dan gak kosong..");
+        } else if (this.nilaiList.length == 0 && connected) {
+            this.nilaiTask = new NilaiTask();
+            this.nilaiTask.execute(
+                    this.userCredential.get(SessionManager.KEY_USERNAME),
+                    this.userCredential.get(SessionManager.KEY_PASSWORD)
+            );
+            Log.d("RESUME", "Konek dan kosong..");
+        } else if (!connected && this.nilaiList.length > 0) {
+            this.tvNilaiKosong.setVisibility(View.GONE);
+            this.pbNilai.setVisibility(View.GONE);
+            this.lvNilaiMentah.setVisibility(View.VISIBLE);
+            Log.d("RESUME", "Gak konek dan gak kosong..");
         }
     }
 
@@ -112,14 +132,25 @@ public class ActivityNilai extends Activity {
                 finish();
                 return true;
             case R.id.app_item_refresh:
-                if (TassUtilities.isConnected(this)) { //check if connection available
-                    //start asynctask
+                if (connected) {
                     this.nilaiTask = new NilaiTask();
                     this.nilaiTask.execute(
                             this.userCredential.get(SessionManager.KEY_USERNAME),
                             this.userCredential.get(SessionManager.KEY_PASSWORD)
                     );
-                } else {
+                    Log.d("REFRESH", "Konek..");
+
+                } else if (!connected && this.nilaiList.length > 0) {
+                    this.tvNilaiKosong.setVisibility(View.GONE);
+                    this.pbNilai.setVisibility(View.GONE);
+                    this.lvNilaiMentah.setVisibility(View.VISIBLE);
+                    Log.d("REFRESH", "Gak konek dan gak kosong");
+                    TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                } else if (!connected && this.nilaiList.length == 0) {
+                    this.tvNilaiKosong.setVisibility(View.VISIBLE);
+                    this.pbNilai.setVisibility(View.GONE);
+                    this.lvNilaiMentah.setVisibility(View.GONE);
+                    Log.d("REFRESH", "Gak konek dan kosong");
                     TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
                 }
                 return true;
@@ -133,20 +164,24 @@ public class ActivityNilai extends Activity {
         return true;
     }
 
-    private class NilaiTask extends AsyncTask<String, Void, List<NilaiMentah>> {
+    private class NilaiTask extends AsyncTask<String, Void, NilaiMentah[]> {
 
         @Override
-        protected List<NilaiMentah> doInBackground(String... params) {
+        protected NilaiMentah[] doInBackground(String... params) {
             //url nilai API
             String apiNilai = TassUtilities.uriBuilder(params[0], params[1], "nm");
 
             //parse json to object
             try {
-                NilaiMentah[] nilaiMentah = gson.fromJson(TassUtilities.doGetJson(apiNilai), NilaiMentah[].class);
-                nilaiList = Arrays.asList(nilaiMentah);
+                nilaiList = gson.fromJson(TassUtilities.doGetJson(apiNilai), NilaiMentah[].class);
             } catch (JsonSyntaxException e) {
-                dialog.dismiss();
-                TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvNilaiKosong.setVisibility(View.VISIBLE);
+                        TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
+                    }
+                });
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
             return nilaiList;
@@ -155,25 +190,32 @@ public class ActivityNilai extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (!dialog.isShowing()) {
-                dialog.show();
-            }
+            pbNilai.setVisibility(View.VISIBLE);
         }
 
         @Override
-        protected void onPostExecute(List<NilaiMentah> nilaiMentahs) {
+        protected void onPostExecute(NilaiMentah[] nilaiMentahs) {
             super.onPostExecute(nilaiMentahs);
 
-            dialog.dismiss();
+            pbNilai.setVisibility(View.GONE);
 
             if (nilaiMentahs != null) {
-                lvNilaiMentah.setAdapter(new NilaiListAdapter(ActivityNilai.this, nilaiMentahs));
-                Log.d("HASIL NILAI MENTAH", "Data telah ditampung ke ListView");
+                NilaiListAdapter adapterNilai = new NilaiListAdapter(ActivityNilai.this, nilaiMentahs);
+                lvNilaiMentah.setAdapter(adapterNilai);
+
+                if (adapterNilai.getCount() > 0) { //check if nilai list not empty
+                    lvNilaiMentah.setVisibility(View.VISIBLE);
+                    Log.d("HASIL NILAI", "Data telah ditampung ke ListView");
+                } else { //if listview empty show label desc & hide listview
+                    tvNilaiKosong.setVisibility(View.VISIBLE);
+                    lvNilaiMentah.setVisibility(View.GONE);
+                    Log.d("HASIL JADWAL", "Data kosong..");
+                }
             } else {
+                tvNilaiKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
                 TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "nilaiMentahs bernilai null");
             }
         }
     }
-
 }
