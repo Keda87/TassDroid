@@ -5,9 +5,12 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TugasPagerAdapter;
+import co.id.keda87.tassdroid.fragment.FragmentTugasIndividu;
 
 /**
  * Created with IntelliJ IDEA.
@@ -53,10 +56,26 @@ public class ActivityTugas extends FragmentActivity implements ActionBar.TabList
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_refresh, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.app_item_refresh:
+                switch (this.actionBar.getSelectedNavigationIndex()) {
+                    case 0:
+                        Log.d("REFRESH", "Muat ulang tab individu..");
+                        break;
+                    case 1:
+                        Log.d("REFRESH", "Muat ulang tab kelompok..");
+                        break;
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);

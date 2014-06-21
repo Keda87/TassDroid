@@ -72,4 +72,9 @@
         <item>Individual</item>
         <item>Group</item>
     </string-array>
+
+    <!--fragment tugas individu-->
+    <string name="tugas_individu_label_tugas">Task Name</string>
+    <string name="tugas_individu_label_deadline">Deadline</string>
+    <string name="tugas_individu_label_waktu">Time</string>
 </resources>
