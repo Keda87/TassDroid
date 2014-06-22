@@ -65,7 +65,7 @@
     <string name="detail_nilai_kajian3">Kajian 3</string>
     <string name="detail_nilai_tugas">Tugas</string>
     <string name="detail_nilai_praktikum">Praktikum</string>
-    <string name="label_kosong">No data loaded</string>
+    <string name="label_kosong">Tidak ada data dimuat</string>
 
     <!--activity tugas-->
     <string-array name="judul_tab_tugas">

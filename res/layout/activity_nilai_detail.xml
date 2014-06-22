@@ -193,35 +193,40 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=": 87"
-                android:id="@+id/tvDkj1" android:layout_alignTop="@+id/tvDLkaj1"
-                android:layout_toRightOf="@+id/tvDLkaj1" android:layout_marginLeft="5dp"/>
+                android:id="@+id/tvDkj1"
+                android:layout_alignTop="@+id/tvDLkaj1" android:layout_alignLeft="@+id/tvDkj2"
+                android:layout_alignStart="@+id/tvDkj2"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=": 47"
-                android:id="@+id/tvDkj2" android:layout_below="@+id/tvDkj1"
-                android:layout_alignLeft="@+id/tvDkj1" android:layout_alignStart="@+id/tvDkj1"/>
+                android:id="@+id/tvDkj2"
+                android:layout_below="@+id/tvDkj1" android:layout_alignLeft="@+id/tvDkj3"
+                android:layout_alignStart="@+id/tvDkj3"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=": 92"
-                android:id="@+id/tvDkj3" android:layout_below="@+id/tvDkj2"
-                android:layout_alignLeft="@+id/tvDkj2" android:layout_alignStart="@+id/tvDkj2"/>
+                android:id="@+id/tvDkj3"
+                android:layout_below="@+id/tvDkj2" android:layout_alignLeft="@+id/tvDtgs"
+                android:layout_alignStart="@+id/tvDtgs"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=": 33"
-                android:id="@+id/tvDtgs" android:layout_below="@+id/tvDkj3"
-                android:layout_alignLeft="@+id/tvDkj3" android:layout_alignStart="@+id/tvDkj3"/>
+                android:id="@+id/tvDtgs"
+                android:layout_below="@+id/tvDkj3" android:layout_alignLeft="@+id/tvDprk"
+                android:layout_alignStart="@+id/tvDprk"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=": 28"
-                android:id="@+id/tvDprk" android:layout_below="@+id/tvDtgs"
-                android:layout_alignLeft="@+id/tvDtgs" android:layout_alignStart="@+id/tvDtgs"/>
+                android:id="@+id/tvDprk"
+                android:layout_below="@+id/tvDtgs" android:layout_toRightOf="@+id/tvDLprak"
+                android:layout_marginLeft="29dp"/>
     </RelativeLayout>
 </LinearLayout>

@@ -59,7 +59,7 @@ public class TugasIndividuAdapter extends BaseAdapter {
             holder.lTime = (TextView) convertView.findViewById(R.id.tvTgslbTime);
 
             //set typeface
-            holder.tvMataKuliah.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
+            holder.tvMataKuliah.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0   ));
             holder.tvNamaTugas.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.tvDeadline.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.tvWaktu.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
