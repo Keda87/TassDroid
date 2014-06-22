@@ -74,7 +74,9 @@
     </string-array>
 
     <!--fragment tugas individu-->
-    <string name="tugas_individu_label_tugas">Task Name</string>
-    <string name="tugas_individu_label_deadline">Deadline</string>
-    <string name="tugas_individu_label_waktu">Time</string>
+    <string name="tugas_label_tugas">Task Name</string>
+    <string name="tugas_label_deadline">Deadline</string>
+    <string name="tugas_label_waktu">Time</string>
+    <string name="tugas_label_anggota">Member</string>
+    <string name="tugas_label_keterangan">Description</string>
 </resources>

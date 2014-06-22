@@ -97,7 +97,6 @@ public class FragmentTak extends Fragment {
                     @Override
                     public void run() {
                         tvTakKosong.setVisibility(View.VISIBLE);
-                        TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                     }
                 });
                 Log.e("KESALAHAN JSON", e.getMessage());
@@ -142,7 +141,6 @@ public class FragmentTak extends Fragment {
                 Log.d("HASIL TAK", "Data telah ditampung ke listview");
             } else {
                 tvTakKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
-                TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "transkripTaks bernilai null");
             }
         }

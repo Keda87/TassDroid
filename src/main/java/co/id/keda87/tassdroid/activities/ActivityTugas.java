@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TugasPagerAdapter;
-import co.id.keda87.tassdroid.fragment.FragmentTugasIndividu;
 
 /**
  * Created with IntelliJ IDEA.

@@ -163,7 +163,6 @@ public class ActivityJadwal extends Activity {
                     @Override
                     public void run() {
                         tvUnload.setVisibility(View.VISIBLE);
-                        TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
                     }
                 });
                 Log.e("KESALAHAN JSON", e.getMessage());
@@ -198,7 +197,6 @@ public class ActivityJadwal extends Activity {
 
             } else {
                 tvUnload.setVisibility(View.VISIBLE); //if an error occured, show empty label
-                TassUtilities.showToastMessage(ActivityJadwal.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "jadwals bernilai null");
             }
         }

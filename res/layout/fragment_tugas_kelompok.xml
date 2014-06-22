@@ -5,10 +5,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvTugasKelompok"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:listSelector="@android:color/transparent"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Kelompok"
-            android:id="@+id/textView" android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+            android:text="@string/label_kosong"
+            android:id="@+id/tvKelKosong"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pbKelompok"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"/>
 </RelativeLayout>

@@ -76,7 +76,7 @@ public class FragmentTugasIndividu extends Fragment {
         protected TugasIndividu[] doInBackground(String... params) {
 
             String tugasIndivAPI = TassUtilities.uriBuilder(params[0], params[1], "tgsi");
-            Log.d("API", "alamat API tugas individu");
+            Log.d("API", tugasIndivAPI);
 
             try {
                 individus = gson.fromJson(TassUtilities.doGetJson(tugasIndivAPI), TugasIndividu[].class);
@@ -86,7 +86,6 @@ public class FragmentTugasIndividu extends Fragment {
                     @Override
                     public void run() {
                         tvKosong.setVisibility(View.VISIBLE);
-                        TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                     }
                 });
                 Log.e("KESALAHAN JSON", e.getMessage());
@@ -112,7 +111,6 @@ public class FragmentTugasIndividu extends Fragment {
                 Log.d("HASIL TUGAS INDIVIDU", "Data telah ditampung ke ListView");
             } else {
                 tvKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
-                TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "tugasIndividus bernilai null");
             }
         }

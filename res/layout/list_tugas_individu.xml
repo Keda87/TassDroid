@@ -16,14 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/tugas_individu_label_tugas"
+            android:text="@string/tugas_label_tugas"
             android:id="@+id/tvTgslbNama" android:layout_below="@+id/tvTugasIndNama" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/tugas_individu_label_deadline"
+            android:text="@string/tugas_label_deadline"
             android:id="@+id/tvTgslbDeadline" android:layout_below="@+id/tvTgslbNama" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
     <TextView
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/tugas_individu_label_waktu"
+            android:text="@string/tugas_label_waktu"
             android:id="@+id/tvTgslbTime" android:layout_below="@+id/tvTgslbDeadline" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
     <TextView

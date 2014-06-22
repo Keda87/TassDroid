@@ -10,6 +10,79 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="[nama mk]"
-            android:id="@+id/tvKelNamaMk" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:id="@+id/kelNamaMk" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/tugas_label_tugas"
+            android:id="@+id/lkNamaTugas" android:layout_below="@+id/kelNamaMk" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/tugas_label_deadline"
+            android:id="@+id/lkDeadline" android:layout_below="@+id/lkNamaTugas" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/tugas_label_waktu"
+            android:id="@+id/lkTime" android:layout_below="@+id/lkDeadline" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/tugas_label_anggota"
+            android:id="@+id/lkMember" android:layout_below="@+id/lkTime" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": [nama tugas]"
+            android:id="@+id/kelNamaTugas" android:layout_alignTop="@+id/lkNamaTugas"
+            android:layout_toRightOf="@+id/lkNamaTugas" android:layout_marginLeft="15dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": [pengumpulan]"
+            android:id="@+id/kelPengumpulan"
+            android:layout_alignTop="@+id/lkDeadline" android:layout_alignLeft="@+id/kelNamaTugas"
+            android:layout_alignStart="@+id/kelNamaTugas"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": [waktu]"
+            android:id="@+id/kelWaktu" android:layout_above="@+id/lkMember" android:layout_alignLeft="@+id/kelNamaTugas"
+            android:layout_alignStart="@+id/kelNamaTugas"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": [anggota]"
+            android:id="@+id/kelAnggota"
+            android:layout_alignTop="@+id/lkMember" android:layout_alignLeft="@+id/kelWaktu"
+            android:layout_alignStart="@+id/kelWaktu"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/tugas_label_keterangan"
+            android:id="@+id/lkDescription" android:layout_below="@+id/kelAnggota" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": [keterangan]"
+            android:id="@+id/kelKeterangan"
+            android:layout_alignTop="@+id/lkDescription" android:layout_alignLeft="@+id/kelAnggota"
+            android:layout_alignStart="@+id/kelAnggota"/>
 </RelativeLayout>

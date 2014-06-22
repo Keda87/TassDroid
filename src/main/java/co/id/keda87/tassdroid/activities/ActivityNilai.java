@@ -179,7 +179,6 @@ public class ActivityNilai extends Activity {
                     @Override
                     public void run() {
                         tvNilaiKosong.setVisibility(View.VISIBLE);
-                        TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
                     }
                 });
                 Log.e("KESALAHAN JSON", e.getMessage());
@@ -213,7 +212,6 @@ public class ActivityNilai extends Activity {
                 }
             } else {
                 tvNilaiKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
-                TassUtilities.showToastMessage(ActivityNilai.this, R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "nilaiMentahs bernilai null");
             }
         }

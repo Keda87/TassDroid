@@ -73,8 +73,10 @@
         <item>Kelompok</item>
     </string-array>
 
-    <!--fragment tugas individu-->
-    <string name="tugas_individu_label_tugas">Nama Tugas</string>
-    <string name="tugas_individu_label_deadline">Deadline</string>
-    <string name="tugas_individu_label_waktu">Waktu</string>
+    <!--fragment tugas-->
+    <string name="tugas_label_tugas">Nama Tugas</string>
+    <string name="tugas_label_deadline">Deadline</string>
+    <string name="tugas_label_waktu">Waktu</string>
+    <string name="tugas_label_anggota">Anggota</string>
+    <string name="tugas_label_keterangan">Keterangan</string>
 </resources>

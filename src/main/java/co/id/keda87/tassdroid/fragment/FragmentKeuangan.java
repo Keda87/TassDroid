@@ -94,7 +94,6 @@ public class FragmentKeuangan extends Fragment {
                     @Override
                     public void run() {
                         tvUangKosong.setVisibility(View.VISIBLE);
-                        TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                     }
                 });
                 Log.e("KESALAHAN JSON", e.getMessage());
@@ -122,7 +121,6 @@ public class FragmentKeuangan extends Fragment {
                 }
             } else {
                 tvUangKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
-                TassUtilities.showToastMessage(getActivity(), R.string.error_time_request, 0);
                 Log.e("KESALAHAN", "nilaiMentahs bernilai null");
             }
         }
