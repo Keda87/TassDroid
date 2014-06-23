@@ -37,6 +37,7 @@ public class ActivityJadwal extends Activity {
     private TextView tvUnload;
     private ProgressBar pbJadwal;
     private Jadwal[] jadwalKelas;
+    private boolean connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class ActivityJadwal extends Activity {
         this.pbJadwal = (ProgressBar) findViewById(R.id.pbJadwal);
         this.tvUnload = (TextView) findViewById(R.id.tvUnload);
         this.jadwalKelas = new Jadwal[0];
+        this.connected = TassUtilities.isConnected(this);
 
         this.tvUnload.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tvUnload.setVisibility(View.GONE);
@@ -67,7 +69,7 @@ public class ActivityJadwal extends Activity {
     protected void onStart() {
         super.onStart();
         //start asynctask
-        if (TassUtilities.isConnected(this)) {
+        if (this.connected) {
             this.jadwalTask = new JadwalKelasTask();
             this.jadwalTask.execute(
                     this.userCredential.get(SessionManager.KEY_USERNAME),
@@ -83,27 +85,27 @@ public class ActivityJadwal extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        boolean connected = TassUtilities.isConnected(this);
-
-        //if the array already filled and connection not available, show the listview
-        if (this.jadwalKelas.length > 0 && !connected) {
-            this.lvJadwal.setVisibility(View.VISIBLE);
-            this.pbJadwal.setVisibility(View.GONE);
-            this.tvUnload.setVisibility(View.GONE);
-            Log.d("RESUME", "Gak konek dan gak kosong..");
-        } else if (this.jadwalKelas.length == 0 && connected) {
-            this.jadwalTask = new JadwalKelasTask();
-            this.jadwalTask.execute(
-                    this.userCredential.get(SessionManager.KEY_USERNAME),
-                    this.userCredential.get(SessionManager.KEY_PASSWORD)
-            );
-            Log.d("RESUME", "Konek dan kosong..");
-        } else if (!connected && this.jadwalKelas.length > 0) {
-            this.tvUnload.setVisibility(View.GONE);
-            this.pbJadwal.setVisibility(View.GONE);
-            this.lvJadwal.setVisibility(View.VISIBLE);
-            Log.d("RESUME", "Gak konek dan gak kosong..");
-        }
+//
+//        if (this.jadwalKelas.length == 0) { //check if listview empty
+//            if (this.connected) { //check if connection available
+//                this.jadwalTask = new JadwalKelasTask();
+//                this.jadwalTask.execute(
+//                        this.userCredential.get(SessionManager.KEY_USERNAME),
+//                        this.userCredential.get(SessionManager.KEY_PASSWORD));
+//                Log.d("RESUME", "Konek dan jadwal keadaan kosong");
+//            } else { //if no connection
+//                this.tvUnload.setVisibility(View.VISIBLE);
+//                this.pbJadwal.setVisibility(View.GONE);
+//                Log.d("RESUME", "Gak konek dan jadwal keadaan kosong");
+//                TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+//            }
+//            Log.d("RESUME", "Jadwal dalam keadaan kosong");
+//        } else {
+//            this.pbJadwal.setVisibility(View.GONE);
+//            this.tvUnload.setVisibility(View.GONE);
+//            this.lvJadwal.setVisibility(View.VISIBLE);
+//            Log.d("RESUME", "Jadwal udah keisi");
+//        }
     }
 
     @Override
@@ -114,9 +116,9 @@ public class ActivityJadwal extends Activity {
                 return true;
             case R.id.app_item_refresh:
                 this.tvUnload.setVisibility(View.GONE);
-                boolean konek = TassUtilities.isConnected(this);
+                this.lvJadwal.setVisibility(View.GONE);
 
-                if (konek) {
+                if (this.connected) { // if connected, sent request
                     this.jadwalTask = new JadwalKelasTask();
                     this.jadwalTask.execute(
                             this.userCredential.get(SessionManager.KEY_USERNAME),
@@ -124,17 +126,16 @@ public class ActivityJadwal extends Activity {
                     );
                     Log.d("REFRESH", "Konek..");
 
-                } else if (!konek && this.jadwalKelas.length > 0) {
+                } else { //if not connected
+                    int arrSize = this.jadwalKelas.length;
+                    if (this.jadwalKelas.length <= 0) { //if listview empty
+                        this.pbJadwal.setVisibility(View.GONE);
+                        this.tvUnload.setVisibility(View.VISIBLE);
+                        TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                        Log.d("REFRESH", "Gak konek dan keadaan kosong, isi array: " + arrSize);
+                    }
+                    this.pbJadwal.setVisibility(View.GONE);
                     this.tvUnload.setVisibility(View.GONE);
-                    this.pbJadwal.setVisibility(View.GONE);
-                    this.lvJadwal.setVisibility(View.VISIBLE);
-                    Log.d("REFRESH", "Gak konek dan gak kosong");
-                    TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
-                } else if (!konek && this.jadwalKelas.length == 0) {
-                    this.tvUnload.setVisibility(View.VISIBLE);
-                    this.pbJadwal.setVisibility(View.GONE);
-                    this.lvJadwal.setVisibility(View.GONE);
-                    Log.d("REFRESH", "Gak konek dan kosong");
                     TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
                 }
                 return true;
@@ -181,22 +182,13 @@ public class ActivityJadwal extends Activity {
             super.onPostExecute(jadwals);
 
             pbJadwal.setVisibility(View.GONE);
+            tvUnload.setVisibility(View.VISIBLE); //if an error occured, show empty label
 
             if (jadwals != null) {
                 JadwalListAdapter adapterJadwal = new JadwalListAdapter(ActivityJadwal.this, jadwals);
                 lvJadwal.setAdapter(adapterJadwal);
-
-                if (adapterJadwal.getCount() > 0) { //check if listview not empty
-                    lvJadwal.setVisibility(View.VISIBLE);
-                    Log.d("HASIL JADWAL", "Data telah ditampung ke ListView");
-                } else { //if listview empty show label desc & hide listview
-                    tvUnload.setVisibility(View.VISIBLE);
-                    lvJadwal.setVisibility(View.GONE);
-                    Log.d("HASIL JADWAL", "Data kosong..");
-                }
-
+                tvUnload.setVisibility(View.GONE);
             } else {
-                tvUnload.setVisibility(View.VISIBLE); //if an error occured, show empty label
                 Log.e("KESALAHAN", "jadwals bernilai null");
             }
         }
