@@ -83,27 +83,21 @@ public class ActivityJadwal extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-//
-//        if (this.jadwalKelas.length == 0) { //check if listview empty
-//            if (this.connected) { //check if connection available
-//                this.jadwalTask = new JadwalKelasTask();
-//                this.jadwalTask.execute(
-//                        this.userCredential.get(SessionManager.KEY_USERNAME),
-//                        this.userCredential.get(SessionManager.KEY_PASSWORD));
-//                Log.d("RESUME", "Konek dan jadwal keadaan kosong");
-//            } else { //if no connection
-//                this.tvUnload.setVisibility(View.VISIBLE);
-//                this.pbJadwal.setVisibility(View.GONE);
-//                Log.d("RESUME", "Gak konek dan jadwal keadaan kosong");
-//                TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
-//            }
-//            Log.d("RESUME", "Jadwal dalam keadaan kosong");
-//        } else {
-//            this.pbJadwal.setVisibility(View.GONE);
-//            this.tvUnload.setVisibility(View.GONE);
-//            this.lvJadwal.setVisibility(View.VISIBLE);
-//            Log.d("RESUME", "Jadwal udah keisi");
-//        }
+        if (TassUtilities.isConnected(this)) { // if connected, sent request
+            this.jadwalTask = new JadwalKelasTask();
+            this.jadwalTask.execute(
+                    this.userCredential.get(SessionManager.KEY_USERNAME),
+                    this.userCredential.get(SessionManager.KEY_PASSWORD)
+            );
+            Log.d("RESUME", "Konek..");
+
+        } else { //if not connected
+            this.pbJadwal.setVisibility(View.GONE);
+            this.lvJadwal.setVisibility(View.GONE);
+            this.tvUnload.setVisibility(View.VISIBLE);
+            TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+            Log.d("RESUME", "Gak konek..");
+        }
     }
 
     @Override
