@@ -50,7 +50,7 @@ public class BapListAdapter extends BaseAdapter {
             holder.detailApprove = (TextView) convertView.findViewById(R.id.tvKeteranganApprove);
 
             //set typeface
-            holder.namaMatkul.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
+            holder.namaMatkul.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 1));
             holder.detailApprove.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             convertView.setTag(holder);
         } else {
