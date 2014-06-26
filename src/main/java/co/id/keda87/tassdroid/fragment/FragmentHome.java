@@ -26,22 +26,18 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, null);
-    }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_home, null);
 
         //instance widget
-        this.btBio = (Button) getView().findViewById(R.id.menuBiodata);
-        this.btJadwal = (Button) getView().findViewById(R.id.menuJadwal);
-        this.btAbsen = (Button) getView().findViewById(R.id.menuAbsensi);
-        this.btNilai = (Button) getView().findViewById(R.id.menuNilai);
-        this.btTugas = (Button) getView().findViewById(R.id.menuTugas);
+        this.btBio = (Button) v.findViewById(R.id.menuBiodata);
+        this.btJadwal = (Button) v.findViewById(R.id.menuJadwal);
+        this.btAbsen = (Button) v.findViewById(R.id.menuAbsensi);
+        this.btNilai = (Button) v.findViewById(R.id.menuNilai);
+        this.btTugas = (Button) v.findViewById(R.id.menuTugas);
 
         //set roboto font
-        this.context = getView().getContext();
+        this.context = v.getContext();
         this.btBio.setTypeface(TassUtilities.getFontFace(this.context, 1));
         this.btJadwal.setTypeface(TassUtilities.getFontFace(this.context, 1));
         this.btAbsen.setTypeface(TassUtilities.getFontFace(this.context, 1));
@@ -54,6 +50,13 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
         this.btAbsen.setOnClickListener(this);
         this.btNilai.setOnClickListener(this);
         this.btTugas.setOnClickListener(this);
+
+        return v;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override

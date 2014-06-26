@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -54,6 +55,9 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
+
+        //display showcase at the first launch
+        startActivity(new Intent(this, ShowcaseActivity.class));
 
         //instance session manager
         this.sessionManager = new SessionManager(getApplicationContext());

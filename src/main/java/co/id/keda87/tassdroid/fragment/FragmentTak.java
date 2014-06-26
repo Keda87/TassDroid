@@ -114,12 +114,12 @@ public class FragmentTak extends Fragment {
         protected void onPostExecute(TranskripTak[] transkripTaks) {
             super.onPostExecute(transkripTaks);
 
-            //Sorting TAK list by year
-            Arrays.sort(transkripTaks, TranskripTak.TahunComparator);
-
             pbTak.setVisibility(View.GONE);
 
             if (transkripTaks != null) {
+                //Sorting TAK list by year
+                Arrays.sort(transkripTaks, TranskripTak.TahunComparator);
+
                 TakListAdapter adapterTak = new TakListAdapter(getActivity(), transkripTaks);
                 lvTranskripTak.setAdapter(adapterTak);
 

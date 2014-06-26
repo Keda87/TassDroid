@@ -54,6 +54,9 @@
                 android:name=".activities.ActivityNilaiDetail"
                 android:theme="@style/theme_activity_nilai"
                 android:icon="@drawable/ic_nilai"/>
+        <activity
+                android:name=".activities.ShowcaseActivity"
+                android:theme="@style/Transparent"/>
 
     </application>
 </manifest>
