@@ -16,7 +16,6 @@ import co.id.keda87.tassdroid.pojos.Bap;
 public class BapListAdapter extends BaseAdapter {
 
     private Bap[] baps;
-    private Context context;
     private LayoutInflater inflater;
 
     public BapListAdapter(Context context, Bap[] baps) {
@@ -26,17 +25,17 @@ public class BapListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return this.baps.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return this.baps[position];
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override

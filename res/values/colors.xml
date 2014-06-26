@@ -7,4 +7,6 @@
     <color name="app_background">#FFE3E3E3</color>
     <color name="theme_main_activity">#F15C58</color>
     <color name="nilai_detail">#B52735</color>
+    <color name="strip0">#F4BA70</color>
+    <color name="strip1">#7FCA9F</color>
 </resources>
