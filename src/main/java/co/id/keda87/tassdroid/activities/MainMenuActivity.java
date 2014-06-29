@@ -3,6 +3,7 @@ package co.id.keda87.tassdroid.activities;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -38,13 +39,12 @@ public class MainMenuActivity extends Activity {
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
     private CharSequence title;
-
     private String[] sliderMenuTitle;
     private TypedArray sliderMenuIcon;
     private List<SliderItem> sliderNav;
     private SliderListAdapter sliderAdapter;
-
     private SessionManager sessionManager;
+    private SharedPreferences preferences;
 
     @Override
     public void onBackPressed() {
@@ -55,9 +55,6 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
-
-        //display showcase at the first launch
-        startActivity(new Intent(this, ShowcaseActivity.class));
 
         //instance session manager
         this.sessionManager = new SessionManager(getApplicationContext());
@@ -75,6 +72,18 @@ public class MainMenuActivity extends Activity {
         //instance widget
         this.drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         this.drawerList = (ListView) findViewById(R.id.list_slider);
+
+        //instance preferences
+        this.preferences = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);
+
+        //display showcase at the first launch
+        if (this.preferences.getBoolean("showcase", true)) {
+            //launch showcase activity
+            startActivity(new Intent(this, ShowcaseActivity.class));
+
+            //set showcase preferences to false, so the showcase does not shown anymore
+            this.preferences.edit().putBoolean("showcase", false).commit();
+        }
 
         this.sliderNav = new ArrayList<>();
         this.sliderNav.add(new SliderItem(this.sliderMenuTitle[0], this.sliderMenuIcon.getResourceId(0, -1)));
