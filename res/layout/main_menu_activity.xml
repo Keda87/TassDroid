@@ -20,7 +20,7 @@
             android:choiceMode="singleChoice"
             android:dividerHeight="1dp"
             android:divider="@color/list_divider"
-            android:background="@color/list_background"
+            android:background="@color/list_menu_background"
             android:listSelector="@drawable/list_selector"/>
 
 </android.support.v4.widget.DrawerLayout>
