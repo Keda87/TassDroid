@@ -48,6 +48,7 @@ public class FragmentKeuangan extends Fragment {
         this.userCredential = sessionManager.getUserDetails();
         this.connected = TassUtilities.isConnected(getActivity());
         this.keuangans = new StatusKeuangan[0];
+        this.keuanganTask = new KeuanganTask();
 
         //instance widget
         this.lvStatusKeuangan = (ListView) view.findViewById(R.id.lvKeuangan);
@@ -76,6 +77,17 @@ public class FragmentKeuangan extends Fragment {
             this.pbUang.setVisibility(View.GONE);
             TassUtilities.showToastMessage(getActivity(), R.string.login_page_alert_no_connection, 0);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (this.keuanganTask != null) {
+            if (this.keuanganTask.getStatus() == AsyncTask.Status.RUNNING) {
+                this.keuanganTask.cancel(true);
+            }
+        }
+        Log.d("FRAGMENT", "Fragment Keuangan destroyed..");
     }
 
     private class KeuanganTask extends AsyncTask<String, Void, StatusKeuangan[]> {
@@ -129,6 +141,12 @@ public class FragmentKeuangan extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pbUang.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Log.d("ASYNCTASK", "AsyncTask Keuangan dibatalkan..");
         }
     }
 }

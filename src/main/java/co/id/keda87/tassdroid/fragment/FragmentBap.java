@@ -35,6 +35,7 @@ public class FragmentBap extends Fragment {
     private TextView tvBapKosong;
     private SessionManager session;
     private HashMap<String, String> user;
+    private ApproveBapTask bapTask;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class FragmentBap extends Fragment {
         this.gson = new Gson();
         this.session = new SessionManager(v.getContext());
         this.user = this.session.getUserDetails();
+        this.bapTask = new ApproveBapTask();
 
         this.tvBapKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.tvBapKosong.setVisibility(View.GONE);
@@ -59,7 +61,8 @@ public class FragmentBap extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (TassUtilities.isConnected(getActivity())) { //check if connection available
             //start asynctask
-            new ApproveBapTask().execute(
+            this.bapTask = new ApproveBapTask();
+            this.bapTask.execute(
                     this.user.get(SessionManager.KEY_USERNAME),
                     this.user.get(SessionManager.KEY_PASSWORD)
             );
@@ -68,6 +71,17 @@ public class FragmentBap extends Fragment {
             this.pbBap.setVisibility(View.GONE);
             TassUtilities.showToastMessage(getActivity(), R.string.login_page_alert_no_connection, 0);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (this.bapTask != null) {
+            if (this.bapTask.getStatus() == AsyncTask.Status.RUNNING) {
+                this.bapTask.cancel(true);
+            }
+        }
+        Log.d("FRAGMENT", "Fragment BAP destroyed..");
     }
 
     private class ApproveBapTask extends AsyncTask<String, Void, Bap[]> {
@@ -111,6 +125,12 @@ public class FragmentBap extends Fragment {
                 tvBapKosong.setVisibility(View.VISIBLE);
                 Log.e("KESALAHAN", "baps bernilai null");
             }
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Log.d("ASYNCTASK", "AsyncTask BAP dibatalkan..");
         }
     }
 }

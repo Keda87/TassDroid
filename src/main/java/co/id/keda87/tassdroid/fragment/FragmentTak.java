@@ -37,7 +37,6 @@ public class FragmentTak extends Fragment {
     private ProgressBar pbTak;
     private TakTask takTask;
     private TextView tvTakKosong;
-    private boolean connected;
     private TranskripTak[] takList;
 
     @Override
@@ -49,13 +48,13 @@ public class FragmentTak extends Fragment {
         this.sessionManager = new SessionManager(getActivity());
         this.userCredential = sessionManager.getUserDetails();
         this.takList = new TranskripTak[0];
+        this.takTask = new TakTask();
 
         //instance widget
         this.tvTakKosong = (TextView) view.findViewById(R.id.tvTakKosong);
         this.tvTotalTak = (TextView) view.findViewById(R.id.tvTotalPoin);
         this.lvTranskripTak = (ListView) view.findViewById(R.id.lvTak);
         this.pbTak = (ProgressBar) view.findViewById(R.id.pbTak);
-        this.connected = TassUtilities.isConnected(getActivity());
 
         this.tvTakKosong.setVisibility(View.GONE);
         this.tvTakKosong.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
@@ -68,7 +67,7 @@ public class FragmentTak extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if (connected) { //check if connection available
+        if (TassUtilities.isConnected(getActivity())) { //check if connection available
             //start asynctask
             this.takTask = new TakTask();
             this.takTask.execute(
@@ -80,6 +79,17 @@ public class FragmentTak extends Fragment {
             this.pbTak.setVisibility(View.GONE);
             TassUtilities.showToastMessage(getActivity(), R.string.login_page_alert_no_connection, 0);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (this.takList != null) {
+            if (this.takTask.getStatus() == AsyncTask.Status.RUNNING) {
+                this.takTask.cancel(true);
+            }
+        }
+        Log.d("FRAGMENT", "Fragment TAK destroyed..");
     }
 
     private class TakTask extends AsyncTask<String, Void, TranskripTak[]> {
@@ -102,6 +112,12 @@ public class FragmentTak extends Fragment {
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
             return takList;
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Log.d("ASYNCTASK", "AsyncTask TAK dibatalkan..");
         }
 
         @Override
