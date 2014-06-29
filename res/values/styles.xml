@@ -49,4 +49,12 @@
     <style name="actionbar_tugas_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#d35400</item>
     </style>
+
+    <!--theme applied to ActivityGantiPassword-->
+    <style name="theme_activity_password" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionbar_password_activity</item>
+    </style>
+    <style name="actionbar_password_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#A37B45</item>
+    </style>
 </resources>

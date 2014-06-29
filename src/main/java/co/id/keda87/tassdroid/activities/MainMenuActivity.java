@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.SliderListAdapter;
 import co.id.keda87.tassdroid.fragment.*;
@@ -192,7 +191,7 @@ public class MainMenuActivity extends Activity {
         //list menu position depend on access level for user or KM
         int TAK_POSITION = this.sliderNav.size() == 6 ? 3 : -1;
         int BAP_POSITION = this.sliderNav.size() == 6 ? 4 : 3;
-        int SETTINGS_POSITION = this.sliderNav.size() == 6 ? 5 : 4;
+        int PASSWORD_POSITION = this.sliderNav.size() == 6 ? 5 : 4;
 
         if (position == 0) {
             fragment = new FragmentHome();
@@ -214,14 +213,14 @@ public class MainMenuActivity extends Activity {
         } else if (position == TAK_POSITION) {
             fragment = new FragmentTak();
             Log.d("FRAGMENT", "Fragment TAK mode KM");
-        } else if (position == SETTINGS_POSITION) {
-            Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_LONG).show();
-            Log.d("FRAGMENT", "Fragment Settings created");
+        } else if (position == PASSWORD_POSITION) {
+            startActivity(new Intent(getApplication(), ActivityGantiPassword.class));
+            Log.d("ACTIVITY", "Activity Ganti Password created");
         } else {
             Log.d("FRAGMENT", "No fragment created");
         }
 
-        //check if fragment  not null, and replace with
+        //check if fragment not null, and replace with
         //new fragment instance from switch above
         if (fragment != null) {
             getFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();

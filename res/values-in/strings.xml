@@ -12,8 +12,8 @@
     <!--login activity string value-->
     <string name="login_page_button_login">Masuk</string>
     <string name="login_page_label_login">TassDroid</string>
-    <string name="login_page_hint_username">Username</string>
-    <string name="login_page_hint_password">Password</string>
+    <string name="login_page_hint_username">Nama User</string>
+    <string name="login_page_hint_password">Sandi</string>
     <string name="login_page_alert_valid">Berhasil masuk</string>
     <string name="login_page_dialog_signin">Otentikasi..</string>
 
@@ -24,7 +24,7 @@
         <item>Status Keuangan</item>
         <item>TAK</item>
         <item>Setujui BAP</item>
-        <item>Pengaturan</item>
+        <item>Ganti Sandi</item>
     </string-array>
     <!--nav drawer menu items icon values-->
     <string-array name="nav_drawer_icons">
@@ -33,7 +33,7 @@
         <item>@drawable/ic_keuangan</item>
         <item>@drawable/ic_tak</item>
         <item>@drawable/ic_bap</item>
-        <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_password</item>
     </string-array>
 
     <!--fragment home-->
@@ -42,6 +42,7 @@
     <string name="mnAbsen">Absensi</string>
     <string name="mnNilaiMentah">Nilai Mentah</string>
     <string name="mnTugas">Tugas</string>
+    <string name="mnPassword">Ganti Sandi</string>
 
     <!--list adapter keuangan-->
     <string name="adapter_keuangan_kuitansi">Kuitansi</string>

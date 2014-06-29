@@ -24,7 +24,7 @@
         <item>Financial Status</item>
         <item>TAK</item>
         <item>BAP Approval</item>
-        <item>Settings</item>
+        <item>Change Password</item>
     </string-array>
     <!--nav drawer menu items icon values-->
     <string-array name="nav_drawer_icons">
@@ -33,7 +33,7 @@
         <item>@drawable/ic_keuangan</item>
         <item>@drawable/ic_tak</item>
         <item>@drawable/ic_bap</item>
-        <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_password</item>
     </string-array>
 
     <!--fragment home-->
@@ -42,6 +42,7 @@
     <string name="mnAbsen">Attendance</string>
     <string name="mnNilaiMentah">Raw Score</string>
     <string name="mnTugas">Tasks</string>
+    <string name="mnPassword">Change Password</string>
 
     <!--list adapter keuangan-->
     <string name="adapter_keuangan_kuitansi">Receipt</string>

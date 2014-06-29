@@ -57,6 +57,10 @@
         <activity
                 android:name=".activities.ShowcaseActivity"
                 android:theme="@style/Transparent"/>
+        <activity
+                android:name=".activities.ActivityGantiPassword"
+                android:theme="@style/theme_activity_password"
+                android:icon="@drawable/ic_password"/>
 
     </application>
 </manifest>
