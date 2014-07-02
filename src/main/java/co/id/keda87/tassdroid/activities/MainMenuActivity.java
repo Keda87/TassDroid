@@ -79,9 +79,7 @@ public class MainMenuActivity extends Activity {
         if (this.preferences.getBoolean("showcase", true)) {
             //launch showcase activity
             startActivity(new Intent(this, ShowcaseActivity.class));
-
-            //set showcase preferences to false, so the showcase does not shown anymore
-            this.preferences.edit().putBoolean("showcase", false).commit();
+            Log.d("SHOWCASE", "Aplikasi baru pertama kali jalan..");
         }
 
         this.sliderNav = new ArrayList<>();
