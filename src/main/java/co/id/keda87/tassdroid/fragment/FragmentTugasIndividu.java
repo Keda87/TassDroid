@@ -27,14 +27,18 @@ import java.util.HashMap;
  */
 public class FragmentTugasIndividu extends Fragment {
 
-    @InjectView(R.id.lvTugasIndividu) ListView lvIndividu;
-    @InjectView(R.id.pbTugasIndividu) ProgressBar pbIndividu;
-    @InjectView(R.id.tvIndivKosong) TextView tvKosong;
+    @InjectView(R.id.lvTugasIndividu)
+    ListView lvIndividu;
+    @InjectView(R.id.pbTugasIndividu)
+    ProgressBar pbIndividu;
+    @InjectView(R.id.tvIndivKosong)
+    TextView tvKosong;
 
     private TugasIndividu[] individus;
     private HashMap<String, String> userCredential;
     private SessionManager session;
     private Gson gson;
+    private TugasIndividuTask individuTask;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class FragmentTugasIndividu extends Fragment {
         this.gson = new Gson();
         this.session = new SessionManager(v.getContext());
         this.userCredential = this.session.getUserDetails();
+        this.individuTask = new TugasIndividuTask();
 
         this.tvKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.tvKosong.setVisibility(View.GONE);
@@ -58,7 +63,7 @@ public class FragmentTugasIndividu extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (TassUtilities.isConnected(getActivity())) {
-            new TugasIndividuTask().execute(
+            this.individuTask.execute(
                     this.userCredential.get(SessionManager.KEY_USERNAME),
                     this.userCredential.get(SessionManager.KEY_PASSWORD));
 //            new TugasIndividuTask()
@@ -70,7 +75,18 @@ public class FragmentTugasIndividu extends Fragment {
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (this.individuTask != null) {
+            if (this.individuTask.getStatus() == AsyncTask.Status.RUNNING) {
+                this.individuTask.cancel(true);
+            }
+        }
+    }
+
     public final class TugasIndividuTask extends AsyncTask<String, Void, TugasIndividu[]> {
+
         @Override
         protected TugasIndividu[] doInBackground(String... params) {
 
@@ -81,12 +97,14 @@ public class FragmentTugasIndividu extends Fragment {
                 individus = gson.fromJson(TassUtilities.doGetJson(tugasIndivAPI), TugasIndividu[].class);
 //                individus = gson.fromJson(TassUtilities.doGetJson(params[0]), TugasIndividu[].class);
             } catch (JsonSyntaxException e) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvKosong.setVisibility(View.VISIBLE);
-                    }
-                });
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvKosong.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
             return individus;
@@ -104,7 +122,7 @@ public class FragmentTugasIndividu extends Fragment {
 
             pbIndividu.setVisibility(View.GONE);
 
-            if (tugasIndividus != null) {
+            if (tugasIndividus != null && getActivity() != null) {
                 TugasIndividuAdapter individuAdapter = new TugasIndividuAdapter(tugasIndividus, getActivity());
                 lvIndividu.setAdapter(individuAdapter);
                 Log.d("HASIL TUGAS INDIVIDU", "Data telah ditampung ke ListView");

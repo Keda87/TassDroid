@@ -79,12 +79,14 @@ public class FragmentTugasKelompok extends Fragment {
                 kelompoks = gson.fromJson(TassUtilities.doGetJson(kelompokApi), TugasKelompok[].class);
 //                kelompoks = gson.fromJson(TassUtilities.doGetJson(params[0]), TugasKelompok[].class);
             } catch (JsonSyntaxException e) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvKelKosong.setVisibility(View.VISIBLE);
-                    }
-                });
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvKelKosong.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
                 Log.e("KESALAHAN JSON", e.getMessage());
             }
             return kelompoks;
@@ -102,7 +104,7 @@ public class FragmentTugasKelompok extends Fragment {
 
             pbKel.setVisibility(View.GONE);
 
-            if (tugasKelompoks != null) {
+            if (tugasKelompoks != null && getActivity() != null) {
                 TugasKelompokAdapter kelompokAdapter = new TugasKelompokAdapter(tugasKelompoks, getActivity());
                 lvkelompok.setAdapter(kelompokAdapter);
                 Log.d("HASIL TUGAS KELOMPOK", "Data telah ditampung ke listview");
