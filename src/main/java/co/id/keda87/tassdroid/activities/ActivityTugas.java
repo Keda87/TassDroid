@@ -2,12 +2,15 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TugasPagerAdapter;
 
@@ -19,7 +22,7 @@ import co.id.keda87.tassdroid.adapter.TugasPagerAdapter;
  */
 public class ActivityTugas extends FragmentActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 
-    private ViewPager viewPager;
+    @InjectView(R.id.pager) ViewPager viewPager;
     private TugasPagerAdapter tugasPagerAdapter;
     private ActionBar actionBar;
     private String[] tabs;
@@ -28,9 +31,9 @@ public class ActivityTugas extends FragmentActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tugas);
+        ButterKnife.inject(this);
 
         //create instance
-        this.viewPager = (ViewPager) findViewById(R.id.pager);
         this.actionBar = getActionBar();
         this.tugasPagerAdapter = new TugasPagerAdapter(getSupportFragmentManager());
         this.tabs = getResources().getStringArray(R.array.judul_tab_tugas);
@@ -38,6 +41,10 @@ public class ActivityTugas extends FragmentActivity implements ActionBar.TabList
         this.viewPager.setAdapter(this.tugasPagerAdapter);
         this.actionBar.setHomeButtonEnabled(false);
         this.actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        //styling action bar
+        this.actionBar.setStackedBackgroundDrawable(getResources().getDrawable(R.drawable.custom_swipe_tab));
+        this.actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.custom_swipe_tab));
 
         //adding tabs
         for (String tab : this.tabs) {

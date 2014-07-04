@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TugasKelompokAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -25,28 +27,25 @@ import java.util.HashMap;
  */
 public class FragmentTugasKelompok extends Fragment {
 
-    private Gson gson;
-    private ListView lvkelompok;
-    private ProgressBar pbKel;
-    private TextView tvKelKosong;
+    @InjectView(R.id.lvTugasKelompok) ListView lvkelompok;
+    @InjectView(R.id.pbKelompok) ProgressBar pbKel;
+    @InjectView(R.id.tvKelKosong) TextView tvKelKosong;
+
     private TugasKelompok[] kelompoks;
     private HashMap<String, String> user;
-    private boolean connected;
     private SessionManager session;
+    private Gson gson;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tugas_kelompok, null);
+        ButterKnife.inject(this, v);
 
         //create instance
         this.gson = new Gson();
-        this.lvkelompok = (ListView) v.findViewById(R.id.lvTugasKelompok);
-        this.pbKel = (ProgressBar) v.findViewById(R.id.pbKelompok);
-        this.tvKelKosong = (TextView) v.findViewById(R.id.tvKelKosong);
         this.kelompoks = new TugasKelompok[0];
         this.session = new SessionManager(v.getContext());
         this.user = session.getUserDetails();
-        this.connected = TassUtilities.isConnected(v.getContext());
 
         this.tvKelKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.pbKel.setVisibility(View.GONE);
@@ -58,7 +57,7 @@ public class FragmentTugasKelompok extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (connected) {
+        if (TassUtilities.isConnected(getActivity())) {
             new TugasKelompokTask().execute(
                     this.user.get(SessionManager.KEY_USERNAME),
                     this.user.get(SessionManager.KEY_PASSWORD));

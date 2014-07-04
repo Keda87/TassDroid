@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.activities.*;
 import co.id.keda87.tassdroid.helper.TassUtilities;
@@ -21,20 +23,18 @@ import co.id.keda87.tassdroid.helper.TassUtilities;
  */
 public class FragmentHome extends Fragment implements View.OnClickListener {
 
-    private Button btBio, btJadwal, btAbsen, btNilai, btTugas;
+    @InjectView(R.id.menuBiodata) Button btBio;
+    @InjectView(R.id.menuJadwal) Button btJadwal;
+    @InjectView(R.id.menuAbsensi) Button btAbsen;
+    @InjectView(R.id.menuNilai) Button btNilai;
+    @InjectView(R.id.menuTugas) Button btTugas;
     private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home, null);
-
-        //instance widget
-        this.btBio = (Button) v.findViewById(R.id.menuBiodata);
-        this.btJadwal = (Button) v.findViewById(R.id.menuJadwal);
-        this.btAbsen = (Button) v.findViewById(R.id.menuAbsensi);
-        this.btNilai = (Button) v.findViewById(R.id.menuNilai);
-        this.btTugas = (Button) v.findViewById(R.id.menuTugas);
+        ButterKnife.inject(this, v);
 
         //set roboto font
         this.context = v.getContext();

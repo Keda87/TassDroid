@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.NilaiMentah;
@@ -13,39 +15,35 @@ import co.id.keda87.tassdroid.pojos.NilaiMentah;
  */
 public class ActivityNilaiDetail extends Activity {
 
-    private TextView tvJudulNilai, tvSemester, tvSks, tvKelas, tvKodeDosen, tvAlpa, tvDetail, tvKj1, tvKj2, tvKj3, tvTgs, tvPrak;
-    private TextView lSemester, lSks, lKelas, lKodeDosen, lAlpa, lKj1, lKj2, lKj3, lTgs, lPrak;
+    @InjectView(R.id.tvDmatkul) TextView tvJudulNilai;
+    @InjectView(R.id.tvDsem) TextView tvSemester;
+    @InjectView(R.id.tvDsks) TextView tvSks;
+    @InjectView(R.id.tvDkls) TextView tvKelas;
+    @InjectView(R.id.tvDkddsn) TextView tvKodeDosen;
+    @InjectView(R.id.tvDalpa) TextView tvAlpa;
+    @InjectView(R.id.tvDdetail) TextView tvDetail;
+    @InjectView(R.id.tvDkj1) TextView tvKj1;
+    @InjectView(R.id.tvDkj2) TextView tvKj2;
+    @InjectView(R.id.tvDkj3) TextView tvKj3;
+    @InjectView(R.id.tvDtgs) TextView tvTgs;
+    @InjectView(R.id.tvDprk) TextView tvPrak;
+
+    @InjectView(R.id.tvDLsem) TextView lSemester;
+    @InjectView(R.id.tvDLsks) TextView lSks;
+    @InjectView(R.id.tvDLkls) TextView lKelas;
+    @InjectView(R.id.tvDLkddsn) TextView lKodeDosen;
+    @InjectView(R.id.tvDLalpa) TextView lAlpa;
+    @InjectView(R.id.tvDLkaj1) TextView lKj1;
+    @InjectView(R.id.tvDLkaj2) TextView lKj2;
+    @InjectView(R.id.tvDLkaj3) TextView lKj3;
+    @InjectView(R.id.tvDLtgs) TextView lTgs;
+    @InjectView(R.id.tvDLprak) TextView lPrak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nilai_detail);
-
-        //instance label widget
-        this.lSemester = (TextView) findViewById(R.id.tvDLsem);
-        this.lSks = (TextView) findViewById(R.id.tvDLsks);
-        this.lKelas = (TextView) findViewById(R.id.tvDLkls);
-        this.lKodeDosen = (TextView) findViewById(R.id.tvDLkddsn);
-        this.lAlpa = (TextView) findViewById(R.id.tvDLalpa);
-        this.lKj1 = (TextView) findViewById(R.id.tvDLkaj1);
-        this.lKj2 = (TextView) findViewById(R.id.tvDLkaj2);
-        this.lKj3 = (TextView) findViewById(R.id.tvDLkaj3);
-        this.lTgs = (TextView) findViewById(R.id.tvDLtgs);
-        this.lPrak = (TextView) findViewById(R.id.tvDLprak);
-
-        //instance value widget
-        this.tvDetail = (TextView) findViewById(R.id.tvDdetail);
-        this.tvJudulNilai = (TextView) findViewById(R.id.tvDmatkul);
-        this.tvSemester = (TextView) findViewById(R.id.tvDsem);
-        this.tvSks = (TextView) findViewById(R.id.tvDsks);
-        this.tvKelas = (TextView) findViewById(R.id.tvDkls);
-        this.tvKodeDosen = (TextView) findViewById(R.id.tvDkddsn);
-        this.tvAlpa = (TextView) findViewById(R.id.tvDalpa);
-        this.tvKj1 = (TextView) findViewById(R.id.tvDkj1);
-        this.tvKj2 = (TextView) findViewById(R.id.tvDkj2);
-        this.tvKj3 = (TextView) findViewById(R.id.tvDkj3);
-        this.tvTgs = (TextView) findViewById(R.id.tvDtgs);
-        this.tvPrak = (TextView) findViewById(R.id.tvDprk);
+        ButterKnife.inject(this);
 
         //set typeface
         this.tvJudulNilai.setTypeface(TassUtilities.getFontFace(this, 0));

@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Jadwal;
@@ -45,13 +47,7 @@ public class JadwalListAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_jadwal_kelas, null);
-            holder = new ViewHolder();
-
-            //instance widget
-            holder.kode = (TextView) convertView.findViewById(R.id.tvMatkulKode);
-            holder.jam = (TextView) convertView.findViewById(R.id.tvHariJam);
-            holder.ruang = (TextView) convertView.findViewById(R.id.tvRuang);
-            holder.dosen = (TextView) convertView.findViewById(R.id.tvDosen);
+            holder = new ViewHolder(convertView);
 
             //set typeface
             holder.kode.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
@@ -81,6 +77,13 @@ public class JadwalListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView kode, jam, ruang, dosen;
+        @InjectView(R.id.tvMatkulKode) TextView kode;
+        @InjectView(R.id.tvHariJam) TextView jam;
+        @InjectView(R.id.tvRuang) TextView ruang;
+        @InjectView(R.id.tvDosen) TextView dosen;
+
+        ViewHolder(View v) {
+            ButterKnife.inject(this, v);
+        }
     }
 }

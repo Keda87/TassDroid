@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Bap;
@@ -43,11 +45,7 @@ public class BapListAdapter extends BaseAdapter {
         ViewBapHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_bap, null);
-            holder = new ViewBapHolder();
-
-            //instance
-            holder.namaMatkul = (TextView) convertView.findViewById(R.id.tvMatkulApprove);
-            holder.detailApprove = (TextView) convertView.findViewById(R.id.tvKeteranganApprove);
+            holder = new ViewBapHolder(convertView);
 
             //set typeface
             holder.namaMatkul.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 1));
@@ -68,7 +66,12 @@ public class BapListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private static class ViewBapHolder {
-        public TextView namaMatkul, detailApprove;
+    static class ViewBapHolder {
+        @InjectView(R.id.tvMatkulApprove) TextView namaMatkul;
+        @InjectView(R.id.tvKeteranganApprove) TextView detailApprove;
+
+        private ViewBapHolder(View v) {
+            ButterKnife.inject(this, v);
+        }
     }
 }

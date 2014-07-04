@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.StatusKeuangan;
@@ -45,13 +47,7 @@ public class KeuanganListAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_keuangan, null);
-            holder = new ViewHolder();
-
-            //instance widget via holder
-            holder.tvKetNominal = (TextView) convertView.findViewById(R.id.tvKeteranganNominal);
-            holder.tvKuitansi = (TextView) convertView.findViewById(R.id.tvKuitansi);
-            holder.tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
-            holder.tvSemesterTahun = (TextView) convertView.findViewById(R.id.tvSemesterTahun);
+            holder = new ViewHolder(convertView);
 
             //set typeface via holder
             holder.tvKetNominal.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
@@ -75,9 +71,13 @@ public class KeuanganListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView tvSemesterTahun;
-        TextView tvKuitansi;
-        TextView tvStatus;
-        TextView tvKetNominal;
+        @InjectView(R.id.tvSemesterTahun) TextView tvSemesterTahun;
+        @InjectView(R.id.tvKuitansi) TextView tvKuitansi;
+        @InjectView(R.id.tvStatus) TextView tvStatus;
+        @InjectView(R.id.tvKeteranganNominal) TextView tvKetNominal;
+
+        ViewHolder(View v) {
+            ButterKnife.inject(this, v);
+        }
     }
 }

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
@@ -21,9 +23,11 @@ public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-    private TextView lbLogin;
-    private EditText inpUser, inpPass;
-    private Button btLogin;
+    @InjectView(R.id.lb_login) TextView lbLogin;
+    @InjectView(R.id.et_user) EditText inpUser;
+    @InjectView(R.id.et_pass) EditText inpPass;
+    @InjectView(R.id.bt_login) Button btLogin;
+
     private Gson gson;
     private SessionManager session;
     private ProgressDialog dialog;
@@ -34,16 +38,11 @@ public class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        ButterKnife.inject(this);
 
         //instance
         gson = new Gson();
         session = new SessionManager(getApplicationContext());
-
-        //instance widget
-        lbLogin = (TextView) findViewById(R.id.lb_login);
-        inpUser = (EditText) findViewById(R.id.et_user);
-        inpPass = (EditText) findViewById(R.id.et_pass);
-        btLogin = (Button) findViewById(R.id.bt_login);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage(getResources().getString(R.string.login_page_dialog_signin));

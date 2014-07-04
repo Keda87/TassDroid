@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.JadwalListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -29,28 +31,27 @@ import java.util.Locale;
  */
 public class ActivityJadwal extends Activity {
 
-    private ListView lvJadwal;
+    private Jadwal[] jadwalKelas;
     private Gson gson;
     private SessionManager sessionManager;
     private HashMap<String, String> userCredential;
     private JadwalKelasTask jadwalTask;
-    private TextView tvUnload;
-    private ProgressBar pbJadwal;
-    private Jadwal[] jadwalKelas;
+
+    @InjectView(R.id.tvUnload) TextView tvUnload;
+    @InjectView(R.id.pbJadwal) ProgressBar pbJadwal;
+    @InjectView(R.id.lvJadwalKelas) ListView lvJadwal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal);
-        Log.d("LOCALE DEFAULT", Locale.getDefault().getDisplayLanguage());
+        ButterKnife.inject(this);
 
         //instance
-        this.lvJadwal = (ListView) findViewById(R.id.lvJadwalKelas);
         this.gson = new Gson();
         this.sessionManager = new SessionManager(this);
         this.userCredential = sessionManager.getUserDetails();
-        this.pbJadwal = (ProgressBar) findViewById(R.id.pbJadwal);
-        this.tvUnload = (TextView) findViewById(R.id.tvUnload);
         this.jadwalKelas = new Jadwal[0];
 
         this.tvUnload.setTypeface(TassUtilities.getFontFace(this, 0));

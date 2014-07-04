@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.KeuanganListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -28,32 +30,27 @@ import java.util.HashMap;
  */
 public class FragmentKeuangan extends Fragment {
 
+    @InjectView(R.id.lvKeuangan) ListView lvStatusKeuangan;
+    @InjectView(R.id.pbUang) ProgressBar pbUang;
+    @InjectView(R.id.tvKeuanganKosong) TextView tvUangKosong;
+
     private Gson gson;
     private SessionManager sessionManager;
-    private ListView lvStatusKeuangan;
     private HashMap<String, String> userCredential;
-    private ProgressBar pbUang;
     private KeuanganTask keuanganTask;
-    private TextView tvUangKosong;
-    private boolean connected;
     private StatusKeuangan[] keuangans;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_keuangan, container, false);
+        ButterKnife.inject(this, view);
 
         //instance
         this.gson = new Gson();
         this.sessionManager = new SessionManager(getActivity());
         this.userCredential = sessionManager.getUserDetails();
-        this.connected = TassUtilities.isConnected(getActivity());
         this.keuangans = new StatusKeuangan[0];
         this.keuanganTask = new KeuanganTask();
-
-        //instance widget
-        this.lvStatusKeuangan = (ListView) view.findViewById(R.id.lvKeuangan);
-        this.pbUang = (ProgressBar) view.findViewById(R.id.pbUang);
-        this.tvUangKosong = (TextView) view.findViewById(R.id.tvKeuanganKosong);
 
         this.tvUangKosong.setVisibility(View.GONE);
         this.tvUangKosong.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
@@ -65,7 +62,7 @@ public class FragmentKeuangan extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if (connected) { //check if connection available
+        if (TassUtilities.isConnected(getActivity())) { //check if connection available
             //start asynctask
             this.keuanganTask = new KeuanganTask();
             this.keuanganTask.execute(

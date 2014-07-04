@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.TakListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -29,19 +31,29 @@ import java.util.HashMap;
  */
 public class FragmentTak extends Fragment {
 
+    @InjectView(R.id.lvTak)
+    ListView lvTranskripTak;
+
+    @InjectView(R.id.tvTotalPoin)
+    TextView tvTotalTak;
+
+    @InjectView(R.id.pbTak)
+    ProgressBar pbTak;
+
+    @InjectView(R.id.tvTakKosong)
+    TextView tvTakKosong;
+
     private Gson gson;
     private SessionManager sessionManager;
-    private ListView lvTranskripTak;
-    private TextView tvTotalTak;
-    private HashMap<String, String> userCredential;
-    private ProgressBar pbTak;
     private TakTask takTask;
-    private TextView tvTakKosong;
+
     private TranskripTak[] takList;
+    private HashMap<String, String> userCredential;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tak, null);
+        ButterKnife.inject(this, view);
 
         //instance
         this.gson = new Gson();
@@ -49,12 +61,6 @@ public class FragmentTak extends Fragment {
         this.userCredential = sessionManager.getUserDetails();
         this.takList = new TranskripTak[0];
         this.takTask = new TakTask();
-
-        //instance widget
-        this.tvTakKosong = (TextView) view.findViewById(R.id.tvTakKosong);
-        this.tvTotalTak = (TextView) view.findViewById(R.id.tvTotalPoin);
-        this.lvTranskripTak = (ListView) view.findViewById(R.id.lvTak);
-        this.pbTak = (ProgressBar) view.findViewById(R.id.pbTak);
 
         this.tvTakKosong.setVisibility(View.GONE);
         this.tvTakKosong.setTypeface(TassUtilities.getFontFace(getActivity(), 0));

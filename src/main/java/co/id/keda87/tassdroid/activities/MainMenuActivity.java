@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.SliderListAdapter;
 import co.id.keda87.tassdroid.fragment.*;
@@ -33,8 +35,9 @@ import java.util.List;
  */
 public class MainMenuActivity extends Activity {
 
-    private DrawerLayout drawerLayout;
-    private ListView drawerList;
+    @InjectView(R.id.drawer_layout) DrawerLayout drawerLayout;
+    @InjectView(R.id.list_slider) ListView drawerList;
+
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
     private CharSequence title;
@@ -54,6 +57,7 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
+        ButterKnife.inject(this);
 
         //instance session manager
         this.sessionManager = new SessionManager(getApplicationContext());
@@ -67,10 +71,6 @@ public class MainMenuActivity extends Activity {
 
         //load slider item icon
         this.sliderMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
-
-        //instance widget
-        this.drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        this.drawerList = (ListView) findViewById(R.id.list_slider);
 
         //instance preferences
         this.preferences = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);

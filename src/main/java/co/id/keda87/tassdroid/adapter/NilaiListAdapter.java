@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.NilaiMentah;
@@ -43,12 +45,7 @@ public class NilaiListAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_nilai, null);
-            holder = new ViewHolder();
-
-            //instance widget
-            holder.indexNilai = (TextView) convertView.findViewById(R.id.tvIndexMatkul);
-            holder.judul = (TextView) convertView.findViewById(R.id.tvMatkulHeader);
-            holder.keterangan = (TextView) convertView.findViewById(R.id.tvMatkulKeterangan);
+            holder = new ViewHolder(convertView);
 
             //set typeface
             holder.indexNilai.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 1));
@@ -72,6 +69,12 @@ public class NilaiListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView judul, keterangan, indexNilai;
+        @InjectView(R.id.tvMatkulHeader) TextView judul;
+        @InjectView(R.id.tvMatkulKeterangan) TextView keterangan;
+        @InjectView(R.id.tvIndexMatkul) TextView indexNilai;
+
+        ViewHolder(View v) {
+            ButterKnife.inject(this, v);
+        }
     }
 }

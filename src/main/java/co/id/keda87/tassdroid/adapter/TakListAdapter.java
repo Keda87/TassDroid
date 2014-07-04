@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.TranskripTak;
@@ -43,13 +45,7 @@ public class TakListAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_tak, null);
-            holder = new ViewHolder();
-
-            //instance widget
-            holder.teksBagian = (TextView) convertView.findViewById(R.id.tvBagian);
-            holder.teksPoin = (TextView) convertView.findViewById(R.id.tvPoin);
-            holder.teksTahun = (TextView) convertView.findViewById(R.id.tvTahun);
-            holder.teksKegiatan = (TextView) convertView.findViewById(R.id.tvKegiatan);
+            holder = new ViewHolder(convertView);
 
             //set typeface
             holder.teksBagian.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
@@ -74,10 +70,14 @@ public class TakListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView teksKegiatan;
-        TextView teksPoin;
-        TextView teksTahun;
-        TextView teksBagian;
+        @InjectView(R.id.tvKegiatan) TextView teksKegiatan;
+        @InjectView(R.id.tvPoin) TextView teksPoin;
+        @InjectView(R.id.tvTahun) TextView teksTahun;
+        @InjectView(R.id.tvBagian) TextView teksBagian;
+
+        ViewHolder(View v) {
+            ButterKnife.inject(this, v);
+        }
     }
 
 }

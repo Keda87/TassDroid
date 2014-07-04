@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.BapListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -28,11 +30,12 @@ import java.util.HashMap;
  */
 public class FragmentBap extends Fragment {
 
+    @InjectView(R.id.lvBap) ListView lvBap;
+    @InjectView(R.id.pbBap) ProgressBar pbBap;
+    @InjectView(R.id.tvBapKosong) TextView tvBapKosong;
+
     private Gson gson;
     private Bap[] baps;
-    private ListView lvBap;
-    private ProgressBar pbBap;
-    private TextView tvBapKosong;
     private SessionManager session;
     private HashMap<String, String> user;
     private ApproveBapTask bapTask;
@@ -40,11 +43,9 @@ public class FragmentBap extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_bap, null);
+        ButterKnife.inject(this, v);
 
         //create instance
-        this.lvBap = (ListView) v.findViewById(R.id.lvBap);
-        this.pbBap = (ProgressBar) v.findViewById(R.id.pbBap);
-        this.tvBapKosong = (TextView) v.findViewById(R.id.tvBapKosong);
         this.gson = new Gson();
         this.session = new SessionManager(v.getContext());
         this.user = this.session.getUserDetails();

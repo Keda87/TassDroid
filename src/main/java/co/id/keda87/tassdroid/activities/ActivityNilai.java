@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.NilaiListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -30,33 +32,30 @@ import java.util.HashMap;
  */
 public class ActivityNilai extends Activity {
 
-    private ListView lvNilaiMentah;
+    @InjectView(R.id.tvNilaiKosong) TextView tvNilaiKosong;
+    @InjectView(R.id.pbNilai) ProgressBar pbNilai;
+    @InjectView(R.id.lvNilaiMentah) ListView lvNilaiMentah;
+
     private Gson gson;
     private SessionManager sessionManager;
     private HashMap<String, String> userCredential;
-    private ProgressBar pbNilai;
     private NilaiTask nilaiTask;
     private NilaiMentah[] nilaiList;
-    private TextView tvNilaiKosong;
-    private boolean connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nilai);
+        ButterKnife.inject(this);
 
         //instance
-        this.lvNilaiMentah = (ListView) findViewById(R.id.lvNilaiMentah);
         this.gson = new Gson();
         this.sessionManager = new SessionManager(this);
         this.userCredential = sessionManager.getUserDetails();
-        this.pbNilai = (ProgressBar) findViewById(R.id.pbNilai);
         this.nilaiList = new NilaiMentah[0];
-        this.tvNilaiKosong = (TextView) findViewById(R.id.tvNilaiKosong);
 
         this.tvNilaiKosong.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tvNilaiKosong.setVisibility(View.GONE);
-        this.connected = TassUtilities.isConnected(this);
 
         this.lvNilaiMentah.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -85,7 +84,7 @@ public class ActivityNilai extends Activity {
         super.onStart();
 
         if (this.nilaiList.length == 0) { //check if listview empty
-            if (connected) { //check if connection available
+            if (TassUtilities.isConnected(this)) { //check if connection available
                 //start asynctask
                 this.nilaiTask = new NilaiTask();
                 this.nilaiTask.execute(
@@ -105,19 +104,19 @@ public class ActivityNilai extends Activity {
         super.onResume();
 
         //if the array already filled and connection not available, show the listview
-        if (this.nilaiList.length > 0 && !connected) {
+        if (this.nilaiList.length > 0 && !TassUtilities.isConnected(this)) {
             this.lvNilaiMentah.setVisibility(View.VISIBLE);
             this.pbNilai.setVisibility(View.GONE);
             this.tvNilaiKosong.setVisibility(View.GONE);
             Log.d("RESUME", "Gak konek dan gak kosong..");
-        } else if (this.nilaiList.length == 0 && connected) {
+        } else if (this.nilaiList.length == 0 && TassUtilities.isConnected(this)) {
             this.nilaiTask = new NilaiTask();
             this.nilaiTask.execute(
                     this.userCredential.get(SessionManager.KEY_USERNAME),
                     this.userCredential.get(SessionManager.KEY_PASSWORD)
             );
             Log.d("RESUME", "Konek dan kosong..");
-        } else if (!connected && this.nilaiList.length > 0) {
+        } else if (!TassUtilities.isConnected(this) && this.nilaiList.length > 0) {
             this.tvNilaiKosong.setVisibility(View.GONE);
             this.pbNilai.setVisibility(View.GONE);
             this.lvNilaiMentah.setVisibility(View.VISIBLE);
@@ -132,7 +131,7 @@ public class ActivityNilai extends Activity {
                 finish();
                 return true;
             case R.id.app_item_refresh:
-                if (connected) {
+                if (TassUtilities.isConnected(this)) {
                     this.nilaiTask = new NilaiTask();
                     this.nilaiTask.execute(
                             this.userCredential.get(SessionManager.KEY_USERNAME),
@@ -140,13 +139,13 @@ public class ActivityNilai extends Activity {
                     );
                     Log.d("REFRESH", "Konek..");
 
-                } else if (!connected && this.nilaiList.length > 0) {
+                } else if (!TassUtilities.isConnected(this) && this.nilaiList.length > 0) {
                     this.tvNilaiKosong.setVisibility(View.GONE);
                     this.pbNilai.setVisibility(View.GONE);
                     this.lvNilaiMentah.setVisibility(View.VISIBLE);
                     Log.d("REFRESH", "Gak konek dan gak kosong");
                     TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
-                } else if (!connected && this.nilaiList.length == 0) {
+                } else if (!TassUtilities.isConnected(this) && this.nilaiList.length == 0) {
                     this.tvNilaiKosong.setVisibility(View.VISIBLE);
                     this.pbNilai.setVisibility(View.GONE);
                     this.lvNilaiMentah.setVisibility(View.GONE);

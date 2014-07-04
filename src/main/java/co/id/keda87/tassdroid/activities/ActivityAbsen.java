@@ -1,9 +1,11 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.pojos.Absensi;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,5 +35,23 @@ public class ActivityAbsen extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class AbsenTask extends AsyncTask<String, Void, Absensi[]> {
+
+        @Override
+        protected Absensi[] doInBackground(String... params) {
+            return new Absensi[0];
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Absensi[] absensis) {
+            super.onPostExecute(absensis);
+        }
     }
 }
