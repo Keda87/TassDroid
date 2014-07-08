@@ -130,6 +130,7 @@ public class FragmentKeuangan extends Fragment {
                 }
             } else {
                 tvUangKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
+                lvStatusKeuangan.setVisibility(View.GONE);
                 Log.e("KESALAHAN", "nilaiMentahs bernilai null");
             }
         }

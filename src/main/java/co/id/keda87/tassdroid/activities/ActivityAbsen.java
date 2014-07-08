@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.AbsensiAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -83,6 +85,11 @@ public class ActivityAbsen extends Activity {
         }
     }
 
+    @OnItemClick(R.id.lvAbsensi)
+    void onAbsenItemSelected(int position) {
+        Toast.makeText(this, absensi[position].kodeMk, Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -123,13 +130,15 @@ public class ActivityAbsen extends Activity {
                     Log.d("RESUME", "gak konek..");
                 }
                 return true;
+            case R.id.app_item_chart:
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_refresh, menu);
+        getMenuInflater().inflate(R.menu.menu_refresh_chart, menu);
         return true;
     }
 
@@ -177,6 +186,7 @@ public class ActivityAbsen extends Activity {
                 }
             } else {
                 tvKosong.setVisibility(View.VISIBLE);
+                lvAbsen.setVisibility(View.GONE);
                 Log.e("KESALAHAN", "absensis bernilai null");
             }
         }

@@ -3,6 +3,7 @@
     <string name="app_name">TassDroid</string>
     <string name="app_item_logout">Keluar</string>
     <string name="app_item_refresh">Muat ulang</string>
+    <string name="app_item_chart">Laporan Grafik</string>
 
     <!--error message-->
     <string name="login_page_alert_invalid">Akses gagal</string>

@@ -3,6 +3,7 @@
     <string name="app_name">TassDroid</string>
     <string name="app_item_logout">Logout</string>
     <string name="app_item_refresh">Refresh</string>
+    <string name="app_item_chart">Graphic Chart</string>
 
     <!--error message-->
     <string name="login_page_alert_invalid">Invalid Login</string>
