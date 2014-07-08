@@ -31,7 +31,7 @@
         <item name="android:actionBarStyle">@style/actionbar_absen_activity</item>
     </style>
     <style name="actionbar_absen_activity" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#6B6B6B</item>
+        <item name="android:background">#574D4D</item>
     </style>
 
     <!--theme applied to ActivityNilai-->

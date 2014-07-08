@@ -1,6 +1,7 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -131,6 +132,7 @@ public class ActivityAbsen extends Activity {
                 }
                 return true;
             case R.id.app_item_chart:
+                startActivity(new Intent(this, ActivityGraphAbsen.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -178,6 +180,7 @@ public class ActivityAbsen extends Activity {
 
                 if (adapterAbsen.getCount() > 0) {
                     lvAbsen.setVisibility(View.VISIBLE);
+                    tvKosong.setVisibility(View.GONE);
                     Log.d("HASIL ABSENSI", "Data absensi sudah di tampung ke listview");
                 } else {
                     tvKosong.setVisibility(View.VISIBLE);

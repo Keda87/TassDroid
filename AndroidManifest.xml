@@ -61,6 +61,10 @@
                 android:name=".activities.ActivityGantiPassword"
                 android:theme="@style/theme_activity_password"
                 android:icon="@drawable/ic_password"/>
+        <activity
+                android:name=".activities.ActivityGraphAbsen"
+                android:theme="@style/theme_activity_absen"
+                android:icon="@drawable/ic_absen"/>
 
     </application>
 </manifest>
