@@ -85,4 +85,7 @@
     <string name="showcase_menu_nav">RIGHT SWIPE FOR OTHER MENU</string>
     <string name="showcase_tugas_nav">RIGHT OR LEFT SWIPE TO SWITCH MENU</string>
     <string name="showcase_button_ok">I GOT IT !</string>
+
+    <!--activity presensi absen-->
+    <string name="act_absen_persentase">Persentage:</string>
 </resources>

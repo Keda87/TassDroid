@@ -233,6 +233,10 @@ public class TassUtilities {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
+    private static String getTassParameteredApiUrl(String nim, String password, String type, String kodeMk, int random) {
+        return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&kdmk=" + kodeMk + "&a=" + random + "&hsl=" + generateToken(random);
+    }
+
     /**
      * Fungsi untuk mengenerate alamat url API siap pakai
      *
@@ -241,30 +245,36 @@ public class TassUtilities {
      * @param type     : tipe API yang akan dikeluarkan
      * @return hasil akhir dari alamat API yang siap digunakan
      */
-    public static String uriBuilder(String nim, String password, String type) {
+    public static String uriBuilder(String nim, String password, String... type) {
         int random = randomGenerator();
 
-        switch (type) {
+        switch (type[0]) {
             case "login":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "nm":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "dftap":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "biodata":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "keuangan":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "tak":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "jadwal":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "tgsi":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
             case "tgsk":
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
+            case "absensi":
+                if (type.length == 2) {
+                    return getTassParameteredApiUrl(nim, password, type[0], type[1], random);
+                } else {
+                    return getTassApiUrl(nim, password, type[0], random);
+                }
             default:
-                return getTassApiUrl(nim, password, type, random);
+                return getTassApiUrl(nim, password, type[0], random);
         }
     }
 
@@ -328,12 +338,12 @@ public class TassUtilities {
 
     public static void main(String[] args) {
 //        nim adit
-        String nim = "6301114139";
-        String pwd = "asaibae";
+//        String nim = "6301114139";
+//        String pwd = "asaibae";
 
 //        nim percobaan
-//        String nim = "6301124173";
-//        String pwd = "240294";
+        String nim = "6301124173";
+        String pwd = "240294";
 
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "login"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "nm"));
@@ -344,5 +354,7 @@ public class TassUtilities {
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "jadwal"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "tgsi"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "tgsk"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "absensi"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "absensi", "MI2154"));
     }
 }

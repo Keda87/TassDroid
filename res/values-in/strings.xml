@@ -85,4 +85,7 @@
     <string name="showcase_menu_nav">GESER KE KANAN UNTUK MENU LAINNYA</string>
     <string name="showcase_tugas_nav">GESER KE KANAN ATAU KE KIRI UNTUK PINDAH MENU</string>
     <string name="showcase_button_ok">MENGERTI !</string>
+
+    <!--activity presensi absen-->
+    <string name="act_absen_persentase">Persentase:</string>
 </resources>

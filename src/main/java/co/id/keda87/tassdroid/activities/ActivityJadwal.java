@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,9 +36,12 @@ public class ActivityJadwal extends Activity {
     private HashMap<String, String> userCredential;
     private JadwalKelasTask jadwalTask;
 
-    @InjectView(R.id.tvUnload) TextView tvUnload;
-    @InjectView(R.id.pbJadwal) ProgressBar pbJadwal;
-    @InjectView(R.id.lvJadwalKelas) ListView lvJadwal;
+    @InjectView(R.id.tvUnload)
+    TextView tvUnload;
+    @InjectView(R.id.pbJadwal)
+    ProgressBar pbJadwal;
+    @InjectView(R.id.lvJadwalKelas)
+    ListView lvJadwal;
 
 
     @Override
@@ -121,6 +123,7 @@ public class ActivityJadwal extends Activity {
                     this.lvJadwal.setVisibility(View.GONE);
                     this.tvUnload.setVisibility(View.VISIBLE);
                     TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                    Log.d("REFRESH", "Gak konek..");
                 }
                 return true;
         }
@@ -167,7 +170,6 @@ public class ActivityJadwal extends Activity {
 
             lvJadwal.setVisibility(View.GONE);
             pbJadwal.setVisibility(View.GONE);
-            tvUnload.setVisibility(View.VISIBLE); //if an error occured, show empty label
 
             if (jadwals != null) {
                 JadwalListAdapter adapterJadwal = new JadwalListAdapter(ActivityJadwal.this, jadwals);

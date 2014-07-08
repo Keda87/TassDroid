@@ -122,11 +122,11 @@ public class FragmentKeuangan extends Fragment {
 
                 if (adapterNilai.getCount() > 0) { //check if nilai list not empty
                     lvStatusKeuangan.setVisibility(View.VISIBLE);
-                    Log.d("HASIL NILAI", "Data telah ditampung ke ListView");
+                    Log.d("HASIL KEUANGAN", "Data telah ditampung ke ListView");
                 } else { //if listview empty show label desc & hide listview
                     tvUangKosong.setVisibility(View.VISIBLE);
                     lvStatusKeuangan.setVisibility(View.GONE);
-                    Log.d("HASIL JADWAL", "Data kosong..");
+                    Log.d("HASIL KEUANGAN", "Data kosong..");
                 }
             } else {
                 tvUangKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
