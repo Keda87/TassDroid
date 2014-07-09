@@ -59,10 +59,6 @@ public class KeuanganListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //applying striped ListView
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         holder.tvSemesterTahun.setText(this.context.getResources().getString(R.string.adapter_keuangan_semester) + " " + keuangans[position].semester + " : " + keuangans[position].tahunAjaran);
         holder.tvStatus.setText(keuangans[position].status);
         holder.tvKetNominal.setText(keuangans[position].namaTarif + " - " + TassUtilities.toRupiah(keuangans[position].jumlahBayar));

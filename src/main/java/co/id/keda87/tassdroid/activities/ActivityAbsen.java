@@ -59,6 +59,7 @@ public class ActivityAbsen extends Activity {
         this.session = new SessionManager(getApplicationContext());
         this.absenTask = new AbsenTask();
         this.user = this.session.getUserDetails();
+        this.absensi= new Absensi[0];
 
         this.tvKosong.setVisibility(View.GONE);
         this.tvKosong.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
@@ -73,39 +74,45 @@ public class ActivityAbsen extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (TassUtilities.isConnected(getApplicationContext())) {
-            this.absenTask = new AbsenTask();
-            this.absenTask.execute(
-                    this.user.get(SessionManager.KEY_USERNAME),
-                    this.user.get(SessionManager.KEY_PASSWORD)
-            );
-        } else {
-            tvKosong.setVisibility(View.VISIBLE);
-            pbAbsen.setVisibility(View.GONE);
-            TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
+        if (this.absensi.length == 0) {
+            if (TassUtilities.isConnected(getApplicationContext())) {
+                this.absenTask = new AbsenTask();
+                this.absenTask.execute(
+                        this.user.get(SessionManager.KEY_USERNAME),
+                        this.user.get(SessionManager.KEY_PASSWORD)
+                );
+            } else {
+                tvKosong.setVisibility(View.VISIBLE);
+                pbAbsen.setVisibility(View.GONE);
+                TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
+            }
         }
     }
 
     @OnItemClick(R.id.lvAbsensi)
     void onAbsenItemSelected(int position) {
-        Toast.makeText(this, absensi[position].kodeMk, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ActivityAbsensiDetail.class);
+        intent.putExtra("kodeMkAbsen", this.absensi[position].kodeMk);
+        startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (TassUtilities.isConnected(getApplicationContext())) {
-            this.absenTask = new AbsenTask();
-            this.absenTask.execute(
-                    this.user.get(SessionManager.KEY_USERNAME),
-                    this.user.get(SessionManager.KEY_PASSWORD)
-            );
-            Log.d("RESUME", "konek..");
-        } else {
-            lvAbsen.setVisibility(View.GONE);
-            pbAbsen.setVisibility(View.GONE);
-            TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
-            Log.d("RESUME", "gak konek..");
+        if (this.absensi.length == 0) {
+            if (TassUtilities.isConnected(getApplicationContext())) {
+                this.absenTask = new AbsenTask();
+                this.absenTask.execute(
+                        this.user.get(SessionManager.KEY_USERNAME),
+                        this.user.get(SessionManager.KEY_PASSWORD)
+                );
+                Log.d("RESUME", "konek..");
+            } else {
+                lvAbsen.setVisibility(View.GONE);
+                pbAbsen.setVisibility(View.GONE);
+                TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
+                Log.d("RESUME", "gak konek..");
+            }
         }
     }
 

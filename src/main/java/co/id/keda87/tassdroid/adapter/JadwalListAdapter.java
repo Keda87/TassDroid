@@ -59,10 +59,6 @@ public class JadwalListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set textview value
         holder.kode.setText(jadwals[position].mataKuliah + " - " + jadwals[position].kodeMk);
 

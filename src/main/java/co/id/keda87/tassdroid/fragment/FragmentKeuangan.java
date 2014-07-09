@@ -54,6 +54,8 @@ public class FragmentKeuangan extends Fragment {
 
         this.tvUangKosong.setVisibility(View.GONE);
         this.tvUangKosong.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
+        this.lvStatusKeuangan.addHeaderView(new View(getActivity()));
+        this.lvStatusKeuangan.addFooterView(new View(getActivity()));
 
         return view;
     }

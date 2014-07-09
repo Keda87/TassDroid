@@ -56,6 +56,8 @@ public class ActivityJadwal extends Activity {
         this.userCredential = sessionManager.getUserDetails();
         this.jadwalKelas = new Jadwal[0];
 
+        this.lvJadwal.addHeaderView(new View(this));
+        this.lvJadwal.addFooterView(new View(this));
         this.tvUnload.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tvUnload.setVisibility(View.GONE);
 
@@ -86,20 +88,22 @@ public class ActivityJadwal extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (TassUtilities.isConnected(this)) { // if connected, sent request
-            this.jadwalTask = new JadwalKelasTask();
-            this.jadwalTask.execute(
-                    this.userCredential.get(SessionManager.KEY_USERNAME),
-                    this.userCredential.get(SessionManager.KEY_PASSWORD)
-            );
-            Log.d("RESUME", "Konek..");
+        if (this.jadwalKelas.length == 0) {
+            if (TassUtilities.isConnected(this)) { // if connected, sent request
+                this.jadwalTask = new JadwalKelasTask();
+                this.jadwalTask.execute(
+                        this.userCredential.get(SessionManager.KEY_USERNAME),
+                        this.userCredential.get(SessionManager.KEY_PASSWORD)
+                );
+                Log.d("RESUME", "Konek..");
 
-        } else { //if not connected
-            this.pbJadwal.setVisibility(View.GONE);
-            this.lvJadwal.setVisibility(View.GONE);
-            this.tvUnload.setVisibility(View.VISIBLE);
-            TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
-            Log.d("RESUME", "Gak konek..");
+            } else { //if not connected
+                this.pbJadwal.setVisibility(View.GONE);
+                this.lvJadwal.setVisibility(View.GONE);
+                this.tvUnload.setVisibility(View.VISIBLE);
+                TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                Log.d("RESUME", "Gak konek..");
+            }
         }
     }
 

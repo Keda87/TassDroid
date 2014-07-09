@@ -65,6 +65,8 @@ public class FragmentTak extends Fragment {
         this.tvTakKosong.setVisibility(View.GONE);
         this.tvTakKosong.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
         this.tvTotalTak.setTypeface(TassUtilities.getFontFace(getActivity(), 0));
+        this.lvTranskripTak.addHeaderView(new View(getActivity()));
+        this.lvTranskripTak.addFooterView(new View(getActivity()));
 
         return view;
     }

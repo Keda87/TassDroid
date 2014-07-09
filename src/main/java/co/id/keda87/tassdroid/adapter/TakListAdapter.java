@@ -57,10 +57,6 @@ public class TakListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set value
         holder.teksPoin.setText(taks[position].poin);
         holder.teksKegiatan.setText(taks[position].namaJenisKegiatan);
