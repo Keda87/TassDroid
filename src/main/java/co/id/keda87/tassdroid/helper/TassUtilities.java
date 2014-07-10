@@ -273,6 +273,8 @@ public class TassUtilities {
                 } else {
                     return getTassApiUrl(nim, password, type[0], random);
                 }
+            case "kalenderakademik":
+                return getTassApiUrl(nim, password, type[0], random);
             default:
                 return getTassApiUrl(nim, password, type[0], random);
         }
@@ -345,16 +347,6 @@ public class TassUtilities {
         String nim = "6301124173";
         String pwd = "240294";
 
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "login"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "nm"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "keuangan"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "tak"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "jadwal"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "tgsi"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "tgsk"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "absensi"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "absensi", "MI2154"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "kalenderakademik"));
     }
 }
