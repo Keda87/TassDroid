@@ -89,6 +89,7 @@
 
     <!--activity presensi absen-->
     <string name="act_absen_persentase">Persentage:</string>
+    <string name="detail_absen_title">Attendance Details</string>
     <string name="detail_absen_detail_pertemuan">Meeting:</string>
     <string name="detail_absen_label_status">Status:</string>
     <string name="detail_absen_tahun">Year</string>

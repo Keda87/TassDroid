@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -99,12 +101,42 @@ public class ActivityAbsensiDetail extends Activity {
         this.labelDosen.setTypeface(TassUtilities.getFontFace(this, 0));
 
         Log.d("DETAIL ABSEN API", this.apiUrl);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle(getResources().getString(R.string.detail_absen_title));
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_refresh, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.app_item_refresh:
+                if (TassUtilities.isConnected(this)) {
+                    new AbsensiDetailTask().execute(this.apiUrl);
+                } else {
+                    TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        new AbsensiDetailTask().execute(this.apiUrl);
+        if (TassUtilities.isConnected(this)) {
+            new AbsensiDetailTask().execute(this.apiUrl);
+        } else {
+            TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+        }
     }
 
     private class AbsensiDetailTask extends AsyncTask<String, Void, AbsensiDetail[]> {
