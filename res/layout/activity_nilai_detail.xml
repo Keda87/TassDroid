@@ -9,7 +9,8 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layer_card_background" android:paddingBottom="5dp">
+            android:background="@drawable/card_background_normal"
+            android:paddingBottom="5dp">
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -123,7 +124,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layer_card_background"
+            android:background="@drawable/card_background_normal"
             android:layout_marginTop="25dp" android:paddingBottom="5dp">
         <TextView
                 android:layout_width="match_parent"

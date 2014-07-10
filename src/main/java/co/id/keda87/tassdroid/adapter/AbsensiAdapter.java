@@ -57,10 +57,6 @@ public class AbsensiAdapter extends BaseAdapter {
             holder = (AbsensiViewHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set value
         holder.namaMatkulKode.setText(this.absens[position].namaMk + " - " + this.absens[position].kodeMk);
         holder.semesterTahun.setText("Semester " + this.absens[position].semester + " / " + this.absens[position].tahunAjaran);

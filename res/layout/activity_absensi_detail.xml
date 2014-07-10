@@ -1,7 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:orientation="vertical">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background_normal"
+            android:layout_margin="10dp"
+            android:paddingBottom="6dp"
+            android:id="@+id/panel_atas">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="-"
+                android:id="@+id/detailHeader"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/nilai_detail"
+                android:textColor="@color/text_color"
+                android:padding="5dp" android:gravity="center_horizontal"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_absen_tahun"
+                android:id="@+id/detailAbsenTahun"
+                android:layout_below="@+id/detailHeader"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_absen_semester"
+                android:id="@+id/detailAbsenSemester"
+                android:layout_below="@+id/detailAbsenTahun"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_absen_kelas"
+                android:id="@+id/detailAbsenKelas"
+                android:layout_below="@+id/detailAbsenSemester"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="-"
+                android:id="@+id/nilaiDetailSemester" android:layout_alignTop="@+id/detailAbsenSemester"
+                android:layout_toRightOf="@+id/detailAbsenSemester" android:layout_marginLeft="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="-"
+                android:id="@+id/nilaiDetailKelas" android:layout_alignTop="@+id/detailAbsenKelas"
+                android:layout_alignLeft="@+id/nilaiDetailSemester" android:layout_alignStart="@+id/nilaiDetailSemester"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="-"
+                android:id="@+id/nilaiDetailTahun" android:layout_above="@+id/nilaiDetailSemester"
+                android:layout_alignLeft="@+id/nilaiDetailSemester" android:layout_alignStart="@+id/nilaiDetailSemester"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/detail_absen_dosen"
+                android:id="@+id/labelDosen" android:layout_below="@+id/detailAbsenKelas"
+                android:layout_alignLeft="@+id/detailAbsenKelas" android:layout_alignStart="@+id/detailAbsenKelas"
+                android:layout_marginTop="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="-"
+                android:id="@+id/nilaiDosen" android:layout_alignTop="@+id/labelDosen"
+                android:layout_alignLeft="@+id/nilaiDetailKelas" android:layout_alignStart="@+id/nilaiDetailKelas"/>
+    </RelativeLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_kosong"
+            android:id="@+id/detailAbsenKosong"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pbDetailAbsen"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"/>
+
+    <LinearLayout
+            android:id="@+id/panel_bawah"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background_normal"
+            android:layout_margin="10dp"
+            android:padding="4dp"
+            android:layout_below="@+id/panel_atas">
+        <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lvDetailAbsen"
+                android:listSelector="@android:color/transparent"/>
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -89,4 +89,10 @@
 
     <!--activity presensi absen-->
     <string name="act_absen_persentase">Persentage:</string>
+    <string name="detail_absen_detail_pertemuan">Meeting:</string>
+    <string name="detail_absen_label_status">Status:</string>
+    <string name="detail_absen_tahun">Year</string>
+    <string name="detail_absen_semester">Semester</string>
+    <string name="detail_absen_kelas">Class</string>
+    <string name="detail_absen_dosen">Lecture</string>
 </resources>

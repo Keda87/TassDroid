@@ -56,10 +56,6 @@ public class NilaiListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set value
         holder.judul.setText(this.nilaiMentahs[position].mataKuliah);
         holder.keterangan.setText(this.nilaiMentahs[position].keterangan);

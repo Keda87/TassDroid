@@ -32,9 +32,12 @@ import java.util.HashMap;
  */
 public class ActivityNilai extends Activity {
 
-    @InjectView(R.id.tvNilaiKosong) TextView tvNilaiKosong;
-    @InjectView(R.id.pbNilai) ProgressBar pbNilai;
-    @InjectView(R.id.lvNilaiMentah) ListView lvNilaiMentah;
+    @InjectView(R.id.tvNilaiKosong)
+    TextView tvNilaiKosong;
+    @InjectView(R.id.pbNilai)
+    ProgressBar pbNilai;
+    @InjectView(R.id.lvNilaiMentah)
+    ListView lvNilaiMentah;
 
     private Gson gson;
     private SessionManager sessionManager;
@@ -56,12 +59,14 @@ public class ActivityNilai extends Activity {
 
         this.tvNilaiKosong.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tvNilaiKosong.setVisibility(View.GONE);
+        this.lvNilaiMentah.addHeaderView(new View(this));
+        this.lvNilaiMentah.addFooterView(new View(this));
 
         this.lvNilaiMentah.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                NilaiMentah detailNilai = nilaiList[position];
+                NilaiMentah detailNilai = nilaiList[position - 1];
 
                 //intent
                 Intent intent = new Intent(ActivityNilai.this, ActivityNilaiDetail.class);
@@ -201,15 +206,10 @@ public class ActivityNilai extends Activity {
                 NilaiListAdapter adapterNilai = new NilaiListAdapter(ActivityNilai.this, nilaiMentahs);
                 lvNilaiMentah.setAdapter(adapterNilai);
 
-                if (adapterNilai.getCount() > 0) { //check if nilai list not empty
-                    lvNilaiMentah.setVisibility(View.VISIBLE);
-                    Log.d("HASIL NILAI", "Data telah ditampung ke ListView");
-                } else { //if listview empty show label desc & hide listview
-                    tvNilaiKosong.setVisibility(View.VISIBLE);
-                    lvNilaiMentah.setVisibility(View.GONE);
-                    Log.d("HASIL JADWAL", "Data kosong..");
-                }
+                lvNilaiMentah.setVisibility(View.VISIBLE);
+                tvNilaiKosong.setVisibility(View.GONE);
             } else {
+                lvNilaiMentah.setVisibility(View.GONE);
                 tvNilaiKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label
                 Log.e("KESALAHAN", "nilaiMentahs bernilai null");
             }

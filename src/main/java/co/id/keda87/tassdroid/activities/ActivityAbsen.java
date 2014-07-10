@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
@@ -59,10 +58,12 @@ public class ActivityAbsen extends Activity {
         this.session = new SessionManager(getApplicationContext());
         this.absenTask = new AbsenTask();
         this.user = this.session.getUserDetails();
-        this.absensi= new Absensi[0];
+        this.absensi = new Absensi[0];
 
         this.tvKosong.setVisibility(View.GONE);
         this.tvKosong.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
+        this.lvAbsen.addHeaderView(new View(this));
+        this.lvAbsen.addFooterView(new View(this));
 
         //enable up navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,7 +93,8 @@ public class ActivityAbsen extends Activity {
     @OnItemClick(R.id.lvAbsensi)
     void onAbsenItemSelected(int position) {
         Intent intent = new Intent(this, ActivityAbsensiDetail.class);
-        intent.putExtra("kodeMkAbsen", this.absensi[position].kodeMk);
+        intent.putExtra("kodeMkAbsen", this.absensi[position - 1].kodeMk);
+        Log.d("ABSENSI", this.absensi[position - 1].namaMk);
         startActivity(intent);
     }
 

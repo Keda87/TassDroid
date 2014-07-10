@@ -4,7 +4,14 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.adapter.AbsensiDetailAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.AbsensiDetail;
@@ -24,10 +31,47 @@ public class ActivityAbsensiDetail extends Activity {
     private String apiUrl;
     private AbsensiDetail[] details;
 
+    @InjectView(R.id.detailHeader)
+    TextView header;
+
+    @InjectView(R.id.detailAbsenKelas)
+    TextView kelas;
+
+    @InjectView(R.id.detailAbsenSemester)
+    TextView semester;
+
+    @InjectView(R.id.detailAbsenTahun)
+    TextView tahun;
+
+    @InjectView(R.id.nilaiDetailKelas)
+    TextView nilaiKelas;
+
+    @InjectView(R.id.nilaiDetailTahun)
+    TextView nilaiTahun;
+
+    @InjectView(R.id.nilaiDetailSemester)
+    TextView nilaiSemester;
+
+    @InjectView(R.id.nilaiDosen)
+    TextView nilaiDosen;
+
+    @InjectView(R.id.labelDosen)
+    TextView labelDosen;
+
+    @InjectView(R.id.pbDetailAbsen)
+    ProgressBar progress;
+
+    @InjectView(R.id.detailAbsenKosong)
+    TextView kosong;
+
+    @InjectView(R.id.lvDetailAbsen)
+    ListView lvDetailAbsen;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_absensi_detail);
+        ButterKnife.inject(this);
 
         //instance
         this.gson = new Gson();
@@ -40,7 +84,27 @@ public class ActivityAbsensiDetail extends Activity {
                 "absensi",
                 getIntent().getStringExtra("kodeMkAbsen")
         );
+
+        this.progress.setVisibility(View.GONE);
+        this.kosong.setVisibility(View.GONE);
+        this.header.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.kelas.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.semester.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.tahun.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.nilaiKelas.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.nilaiSemester.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.nilaiTahun.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.kosong.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.nilaiDosen.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.labelDosen.setTypeface(TassUtilities.getFontFace(this, 0));
+
         Log.d("DETAIL ABSEN API", this.apiUrl);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        new AbsensiDetailTask().execute(this.apiUrl);
     }
 
     private class AbsensiDetailTask extends AsyncTask<String, Void, AbsensiDetail[]> {
@@ -53,7 +117,7 @@ public class ActivityAbsensiDetail extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        kosong.setVisibility(View.VISIBLE);
                     }
                 });
             }
@@ -63,11 +127,26 @@ public class ActivityAbsensiDetail extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            progress.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(AbsensiDetail[] absensiDetails) {
             super.onPostExecute(absensiDetails);
+            progress.setVisibility(View.GONE);
+            if (absensiDetails != null) {
+                nilaiSemester.setText(": " + absensiDetails[0].semester);
+                nilaiKelas.setText(": " + absensiDetails[0].kodeKelas);
+                nilaiTahun.setText(": " + absensiDetails[0].tahunAjaran);
+                nilaiDosen.setText(": " + absensiDetails[0].namaDosen);
+                header.setText(absensiDetails[0].namaMataKuliah);
+
+                AbsensiDetailAdapter adapter = new AbsensiDetailAdapter(ActivityAbsensiDetail.this, absensiDetails);
+                lvDetailAbsen.setAdapter(adapter);
+                kosong.setVisibility(View.GONE);
+            } else {
+                kosong.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
