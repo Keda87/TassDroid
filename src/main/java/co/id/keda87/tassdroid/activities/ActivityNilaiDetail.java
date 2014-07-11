@@ -15,29 +15,51 @@ import co.id.keda87.tassdroid.pojos.NilaiMentah;
  */
 public class ActivityNilaiDetail extends Activity {
 
-    @InjectView(R.id.tvDmatkul) TextView tvJudulNilai;
-    @InjectView(R.id.tvDsem) TextView tvSemester;
-    @InjectView(R.id.tvDsks) TextView tvSks;
-    @InjectView(R.id.tvDkls) TextView tvKelas;
-    @InjectView(R.id.tvDkddsn) TextView tvKodeDosen;
-    @InjectView(R.id.tvDalpa) TextView tvAlpa;
-    @InjectView(R.id.tvDdetail) TextView tvDetail;
-    @InjectView(R.id.tvDkj1) TextView tvKj1;
-    @InjectView(R.id.tvDkj2) TextView tvKj2;
-    @InjectView(R.id.tvDkj3) TextView tvKj3;
-    @InjectView(R.id.tvDtgs) TextView tvTgs;
-    @InjectView(R.id.tvDprk) TextView tvPrak;
+    @InjectView(R.id.tvDmatkul)
+    TextView tvJudulNilai;
+    @InjectView(R.id.tvDsem)
+    TextView tvSemester;
+    @InjectView(R.id.tvDsks)
+    TextView tvSks;
+    @InjectView(R.id.tvDkls)
+    TextView tvKelas;
+    @InjectView(R.id.tvDkddsn)
+    TextView tvKodeDosen;
+    @InjectView(R.id.tvDalpa)
+    TextView tvAlpa;
+    @InjectView(R.id.tvDdetail)
+    TextView tvDetail;
+    @InjectView(R.id.tvDkj1)
+    TextView tvKj1;
+    @InjectView(R.id.tvDkj2)
+    TextView tvKj2;
+    @InjectView(R.id.tvDkj3)
+    TextView tvKj3;
+    @InjectView(R.id.tvDtgs)
+    TextView tvTgs;
+    @InjectView(R.id.tvDprk)
+    TextView tvPrak;
 
-    @InjectView(R.id.tvDLsem) TextView lSemester;
-    @InjectView(R.id.tvDLsks) TextView lSks;
-    @InjectView(R.id.tvDLkls) TextView lKelas;
-    @InjectView(R.id.tvDLkddsn) TextView lKodeDosen;
-    @InjectView(R.id.tvDLalpa) TextView lAlpa;
-    @InjectView(R.id.tvDLkaj1) TextView lKj1;
-    @InjectView(R.id.tvDLkaj2) TextView lKj2;
-    @InjectView(R.id.tvDLkaj3) TextView lKj3;
-    @InjectView(R.id.tvDLtgs) TextView lTgs;
-    @InjectView(R.id.tvDLprak) TextView lPrak;
+    @InjectView(R.id.tvDLsem)
+    TextView lSemester;
+    @InjectView(R.id.tvDLsks)
+    TextView lSks;
+    @InjectView(R.id.tvDLkls)
+    TextView lKelas;
+    @InjectView(R.id.tvDLkddsn)
+    TextView lKodeDosen;
+    @InjectView(R.id.tvDLalpa)
+    TextView lAlpa;
+    @InjectView(R.id.tvDLkaj1)
+    TextView lKj1;
+    @InjectView(R.id.tvDLkaj2)
+    TextView lKj2;
+    @InjectView(R.id.tvDLkaj3)
+    TextView lKj3;
+    @InjectView(R.id.tvDLtgs)
+    TextView lTgs;
+    @InjectView(R.id.tvDLprak)
+    TextView lPrak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -23,10 +23,14 @@ public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-    @InjectView(R.id.lb_login) TextView lbLogin;
-    @InjectView(R.id.et_user) EditText inpUser;
-    @InjectView(R.id.et_pass) EditText inpPass;
-    @InjectView(R.id.bt_login) Button btLogin;
+    @InjectView(R.id.lb_login)
+    TextView lbLogin;
+    @InjectView(R.id.et_user)
+    EditText inpUser;
+    @InjectView(R.id.et_pass)
+    EditText inpPass;
+    @InjectView(R.id.bt_login)
+    Button btLogin;
 
     private Gson gson;
     private SessionManager session;

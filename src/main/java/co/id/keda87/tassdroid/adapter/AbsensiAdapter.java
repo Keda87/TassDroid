@@ -65,10 +65,14 @@ public class AbsensiAdapter extends BaseAdapter {
     }
 
     static class AbsensiViewHolder {
-        @InjectView(R.id.tvAbsenMatkulKodeMk) TextView namaMatkulKode;
-        @InjectView(R.id.tvAbsenSemesterTahun) TextView semesterTahun;
-        @InjectView(R.id.tvAbsenLabelPersen) TextView labelPersentage;
-        @InjectView(R.id.tvAbsenPersentase) TextView persentage;
+        @InjectView(R.id.tvAbsenMatkulKodeMk)
+        TextView namaMatkulKode;
+        @InjectView(R.id.tvAbsenSemesterTahun)
+        TextView semesterTahun;
+        @InjectView(R.id.tvAbsenLabelPersen)
+        TextView labelPersentage;
+        @InjectView(R.id.tvAbsenPersentase)
+        TextView persentage;
 
         AbsensiViewHolder(View view) {
             ButterKnife.inject(this, view);

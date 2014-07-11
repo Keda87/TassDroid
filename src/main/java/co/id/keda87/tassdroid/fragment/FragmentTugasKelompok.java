@@ -27,9 +27,12 @@ import java.util.HashMap;
  */
 public class FragmentTugasKelompok extends Fragment {
 
-    @InjectView(R.id.lvTugasKelompok) ListView lvkelompok;
-    @InjectView(R.id.pbKelompok) ProgressBar pbKel;
-    @InjectView(R.id.tvKelKosong) TextView tvKelKosong;
+    @InjectView(R.id.lvTugasKelompok)
+    ListView lvkelompok;
+    @InjectView(R.id.pbKelompok)
+    ProgressBar pbKel;
+    @InjectView(R.id.tvKelKosong)
+    TextView tvKelKosong;
 
     private TugasKelompok[] kelompoks;
     private HashMap<String, String> user;

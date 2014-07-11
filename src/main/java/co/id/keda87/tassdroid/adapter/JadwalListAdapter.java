@@ -73,10 +73,14 @@ public class JadwalListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tvMatkulKode) TextView kode;
-        @InjectView(R.id.tvHariJam) TextView jam;
-        @InjectView(R.id.tvRuang) TextView ruang;
-        @InjectView(R.id.tvDosen) TextView dosen;
+        @InjectView(R.id.tvMatkulKode)
+        TextView kode;
+        @InjectView(R.id.tvHariJam)
+        TextView jam;
+        @InjectView(R.id.tvRuang)
+        TextView ruang;
+        @InjectView(R.id.tvDosen)
+        TextView dosen;
 
         ViewHolder(View v) {
             ButterKnife.inject(this, v);

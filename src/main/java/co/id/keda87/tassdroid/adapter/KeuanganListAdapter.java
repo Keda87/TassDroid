@@ -67,10 +67,14 @@ public class KeuanganListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tvSemesterTahun) TextView tvSemesterTahun;
-        @InjectView(R.id.tvKuitansi) TextView tvKuitansi;
-        @InjectView(R.id.tvStatus) TextView tvStatus;
-        @InjectView(R.id.tvKeteranganNominal) TextView tvKetNominal;
+        @InjectView(R.id.tvSemesterTahun)
+        TextView tvSemesterTahun;
+        @InjectView(R.id.tvKuitansi)
+        TextView tvKuitansi;
+        @InjectView(R.id.tvStatus)
+        TextView tvStatus;
+        @InjectView(R.id.tvKeteranganNominal)
+        TextView tvKetNominal;
 
         ViewHolder(View v) {
             ButterKnife.inject(this, v);

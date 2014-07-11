@@ -2,7 +2,6 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -22,7 +21,8 @@ import co.id.keda87.tassdroid.adapter.TugasPagerAdapter;
  */
 public class ActivityTugas extends FragmentActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 
-    @InjectView(R.id.pager) ViewPager viewPager;
+    @InjectView(R.id.pager)
+    ViewPager viewPager;
     private TugasPagerAdapter tugasPagerAdapter;
     private ActionBar actionBar;
     private String[] tabs;

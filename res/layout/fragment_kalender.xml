@@ -3,13 +3,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/app_background">
 
     <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lvKalender"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

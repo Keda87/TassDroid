@@ -30,9 +30,12 @@ import java.util.HashMap;
  */
 public class FragmentBap extends Fragment {
 
-    @InjectView(R.id.lvBap) ListView lvBap;
-    @InjectView(R.id.pbBap) ProgressBar pbBap;
-    @InjectView(R.id.tvBapKosong) TextView tvBapKosong;
+    @InjectView(R.id.lvBap)
+    ListView lvBap;
+    @InjectView(R.id.pbBap)
+    ProgressBar pbBap;
+    @InjectView(R.id.tvBapKosong)
+    TextView tvBapKosong;
 
     private Gson gson;
     private Bap[] baps;

@@ -23,12 +23,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/label_kosong"
-            android:id="@+id/tvKeuanganKosong" android:layout_centerVertical="true"
+            android:id="@+id/tvKeuanganKosong"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
     <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/pbUang" android:layout_centerVertical="true" android:layout_centerHorizontal="true"
+            android:id="@+id/pbUang"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:indeterminate="true"/>
 
 </RelativeLayout>

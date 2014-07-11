@@ -67,8 +67,10 @@ public class BapListAdapter extends BaseAdapter {
     }
 
     static class ViewBapHolder {
-        @InjectView(R.id.tvMatkulApprove) TextView namaMatkul;
-        @InjectView(R.id.tvKeteranganApprove) TextView detailApprove;
+        @InjectView(R.id.tvMatkulApprove)
+        TextView namaMatkul;
+        @InjectView(R.id.tvKeteranganApprove)
+        TextView detailApprove;
 
         ViewBapHolder(View v) {
             ButterKnife.inject(this, v);

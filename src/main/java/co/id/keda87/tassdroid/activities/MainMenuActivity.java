@@ -35,8 +35,10 @@ import java.util.List;
  */
 public class MainMenuActivity extends Activity {
 
-    @InjectView(R.id.drawer_layout) DrawerLayout drawerLayout;
-    @InjectView(R.id.list_slider) ListView drawerList;
+    @InjectView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+    @InjectView(R.id.list_slider)
+    ListView drawerList;
 
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;

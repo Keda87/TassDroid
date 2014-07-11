@@ -65,9 +65,12 @@ public class NilaiListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tvMatkulHeader) TextView judul;
-        @InjectView(R.id.tvMatkulKeterangan) TextView keterangan;
-        @InjectView(R.id.tvIndexMatkul) TextView indexNilai;
+        @InjectView(R.id.tvMatkulHeader)
+        TextView judul;
+        @InjectView(R.id.tvMatkulKeterangan)
+        TextView keterangan;
+        @InjectView(R.id.tvIndexMatkul)
+        TextView indexNilai;
 
         ViewHolder(View v) {
             ButterKnife.inject(this, v);

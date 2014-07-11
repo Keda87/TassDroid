@@ -23,11 +23,16 @@ import co.id.keda87.tassdroid.helper.TassUtilities;
  */
 public class FragmentHome extends Fragment implements View.OnClickListener {
 
-    @InjectView(R.id.menuBiodata) Button btBio;
-    @InjectView(R.id.menuJadwal) Button btJadwal;
-    @InjectView(R.id.menuAbsensi) Button btAbsen;
-    @InjectView(R.id.menuNilai) Button btNilai;
-    @InjectView(R.id.menuTugas) Button btTugas;
+    @InjectView(R.id.menuBiodata)
+    Button btBio;
+    @InjectView(R.id.menuJadwal)
+    Button btJadwal;
+    @InjectView(R.id.menuAbsensi)
+    Button btAbsen;
+    @InjectView(R.id.menuNilai)
+    Button btNilai;
+    @InjectView(R.id.menuTugas)
+    Button btTugas;
     private Context context;
 
     @Override

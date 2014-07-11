@@ -27,47 +27,35 @@ import java.util.HashMap;
  */
 public class ActivityAbsensiDetail extends Activity {
 
+    @InjectView(R.id.detailHeader)
+    TextView header;
+    @InjectView(R.id.detailAbsenKelas)
+    TextView kelas;
+    @InjectView(R.id.detailAbsenSemester)
+    TextView semester;
+    @InjectView(R.id.detailAbsenTahun)
+    TextView tahun;
+    @InjectView(R.id.nilaiDetailKelas)
+    TextView nilaiKelas;
+    @InjectView(R.id.nilaiDetailTahun)
+    TextView nilaiTahun;
+    @InjectView(R.id.nilaiDetailSemester)
+    TextView nilaiSemester;
+    @InjectView(R.id.nilaiDosen)
+    TextView nilaiDosen;
+    @InjectView(R.id.labelDosen)
+    TextView labelDosen;
+    @InjectView(R.id.pbDetailAbsen)
+    ProgressBar progress;
+    @InjectView(R.id.detailAbsenKosong)
+    TextView kosong;
+    @InjectView(R.id.lvDetailAbsen)
+    ListView lvDetailAbsen;
     private Gson gson;
     private HashMap<String, String> user;
     private SessionManager session;
     private String apiUrl;
     private AbsensiDetail[] details;
-
-    @InjectView(R.id.detailHeader)
-    TextView header;
-
-    @InjectView(R.id.detailAbsenKelas)
-    TextView kelas;
-
-    @InjectView(R.id.detailAbsenSemester)
-    TextView semester;
-
-    @InjectView(R.id.detailAbsenTahun)
-    TextView tahun;
-
-    @InjectView(R.id.nilaiDetailKelas)
-    TextView nilaiKelas;
-
-    @InjectView(R.id.nilaiDetailTahun)
-    TextView nilaiTahun;
-
-    @InjectView(R.id.nilaiDetailSemester)
-    TextView nilaiSemester;
-
-    @InjectView(R.id.nilaiDosen)
-    TextView nilaiDosen;
-
-    @InjectView(R.id.labelDosen)
-    TextView labelDosen;
-
-    @InjectView(R.id.pbDetailAbsen)
-    ProgressBar progress;
-
-    @InjectView(R.id.detailAbsenKosong)
-    TextView kosong;
-
-    @InjectView(R.id.lvDetailAbsen)
-    ListView lvDetailAbsen;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

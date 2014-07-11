@@ -30,19 +30,17 @@ import java.util.HashMap;
  */
 public class ActivityJadwal extends Activity {
 
-    private Jadwal[] jadwalKelas;
-    private Gson gson;
-    private SessionManager sessionManager;
-    private HashMap<String, String> userCredential;
-    private JadwalKelasTask jadwalTask;
-
     @InjectView(R.id.tvUnload)
     TextView tvUnload;
     @InjectView(R.id.pbJadwal)
     ProgressBar pbJadwal;
     @InjectView(R.id.lvJadwalKelas)
     ListView lvJadwal;
-
+    private Jadwal[] jadwalKelas;
+    private Gson gson;
+    private SessionManager sessionManager;
+    private HashMap<String, String> userCredential;
+    private JadwalKelasTask jadwalTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

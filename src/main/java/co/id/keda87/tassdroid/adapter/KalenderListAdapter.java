@@ -64,11 +64,11 @@ public class KalenderListAdapter extends BaseAdapter {
         holder.namaKegiatan.setText(this.calendars[position].namaKegiatan);
         holder.semesterNilai.setText(": " + this.calendars[position].semester);
 
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-d");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("d MMMM yyyy", convertView.getResources().getConfiguration().locale);
+        SimpleDateFormat sdfold = new SimpleDateFormat("yyyy-MM-d");
+        SimpleDateFormat sdfnew = new SimpleDateFormat("d MMMM yyyy", convertView.getResources().getConfiguration().locale);
         try {
-            holder.tahunStartEnd.setText(sdf1.format(sdf2.parse(this.calendars[position].tanggalMulai)
-                    + " - " + sdf1.format(sdf2.parse(this.calendars[position].tanggalAkhir))));
+            holder.tahunStartEnd.setText(sdfnew.format(sdfold.parse(this.calendars[position].tanggalMulai))
+                    + " - " + sdfnew.format(sdfold.parse(this.calendars[position].tanggalAkhir)));
         } catch (ParseException e) {
             Log.e("PARSE", e.getMessage());
         }

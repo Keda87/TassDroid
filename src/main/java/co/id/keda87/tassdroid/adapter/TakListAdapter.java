@@ -66,10 +66,14 @@ public class TakListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tvKegiatan) TextView teksKegiatan;
-        @InjectView(R.id.tvPoin) TextView teksPoin;
-        @InjectView(R.id.tvTahun) TextView teksTahun;
-        @InjectView(R.id.tvBagian) TextView teksBagian;
+        @InjectView(R.id.tvKegiatan)
+        TextView teksKegiatan;
+        @InjectView(R.id.tvPoin)
+        TextView teksPoin;
+        @InjectView(R.id.tvTahun)
+        TextView teksTahun;
+        @InjectView(R.id.tvBagian)
+        TextView teksBagian;
 
         ViewHolder(View v) {
             ButterKnife.inject(this, v);
