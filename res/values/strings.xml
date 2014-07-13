@@ -4,6 +4,8 @@
     <string name="app_item_logout">Logout</string>
     <string name="app_item_refresh">Refresh</string>
     <string name="app_item_chart">Graphic Chart</string>
+    <string name="app_item_edit">Edit</string>
+    <string name="dialog_loading">Loading...</string>
 
     <!--error message-->
     <string name="login_page_alert_invalid">Invalid Login</string>
@@ -107,15 +109,15 @@
 
     <!--activity bio-->
     <string name="bio_label_tempat_lahir">Birth Place</string>
-    <string name="bio_label_tanggal_lahir">Birth Date</string>
+    <string name="bio_label_status">Status</string>
     <string name="bio_label_jenis_kelamin">Sex</string>
-    <string name="bio_label_telepon">Phone Number</string>
-    <string name="bio_label_telepon_ortu">Parent Phone Number</string>
+    <string name="bio_label_telepon">Phone</string>
+    <string name="bio_label_telepon_ortu">Parents Phone</string>
     <string name="bio_label_email">E-mail</string>
     <string name="bio_label_alamat">Address</string>
     <string name="bio_label_semester">Semester</string>
     <string name="bio_label_kelas_primer">Primary Class</string>
-    <string name="bio_label_kelas_sekunder">Secundary Class</string>
+    <string name="bio_label_kelas_sekunder">Secondary Class</string>
     <string name="bio_label_dosen_wali">Lecture Trustee</string>
     <string name="bio_label_ipk">GPA</string>
 </resources>

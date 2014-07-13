@@ -162,6 +162,8 @@ public class ActivityJadwal extends Activity {
                     Log.d("JADWAL", "Data kosong.. :(");
                 }
             } else {
+                tvUnload.setVisibility(View.VISIBLE);
+                lvJadwal.setVisibility(View.GONE);
                 Log.e("KESALAHAN", "jadwals bernilai null");
             }
         }

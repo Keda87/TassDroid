@@ -115,9 +115,7 @@ public class MyActivity extends Activity {
         protected void onPostExecute(Login login) {
             super.onPostExecute(login);
 
-            if (dialog.isShowing() || dialog != null) {
-                dialog.dismiss();
-            }
+            dialog.dismiss();
 
             if (login != null) {
                 if (login.status.equals("BERHASIL")) {

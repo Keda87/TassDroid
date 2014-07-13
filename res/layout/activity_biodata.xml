@@ -13,9 +13,8 @@
             android:layout_margin="15dp">
         <ImageView
                 android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView"
-                android:src="@drawable/default_pic"
+                android:layout_height="65dp"
+                android:id="@+id/bioFoto"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -23,17 +22,16 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="-"
                 android:id="@+id/bioNama"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView"
+                android:layout_toRightOf="@+id/bioFoto"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="10dp" android:textStyle="bold"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="-"
                 android:id="@+id/bioNim"
                 android:layout_centerVertical="true"
@@ -59,10 +57,12 @@
                 android:id="@+id/textView"
                 android:layout_gravity="center_horizontal"
                 android:focusable="false"
-                android:padding="5dp"
                 android:background="@color/nilai_detail"
                 android:textColor="@color/text_color"
-                android:gravity="center_horizontal"/>
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
 
         <ScrollView
                 android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_tempat_lahir"
-                        android:id="@+id/textView2"
+                        android:id="@+id/bioLtempatLahir"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -91,8 +91,8 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/bio_label_tanggal_lahir"
-                        android:id="@+id/textView4"
+                        android:text="@string/bio_label_status"
+                        android:id="@+id/bioLstatus"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -100,13 +100,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-"
-                        android:id="@+id/bioTanggalLahir"
+                        android:id="@+id/bioStatus"
                         android:layout_marginLeft="10dp"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_jenis_kelamin"
-                        android:id="@+id/textView6"
+                        android:id="@+id/bioLkelamin"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -120,7 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_telepon"
-                        android:id="@+id/textView8"
+                        android:id="@+id/bioLtelp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -134,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_telepon_ortu"
-                        android:id="@+id/textView10"
+                        android:id="@+id/bioLortuTelp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -148,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_email"
-                        android:id="@+id/textView12"
+                        android:id="@+id/bioLemail"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -162,7 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_alamat"
-                        android:id="@+id/textView14"
+                        android:id="@+id/bioLalamat"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -176,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_semester"
-                        android:id="@+id/textView16"
+                        android:id="@+id/bioLsemester"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -190,7 +190,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_kelas_primer"
-                        android:id="@+id/textView18"
+                        android:id="@+id/bioLprimer"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -204,7 +204,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_kelas_sekunder"
-                        android:id="@+id/textView20"
+                        android:id="@+id/bioLsekunder"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -218,7 +218,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_dosen_wali"
-                        android:id="@+id/textView22"
+                        android:id="@+id/bioLdosenWali"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>
@@ -232,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bio_label_ipk"
-                        android:id="@+id/textView24"
+                        android:id="@+id/bioLipk"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"/>

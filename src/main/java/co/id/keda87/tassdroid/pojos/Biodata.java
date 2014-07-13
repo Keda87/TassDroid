@@ -49,7 +49,7 @@ public class Biodata {
     @SerializedName("SEMESTER")
     public String semester;
 
-    @SerializedName("KELAS PRIMER")
+    @SerializedName("KELAS_PRIMER")
     public String kelasPrimer;
 
     @SerializedName("KELAS_SEKUNDER")

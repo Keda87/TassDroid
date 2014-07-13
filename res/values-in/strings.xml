@@ -4,6 +4,8 @@
     <string name="app_item_logout">Keluar</string>
     <string name="app_item_refresh">Muat ulang</string>
     <string name="app_item_chart">Laporan Grafik</string>
+    <string name="app_item_edit">Sunting</string>
+    <string name="dialog_loading">Memuat...</string>
 
     <!--error message-->
     <string name="login_page_alert_invalid">Akses gagal</string>
@@ -107,10 +109,10 @@
 
     <!--activity bio-->
     <string name="bio_label_tempat_lahir">Tempat Lahir</string>
-    <string name="bio_label_tanggal_lahir">Tanggal Lahir</string>
+    <string name="bio_label_status">Status</string>
     <string name="bio_label_jenis_kelamin">Jenis Kelamin</string>
-    <string name="bio_label_telepon">Nomor Telepon</string>
-    <string name="bio_label_telepon_ortu">Nomor Telepon Orang Tua</string>
+    <string name="bio_label_telepon">Telepon</string>
+    <string name="bio_label_telepon_ortu">Telepon Orang Tua</string>
     <string name="bio_label_email">Surel</string>
     <string name="bio_label_alamat">Alamat</string>
     <string name="bio_label_semester">Semester</string>
