@@ -104,4 +104,18 @@
     <string name="act_ganti_password_new">New password</string>
     <string name="act_ganti_password_confirm">Retype new password</string>
     <string name="act_ganti_password_ganti">Change</string>
+
+    <!--activity bio-->
+    <string name="bio_label_tempat_lahir">Birth Place</string>
+    <string name="bio_label_tanggal_lahir">Birth Date</string>
+    <string name="bio_label_jenis_kelamin">Sex</string>
+    <string name="bio_label_telepon">Phone Number</string>
+    <string name="bio_label_telepon_ortu">Parent Phone Number</string>
+    <string name="bio_label_email">E-mail</string>
+    <string name="bio_label_alamat">Address</string>
+    <string name="bio_label_semester">Semester</string>
+    <string name="bio_label_kelas_primer">Primary Class</string>
+    <string name="bio_label_kelas_sekunder">Secundary Class</string>
+    <string name="bio_label_dosen_wali">Lecture Trustee</string>
+    <string name="bio_label_ipk">GPA</string>
 </resources>

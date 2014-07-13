@@ -237,10 +237,6 @@ public class TassUtilities {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&kdmk=" + kodeMk + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
-    private static String getBiodataApiUrl(String nim, String password, String... type) {
-        return "";
-    }
-
     /**
      * Fungsi untuk mengenerate alamat url API siap pakai
      *
@@ -344,13 +340,13 @@ public class TassUtilities {
 
     public static void main(String[] args) {
 //        nim adit
-//        String nim = "6301114139";
-//        String pwd = "asaibae";
+        String nim = "6301114139";
+        String pwd = "asaibae";
 
 //        nim percobaan
-        String nim = "6301124173";
-        String pwd = "240294";
+//        String nim = "6301124173";
+//        String pwd = "240294";
 
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "kalenderakademik"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
     }
 }
