@@ -49,10 +49,25 @@ public class MainMenuActivity extends Activity {
     private SliderListAdapter sliderAdapter;
     private SessionManager sessionManager;
     private SharedPreferences preferences;
+    private SessionManager session;
 
     @Override
     public void onBackPressed() {
         Log.d("TOMBOL KEMBALI", "Tombol kembali ditekan, tapi gk bisa keluar :P");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!session.isLoggedIn()) {
+            Log.d("SESSION", "Gak ada session disimpan");
+            Intent i = new Intent(getApplicationContext(), MyActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        } else {
+            Log.d("SESSION", "Masih ada session tersimpan");
+        }
     }
 
     @Override
@@ -76,6 +91,7 @@ public class MainMenuActivity extends Activity {
 
         //instance preferences
         this.preferences = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);
+        this.session = new SessionManager(this);
 
         //display showcase at the first launch
         if (this.preferences.getBoolean("showcase", true)) {

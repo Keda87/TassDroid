@@ -92,10 +92,15 @@ public class ActivityAbsen extends Activity {
 
     @OnItemClick(R.id.lvAbsensi)
     void onAbsenItemSelected(int position) {
-        Intent intent = new Intent(this, ActivityAbsensiDetail.class);
-        intent.putExtra("kodeMkAbsen", this.absensi[position - 1].kodeMk);
-        Log.d("ABSENSI", this.absensi[position - 1].namaMk);
-        startActivity(intent);
+        if (this.absensi[position - 1].prosenHadir != null) {
+            Intent intent = new Intent(this, ActivityAbsensiDetail.class);
+            intent.putExtra("kodeMkAbsen", this.absensi[position - 1].kodeMk);
+            Log.d("ABSENSI", this.absensi[position - 1].namaMk);
+            startActivity(intent);
+        } else {
+            TassUtilities.showToastMessage(ActivityAbsen.this, R.string.detail_absen_gak_ada, 0);
+            return;
+        }
     }
 
     @Override

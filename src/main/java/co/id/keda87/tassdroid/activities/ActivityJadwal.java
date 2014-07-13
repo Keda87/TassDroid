@@ -84,28 +84,6 @@ public class ActivityJadwal extends Activity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (this.jadwalKelas.length == 0) {
-            if (TassUtilities.isConnected(this)) { // if connected, sent request
-                this.jadwalTask = new JadwalKelasTask();
-                this.jadwalTask.execute(
-                        this.userCredential.get(SessionManager.KEY_USERNAME),
-                        this.userCredential.get(SessionManager.KEY_PASSWORD)
-                );
-                Log.d("RESUME", "Konek..");
-
-            } else { //if not connected
-                this.pbJadwal.setVisibility(View.GONE);
-                this.lvJadwal.setVisibility(View.GONE);
-                this.tvUnload.setVisibility(View.VISIBLE);
-                TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
-                Log.d("RESUME", "Gak konek..");
-            }
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -170,14 +148,19 @@ public class ActivityJadwal extends Activity {
         protected void onPostExecute(Jadwal[] jadwals) {
             super.onPostExecute(jadwals);
 
-            lvJadwal.setVisibility(View.GONE);
             pbJadwal.setVisibility(View.GONE);
 
             if (jadwals != null) {
                 JadwalListAdapter adapterJadwal = new JadwalListAdapter(ActivityJadwal.this, jadwals);
                 lvJadwal.setAdapter(adapterJadwal);
-                lvJadwal.setVisibility(View.VISIBLE);
-                tvUnload.setVisibility(View.GONE);
+                if (adapterJadwal.getCount() > 0) {
+                    lvJadwal.setVisibility(View.VISIBLE);
+                    Log.d("JADWAL", "Data tidak kosong kok ;)");
+                } else {
+                    tvUnload.setVisibility(View.VISIBLE);
+                    lvJadwal.setVisibility(View.GONE);
+                    Log.d("JADWAL", "Data kosong.. :(");
+                }
             } else {
                 Log.e("KESALAHAN", "jadwals bernilai null");
             }

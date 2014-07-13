@@ -96,4 +96,12 @@
     <string name="detail_absen_semester">Semester</string>
     <string name="detail_absen_kelas">Class</string>
     <string name="detail_absen_dosen">Lecture</string>
+    <string name="detail_absen_gak_ada">Attendance details not available</string>
+
+    <!--activity ganti password-->
+    <string name="act_ganti_password_header">Change Password</string>
+    <string name="act_ganti_password_current">Current password</string>
+    <string name="act_ganti_password_new">New password</string>
+    <string name="act_ganti_password_confirm">Retype new password</string>
+    <string name="act_ganti_password_ganti">Change</string>
 </resources>

@@ -128,9 +128,9 @@ public class FragmentKalender extends Fragment {
                 //reverse array
                 List<KalenderAkademik> list = Arrays.asList(kalenderAkademiks);
                 Collections.reverse(list);
-                KalenderAkademik[] reversed = (KalenderAkademik[]) list.toArray();
+                kalenderAkademiks = (KalenderAkademik[]) list.toArray();
 
-                KalenderListAdapter adapter = new KalenderListAdapter(reversed, getActivity());
+                KalenderListAdapter adapter = new KalenderListAdapter(kalenderAkademiks, getActivity());
                 lvKelender.setAdapter(adapter);
 
                 if (adapter.getCount() > 0) {

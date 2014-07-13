@@ -96,4 +96,12 @@
     <string name="detail_absen_semester">Semester</string>
     <string name="detail_absen_kelas">Kelas</string>
     <string name="detail_absen_dosen">Dosen</string>
+    <string name="detail_absen_gak_ada">Detail kehadiran tidak tersedia</string>
+
+    <!--activity ganti password-->
+    <string name="act_ganti_password_header">Ganti Kata Kunci</string>
+    <string name="act_ganti_password_current">Kata kunci sekarang</string>
+    <string name="act_ganti_password_new">Kata kunci baru</string>
+    <string name="act_ganti_password_confirm">Ulangi kata kunci baru</string>
+    <string name="act_ganti_password_ganti">Ubah</string>
 </resources>

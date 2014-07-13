@@ -60,7 +60,7 @@ public class AbsensiAdapter extends BaseAdapter {
         //set value
         holder.namaMatkulKode.setText(this.absens[position].namaMk + " - " + this.absens[position].kodeMk);
         holder.semesterTahun.setText("Semester " + this.absens[position].semester + " / " + this.absens[position].tahunAjaran);
-        holder.persentage.setText(this.absens[position].prosenHadir + " %");
+        holder.persentage.setText(this.absens[position].prosenHadir != null ? this.absens[position].prosenHadir + " %" : "-");
         return convertView;
     }
 

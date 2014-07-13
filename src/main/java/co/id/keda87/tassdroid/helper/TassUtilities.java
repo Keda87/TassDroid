@@ -237,6 +237,10 @@ public class TassUtilities {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&kdmk=" + kodeMk + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
+    private static String getBiodataApiUrl(String nim, String password, String... type) {
+        return "";
+    }
+
     /**
      * Fungsi untuk mengenerate alamat url API siap pakai
      *

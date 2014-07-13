@@ -155,11 +155,17 @@ public class ActivityAbsensiDetail extends Activity {
             super.onPostExecute(absensiDetails);
             progress.setVisibility(View.GONE);
             if (absensiDetails != null) {
-                nilaiSemester.setText(": " + absensiDetails[0].semester);
-                nilaiKelas.setText(": " + absensiDetails[0].kodeKelas);
-                nilaiTahun.setText(": " + absensiDetails[0].tahunAjaran);
-                nilaiDosen.setText(": " + absensiDetails[0].namaDosen);
-                header.setText(absensiDetails[0].namaMataKuliah);
+                try {
+                    nilaiSemester.setText(": " + absensiDetails[0].semester);
+                    nilaiKelas.setText(": " + absensiDetails[0].kodeKelas);
+                    nilaiTahun.setText(": " + absensiDetails[0].tahunAjaran);
+                    nilaiDosen.setText(": " + absensiDetails[0].namaDosen);
+                    header.setText(absensiDetails[0].namaMataKuliah);
+                } catch (Exception e) {
+                    Log.e("KESALAHAN", e.getMessage());
+                    TassUtilities.showToastMessage(ActivityAbsensiDetail.this, R.string.detail_absen_gak_ada, 0);
+                    kosong.setVisibility(View.VISIBLE);
+                }
 
                 AbsensiDetailAdapter adapter = new AbsensiDetailAdapter(ActivityAbsensiDetail.this, absensiDetails);
                 lvDetailAbsen.setAdapter(adapter);
