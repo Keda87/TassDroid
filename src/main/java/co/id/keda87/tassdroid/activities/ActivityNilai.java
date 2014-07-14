@@ -206,8 +206,14 @@ public class ActivityNilai extends Activity {
                 NilaiListAdapter adapterNilai = new NilaiListAdapter(ActivityNilai.this, nilaiMentahs);
                 lvNilaiMentah.setAdapter(adapterNilai);
 
-                lvNilaiMentah.setVisibility(View.VISIBLE);
-                tvNilaiKosong.setVisibility(View.GONE);
+                if (adapterNilai.getCount() > 0) {
+                    lvNilaiMentah.setVisibility(View.VISIBLE);
+                    Log.d("HASIL NILAI MENTAH", "Data telah ditampung ke ListView");
+                } else {
+                    tvNilaiKosong.setVisibility(View.VISIBLE);
+                    lvNilaiMentah.setVisibility(View.GONE);
+                    Log.d("HASIL KALENDER", "Data kosong..");
+                }
             } else {
                 lvNilaiMentah.setVisibility(View.GONE);
                 tvNilaiKosong.setVisibility(View.VISIBLE); //if an error occured, show empty label

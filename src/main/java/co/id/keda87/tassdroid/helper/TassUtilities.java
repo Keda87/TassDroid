@@ -229,7 +229,7 @@ public class TassUtilities {
      * @param random   : angka random yang digenerate aplikasi
      * @return hasil URL mentah dari API yang akan digunakan
      */
-    private static String getTassApiUrl(String nim, String password, String type, int random) {
+    private static String getTassApiURL(String nim, String password, String type, int random) {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
@@ -239,6 +239,10 @@ public class TassUtilities {
 
     private static String getUpdateBioURL(String nim, String pass, String type, int random, String... param) {
         return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&tipeupdate=1&telp=" + param[0] + "&jk=" + param[1] + "&a=" + random + "&hsl=" + generateToken(random);
+    }
+
+    private static String getUpdatePasswordURL(String nim, String pass, String type, int random, String newPassword) {
+        return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&pwd=" + newPassword;
     }
 
     /**
@@ -254,37 +258,39 @@ public class TassUtilities {
 
         switch (type[0]) {
             case "login":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "nm":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "dftap":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "biodata":
                 if (type.length > 1) {
                     return getUpdateBioURL(nim, password, type[0], random, type[1], type[2]);
                 } else {
-                    return getTassApiUrl(nim, password, type[0], random);
+                    return getTassApiURL(nim, password, type[0], random);
                 }
             case "keuangan":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "tak":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "jadwal":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "tgsi":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "tgsk":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
             case "absensi":
                 if (type.length == 2) {
                     return getDetailAbsenURL(nim, password, type[0], type[1], random);
                 } else {
-                    return getTassApiUrl(nim, password, type[0], random);
+                    return getTassApiURL(nim, password, type[0], random);
                 }
             case "kalenderakademik":
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
+            case "ubahpwd":
+                return getUpdatePasswordURL(nim, password, type[0], random, type[1]);
             default:
-                return getTassApiUrl(nim, password, type[0], random);
+                return getTassApiURL(nim, password, type[0], random);
         }
     }
 

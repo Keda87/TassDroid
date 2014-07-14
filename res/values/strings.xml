@@ -106,6 +106,8 @@
     <string name="act_ganti_password_new">New password</string>
     <string name="act_ganti_password_confirm">Retype new password</string>
     <string name="act_ganti_password_ganti">Change</string>
+    <string name="act_ganti_password_fail">Failed to update password</string>
+    <string name="act_ganti_password_success">Password has successfully changed, try to relogin with your new password</string>
 
     <!--activity bio-->
     <string name="bio_label_tempat_lahir">Birth Place</string>

@@ -8,6 +8,13 @@
         </shape>
     </item>
 
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="#877D6F"/>
+            <corners android:radius="2dp"/>
+        </shape>
+    </item>
+
     <item android:state_pressed="false">
         <shape>
             <solid android:color="#A37B45"/>

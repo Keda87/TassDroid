@@ -106,6 +106,8 @@
     <string name="act_ganti_password_new">Kata kunci baru</string>
     <string name="act_ganti_password_confirm">Ulangi kata kunci baru</string>
     <string name="act_ganti_password_ganti">Ubah</string>
+    <string name="act_ganti_password_fail">Gagal memperbarui kata kunci</string>
+    <string name="act_ganti_password_success">Kata kunci berhasil diubah, silahkan login kembali dengan kata kunci baru anda</string>
 
     <!--activity bio-->
     <string name="bio_label_tempat_lahir">Tempat Lahir</string>
