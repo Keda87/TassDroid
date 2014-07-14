@@ -118,7 +118,7 @@
     <string name="bio_label_semester">Semester</string>
     <string name="bio_label_kelas_primer">Primary Class</string>
     <string name="bio_label_kelas_sekunder">Secondary Class</string>
-    <string name="bio_label_dosen_wali">Lecture Trustee</string>
+    <string name="bio_label_dosen_wali">Advisor</string>
     <string name="bio_label_ipk">GPA</string>
     
     <!--activity edit bio-->
@@ -129,4 +129,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="bio_edit_berhasil">Bio has successfully updated</string>
+    <string name="bio_edit_gagal">Failed to update bio</string>
+    <string name="bio_edit_update_loading">Updating..</string>
 </resources>
