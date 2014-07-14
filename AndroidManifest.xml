@@ -35,6 +35,10 @@
                 android:theme="@style/theme_activity_bio"
                 android:icon="@drawable/ic_bio"/>
         <activity
+                android:name=".activities.ActivityBiodataEdit"
+                android:theme="@style/theme_activity_bio"
+                android:icon="@drawable/ic_bio"/>
+        <activity
                 android:name=".activities.ActivityJadwal"
                 android:theme="@style/theme_activity_jadwal"
                 android:icon="@drawable/ic_jadwal"/>

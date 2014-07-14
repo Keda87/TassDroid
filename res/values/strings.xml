@@ -120,4 +120,13 @@
     <string name="bio_label_kelas_sekunder">Secondary Class</string>
     <string name="bio_label_dosen_wali">Lecture Trustee</string>
     <string name="bio_label_ipk">GPA</string>
+    
+    <!--activity edit bio-->
+    <string name="bio_edit_header">Bio Edit</string>
+    <string name="error_bind_data">No data to send</string>
+    <string-array name="bio_edit_kelamin">
+        <item> - </item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

@@ -233,8 +233,12 @@ public class TassUtilities {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
-    private static String getTassParameteredApiUrl(String nim, String password, String type, String kodeMk, int random) {
+    private static String getDetailAbsenURL(String nim, String password, String type, String kodeMk, int random) {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&kdmk=" + kodeMk + "&a=" + random + "&hsl=" + generateToken(random);
+    }
+
+    private static String getUpdateBioURL(String nim, String pass, String type, int random, String... param) {
+        return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&tipeupdate=1&telp=" + param[0] + "&jk=" + param[1] + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
     /**
@@ -256,7 +260,11 @@ public class TassUtilities {
             case "dftap":
                 return getTassApiUrl(nim, password, type[0], random);
             case "biodata":
-                return getTassApiUrl(nim, password, type[0], random);
+                if (type.length > 1) {
+                    return getUpdateBioURL(nim, password, type[0], random, type[1], type[2]);
+                } else {
+                    return getTassApiUrl(nim, password, type[0], random);
+                }
             case "keuangan":
                 return getTassApiUrl(nim, password, type[0], random);
             case "tak":
@@ -269,7 +277,7 @@ public class TassUtilities {
                 return getTassApiUrl(nim, password, type[0], random);
             case "absensi":
                 if (type.length == 2) {
-                    return getTassParameteredApiUrl(nim, password, type[0], type[1], random);
+                    return getDetailAbsenURL(nim, password, type[0], type[1], random);
                 } else {
                     return getTassApiUrl(nim, password, type[0], random);
                 }

@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -173,13 +175,41 @@ public class ActivityBiodata extends Activity {
                 }
                 return true;
             case R.id.app_item_editbio:
+                if (this.biodata.telepon != null && biodata.jenisKelamin != null) {
+                    Intent intent = new Intent(this, ActivityBiodataEdit.class);
+                    intent.putExtra("editPhone", bioPhone.getText());
+                    intent.putExtra("editSex", biodata.jenisKelamin);
+                    startActivity(intent);
+                } else {
+                    TassUtilities.showToastMessage(this, R.string.error_bind_data, 0);
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private String getLocalizedSex(String sex, String language) {
-        return "";
+        String sexResult = null;
+        if (language.equalsIgnoreCase("English")) {
+            switch (sex) {
+                case "L":
+                    sexResult = "Male";
+                    break;
+                case "P":
+                    sexResult = "Female";
+                    break;
+            }
+        } else {
+            switch (sex) {
+                case "L":
+                    sexResult = "Laki laki";
+                    break;
+                case "P":
+                    sexResult = "Perempuan";
+                    break;
+            }
+        }
+        return sexResult;
     }
 
     private class BiodataTask extends AsyncTask<String, Void, Biodata> {
@@ -213,21 +243,29 @@ public class ActivityBiodata extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            dialog.show();
+            if (this.getStatus() == Status.RUNNING) {
+                dialog.show();
+            }
         }
 
         @Override
         protected void onPostExecute(Biodata biodata) {
             super.onPostExecute(biodata);
 
-            dialog.dismiss();
+            if (dialog.isShowing() && dialog != null) {
+                dialog.dismiss();
+            }
 
             if (biodata != null) {
                 bioNama.setText(biodata.nama);
                 bioNim.setText(biodata.nim);
                 bioTempatLahir.setText(biodata.tempatLahir);
                 bioStatus.setText(biodata.status);
-                bioJenisKelamin.setText(biodata.jenisKelamin);
+                try {
+                    bioJenisKelamin.setText(getLocalizedSex(biodata.jenisKelamin, Locale.getDefault().getDisplayLanguage()));
+                } catch (Exception e) {
+                    Log.e("KESALAHAN", "Sex localized error!");
+                }
                 bioPhone.setText(biodata.telepon);
                 bioOrtuPhone.setText(biodata.teleponOrtu);
                 bioEmail.setText(biodata.email);

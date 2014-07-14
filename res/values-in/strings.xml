@@ -120,4 +120,13 @@
     <string name="bio_label_kelas_sekunder">Kelas Sekunder</string>
     <string name="bio_label_dosen_wali">Dosen Wali</string>
     <string name="bio_label_ipk">IPK</string>
+
+    <!--activity edit bio-->
+    <string name="bio_edit_header">Sunting Biodata</string>
+    <string name="error_bind_data">Tidak ada data untuk dikirim</string>
+    <string-array name="bio_edit_kelamin">
+        <item> - </item>
+        <item>Laki laki</item>
+        <item>Perempuan</item>
+    </string-array>
 </resources>
