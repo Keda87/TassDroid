@@ -49,7 +49,8 @@
         <activity
                 android:name=".activities.ActivityGraphAbsen"
                 android:theme="@style/theme_activity_absen"
-                android:icon="@drawable/ic_absen"/>
+                android:icon="@drawable/ic_absen"
+                android:screenOrientation="landscape"/>
         <activity
                 android:name=".activities.ActivityAbsensiDetail"
                 android:theme="@style/theme_activity_absen"

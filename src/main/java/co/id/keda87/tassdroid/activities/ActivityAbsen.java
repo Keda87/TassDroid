@@ -75,7 +75,7 @@ public class ActivityAbsen extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (this.absensi.length == 0) {
+        if (this.absensi == null) {
             if (TassUtilities.isConnected(getApplicationContext())) {
                 this.absenTask = new AbsenTask();
                 this.absenTask.execute(

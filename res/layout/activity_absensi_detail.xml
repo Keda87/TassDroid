@@ -95,28 +95,11 @@
                 android:layout_alignLeft="@+id/nilaiDetailKelas" android:layout_alignStart="@+id/nilaiDetailKelas"/>
     </RelativeLayout>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/label_kosong"
-            android:id="@+id/detailAbsenKosong"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-
-    <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pbDetailAbsen"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:indeterminate="true"/>
-
-    <LinearLayout
+    <RelativeLayout
             android:id="@+id/panel_bawah"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/card_background_normal"
             android:layout_margin="10dp"
             android:padding="4dp"
@@ -126,7 +109,24 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lvDetailAbsen"
                 android:listSelector="@android:color/transparent"/>
-    </LinearLayout>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pbDetailAbsen"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:indeterminate="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/label_kosong"
+                android:id="@+id/detailAbsenKosong"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 
 
 </RelativeLayout>
