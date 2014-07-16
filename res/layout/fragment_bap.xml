@@ -10,7 +10,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lvBap"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

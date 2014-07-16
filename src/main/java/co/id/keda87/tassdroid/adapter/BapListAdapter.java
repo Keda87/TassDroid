@@ -55,10 +55,6 @@ public class BapListAdapter extends BaseAdapter {
             holder = (ViewBapHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set value
         holder.namaMatkul.setText(baps[position].mataKuliah);
         holder.detailApprove.setText(baps[position].jumlahPertemuanApproval + " / " + baps[position].jumlahPertemuan);
