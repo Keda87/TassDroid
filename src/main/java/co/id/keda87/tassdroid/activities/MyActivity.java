@@ -71,18 +71,19 @@ public class MyActivity extends Activity {
     public void doLogin(View view) {
         DoLoginTask login = new DoLoginTask();
         //check if form empty
-        if (inpUser.getText().toString().isEmpty() || inpPass.getText().toString().isEmpty())
-            return;
-
-        //check connection availability
-        if (TassUtilities.isConnected(getApplicationContext())) {
-
-            //login action
-            username = inpUser.getText().toString().trim();
-            password = inpPass.getText().toString().trim();
-            login.execute(username, password);
+        if (inpUser.getText().toString().isEmpty() || inpPass.getText().toString().isEmpty()) {
+            TassUtilities.showToastMessage(this, R.string.login_page_kosong, 0);
         } else {
-            TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
+            //check connection availability
+            if (TassUtilities.isConnected(getApplicationContext())) {
+
+                //login action
+                username = inpUser.getText().toString().trim();
+                password = inpPass.getText().toString().trim();
+                login.execute(username, password);
+            } else {
+                TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
+            }
         }
     }
 

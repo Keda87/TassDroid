@@ -158,7 +158,7 @@ public class ActivityGantiPassword extends Activity implements TextWatcher {
                 Log.d("HASIL GANTI PASSWORD", ganti.hasil == null ? "hasilnya null" : ganti.hasil);
             } else {
                 TassUtilities.showToastMessage(ActivityGantiPassword.this, R.string.act_ganti_password_fail, 0);
-                Log.d("HASIL GANTI PASSWORD", ganti.hasil == null ? "hasilnya null" : ganti.hasil);
+                Log.e("HASIL GANTI PASSWORD", ganti.hasil == null ? "hasilnya null" : ganti.hasil);
             }
         }
     }

@@ -19,6 +19,7 @@
     <string name="login_page_hint_password">Password</string>
     <string name="login_page_alert_valid">Login Success</string>
     <string name="login_page_dialog_signin">Authenticate..</string>
+    <string name="login_page_kosong">Fields are required</string>
 
      <!--nav drawer menu items string values-->
     <string-array name="nav_drawer_items">

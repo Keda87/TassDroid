@@ -8,7 +8,7 @@
     <string name="dialog_loading">Memuat...</string>
 
     <!--error message-->
-    <string name="login_page_alert_invalid">Akses gagal</string>
+    <string name="login_page_alert_invalid">Login tidak valid</string>
     <string name="login_page_alert_no_connection">Tidak ada koneksi</string>
     <string name="error_time_request">Kesalahan pada server</string>
 
@@ -19,6 +19,7 @@
     <string name="login_page_hint_password">Sandi</string>
     <string name="login_page_alert_valid">Berhasil masuk</string>
     <string name="login_page_dialog_signin">Otentikasi..</string>
+    <string name="login_page_kosong">Inputan wajib diisi</string>
 
     <!--nav drawer menu items string values-->
     <string-array name="nav_drawer_items">
@@ -79,7 +80,7 @@
 
     <!--fragment tugas-->
     <string name="tugas_label_tugas">Nama Tugas</string>
-    <string name="tugas_label_deadline">Deadline</string>
+    <string name="tugas_label_deadline">Batas Akhir</string>
     <string name="tugas_label_waktu">Waktu</string>
     <string name="tugas_label_anggota">Anggota</string>
     <string name="tugas_label_keterangan">Keterangan</string>
