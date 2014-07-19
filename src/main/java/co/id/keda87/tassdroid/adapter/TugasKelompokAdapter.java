@@ -80,10 +80,6 @@ public class TugasKelompokAdapter extends BaseAdapter {
             holder = (NilaiKelompokHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set values
         holder.tNamaMk.setText(kelompoks[position].namaMk);
         holder.tNamaTugas.setText(": " + kelompoks[position].namaTugas);

@@ -11,7 +11,15 @@
             android:id="@+id/lvTugasIndividu"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:listSelector="@android:color/transparent"/>
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
     <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

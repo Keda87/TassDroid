@@ -57,6 +57,8 @@ public class FragmentBap extends Fragment {
         this.tvBapKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.tvBapKosong.setVisibility(View.GONE);
         this.pbBap.setVisibility(View.GONE);
+        this.lvBap.addHeaderView(new View(v.getContext()));
+        this.lvBap.addFooterView(new View(v.getContext()));
         return v;
     }
 

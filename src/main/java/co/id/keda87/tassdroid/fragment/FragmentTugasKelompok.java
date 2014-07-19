@@ -53,6 +53,8 @@ public class FragmentTugasKelompok extends Fragment {
         this.tvKelKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.pbKel.setVisibility(View.GONE);
         this.tvKelKosong.setVisibility(View.GONE);
+        this.lvkelompok.addHeaderView(new View(v.getContext()));
+        this.lvkelompok.addFooterView(new View(v.getContext()));
 
         return v;
     }

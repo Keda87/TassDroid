@@ -72,10 +72,6 @@ public class TugasIndividuAdapter extends BaseAdapter {
             holder = (NilaiIndividuHolder) convertView.getTag();
         }
 
-        //applying striped listview
-        int colorPosition = position % TassUtilities.colorsStripped.length;
-        convertView.setBackgroundColor(TassUtilities.colorsStripped[colorPosition]);
-
         //set values
         holder.tvMataKuliah.setText(tugasIndividus[position].mataKuliah);
         holder.tvNamaTugas.setText(": " + tugasIndividus[position].namaTugas);

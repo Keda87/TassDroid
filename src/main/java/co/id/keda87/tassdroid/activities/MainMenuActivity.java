@@ -53,6 +53,12 @@ public class MainMenuActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        Fragment fragment = new FragmentHome();
+        this.drawerList.setItemChecked(0, true);
+        this.drawerList.setSelection(0);
+        this.setTitle(this.sliderMenuTitle[0]);
+        this.drawerLayout.closeDrawer(this.drawerList);
+        getFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
         Log.d("TOMBOL KEMBALI", "Tombol kembali ditekan, tapi gk bisa keluar :P");
     }
 

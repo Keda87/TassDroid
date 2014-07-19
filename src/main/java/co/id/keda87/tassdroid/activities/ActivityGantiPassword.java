@@ -25,7 +25,7 @@ import java.util.HashMap;
 /**
  * Created by Keda87 on 6/30/2014.
  */
-public class ActivityGantiPassword extends Activity implements TextWatcher{
+public class ActivityGantiPassword extends Activity implements TextWatcher {
 
     @InjectView(R.id.pwdLabel)
     TextView label;

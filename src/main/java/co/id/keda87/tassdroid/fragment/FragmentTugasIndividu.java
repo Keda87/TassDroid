@@ -55,6 +55,8 @@ public class FragmentTugasIndividu extends Fragment {
         this.tvKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.tvKosong.setVisibility(View.GONE);
         this.pbIndividu.setVisibility(View.GONE);
+        this.lvIndividu.addHeaderView(new View(v.getContext()));
+        this.lvIndividu.addFooterView(new View(v.getContext()));
 
         return v;
     }
