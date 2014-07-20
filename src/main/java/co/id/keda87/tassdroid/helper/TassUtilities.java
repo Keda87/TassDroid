@@ -245,6 +245,10 @@ public class TassUtilities {
         return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&pwd=" + newPassword;
     }
 
+    private static String getDetailApproveBapURL(String nim, String pass, String type, int random, String... param) {
+        return BASE_API_URL + md5(pass) +"&nim=" + nim + "&type=" + type + "&kdmk=" + param[0] + "&tipe=1";
+    }
+
     /**
      * Fungsi untuk mengenerate alamat url API siap pakai
      *
@@ -262,7 +266,11 @@ public class TassUtilities {
             case "nm":
                 return getTassApiURL(nim, password, type[0], random);
             case "dftap":
-                return getTassApiURL(nim, password, type[0], random);
+                if (type.length == 1) {
+                    return getTassApiURL(nim, password, type[0], random);
+                } else if (type.length == 2) {
+                    return getDetailApproveBapURL(nim, password, type[0], random, type[1]);
+                }
             case "biodata":
                 if (type.length > 1) {
                     return getUpdateBioURL(nim, password, type[0], random, type[1], type[2]);
@@ -354,13 +362,14 @@ public class TassUtilities {
 
     public static void main(String[] args) {
 //        nim adit
-        String nim = "6301114139";
-        String pwd = "asaibae";
+//        String nim = "6301114139";
+//        String pwd = "asaibae";
 
 //        nim percobaan
-//        String nim = "6301124173";
-//        String pwd = "240294";
+        String nim = "6301124173";
+        String pwd = "240294";
 
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap", "MI2193"));
     }
 }
