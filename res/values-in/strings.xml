@@ -136,4 +136,7 @@
     <string name="bio_edit_berhasil">Biodata berhasil diperbarui</string>
     <string name="bio_edit_gagal">Gagal memperbarui biodata</string>
     <string name="bio_edit_update_loading">Memperbarui..</string>
+
+    <!--approval BAP-->
+    <string name="bap_detail_hari_tanggal">Hari dan Tanggal</string>
 </resources>

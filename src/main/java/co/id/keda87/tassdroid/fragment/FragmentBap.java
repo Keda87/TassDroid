@@ -1,6 +1,7 @@
 package co.id.keda87.tassdroid.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.activities.ActivityBapDetail;
 import co.id.keda87.tassdroid.adapter.BapListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Bap;
+import co.id.keda87.tassdroid.pojos.BapDetail;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -88,6 +92,15 @@ public class FragmentBap extends Fragment {
             }
         }
         Log.d("FRAGMENT", "Fragment BAP destroyed..");
+    }
+
+    @OnItemClick(R.id.lvBap)
+    void goToDetailBap(int position) {
+        Intent intent = new Intent(getActivity(), ActivityBapDetail.class);
+        intent.putExtra("MK", baps[position].kodeMataKuliah);
+        intent.putExtra("MATA_KULIAH", baps[position].mataKuliah);
+        Log.d("DETAIL", baps[position].mataKuliah);
+        startActivity(intent);
     }
 
     private class ApproveBapTask extends AsyncTask<String, Void, Bap[]> {

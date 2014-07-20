@@ -2,6 +2,64 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:background="@drawable/card_background_normal">
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="-"
+            android:id="@+id/apBapMataKuliah" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/detail_absen_dosen"
+            android:id="@+id/apBapLabelDosen" android:layout_below="@+id/apBapMataKuliah" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/bap_detail_hari_tanggal"
+            android:id="@+id/apBapLabelHariTanggal" android:layout_below="@+id/apBapLabelDosen" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/tugas_label_waktu"
+            android:id="@+id/apBapLabelWaktu" android:layout_below="@+id/apBapLabelHariTanggal" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": -"
+            android:id="@+id/apBapHari" android:layout_above="@+id/apBapLabelWaktu" android:layout_toRightOf="@+id/apBapLabelHariTanggal"
+            android:layout_marginLeft="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": -"
+            android:id="@+id/apBapWaktu" android:layout_alignTop="@+id/apBapLabelWaktu"
+            android:layout_toRightOf="@+id/apBapLabelHariTanggal" android:layout_marginLeft="3dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": -"
+            android:id="@+id/apBapDosen" android:layout_above="@+id/apBapHari" android:layout_alignLeft="@+id/apBapHari"
+            android:layout_alignStart="@+id/apBapHari"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="-"
+            android:id="@+id/apBapStatus" android:layout_alignTop="@+id/apBapWaktu" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 </RelativeLayout>

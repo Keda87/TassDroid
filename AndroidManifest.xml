@@ -74,5 +74,8 @@
                 android:name=".activities.ActivityGantiPassword"
                 android:theme="@style/theme_activity_password"
                 android:icon="@drawable/ic_password"/>
+        <activity
+                android:name=".activities.ActivityBapDetail"
+                android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
     </application>
 </manifest>
