@@ -246,7 +246,7 @@ public class TassUtilities {
     }
 
     private static String getDetailApproveBapURL(String nim, String pass, String type, int random, String... param) {
-        return BASE_API_URL + md5(pass) +"&nim=" + nim + "&type=" + type + "&kdmk=" + param[0] + "&tipe=1";
+        return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&kdmk=" + param[0] + "&tipe=1";
     }
 
     /**
@@ -315,21 +315,27 @@ public class TassUtilities {
             case "en":
                 switch (day) {
                     case "MON":
+                    case "SENIN":
                         hari = "MONDAY";
                         break;
                     case "TUE":
+                    case "SELASA":
                         hari = "TUESDAY";
                         break;
                     case "WED":
+                    case "RABU":
                         hari = "WEDNESDAY";
                         break;
                     case "THU":
+                    case "KAMIS":
                         hari = "THURSDAY";
                         break;
                     case "FRI":
+                    case "JUMAT":
                         hari = "FRIDAY";
                         break;
                     case "SAT":
+                    case "SABTU":
                         hari = "SATURDAY";
                         break;
                 }

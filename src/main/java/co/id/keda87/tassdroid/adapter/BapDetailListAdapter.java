@@ -12,6 +12,8 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.BapDetail;
 
+import java.util.Locale;
+
 /**
  * Created by Keda87 on 7/20/2014.
  */
@@ -64,9 +66,20 @@ public class BapDetailListAdapter extends BaseAdapter {
         //set value
         holder.namaMatkul.setText(bapDetails[position].namaMataKuliah);
         holder.dosen.setText(": " + bapDetails[position].dosen);
-        holder.hariTanggal.setText(": " + bapDetails[position].hari + ", " + bapDetails[position].tanggal);
+
+        //detect current locale on device and format into current language
+        String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? TassUtilities.toDayID(bapDetails[position].hari, "en") : bapDetails[position].hari;
+
+        holder.hariTanggal.setText(": " + hari + ", " + bapDetails[position].tanggal);
         holder.waktu.setText(": " + bapDetails[position].waktuMulai.substring(0, 5) + " - " + bapDetails[position].waktuSelesai.substring(0, 5));
-        holder.status.setText(bapDetails[position].statusApproveMk.substring(0, 6));
+        holder.status.setText(bapDetails[position].statusApproveMk.substring(0, 5));
+
+        //set status background color depend on value
+        if (bapDetails[position].statusApproveMk.equalsIgnoreCase("Sudah Approve Ketua Kelas")) {
+            holder.status.setBackgroundResource(R.drawable.custom_label_sudah);
+        } else if (bapDetails[position].statusApproveMk.equalsIgnoreCase("Belum Approve Ketua Kelas")) {
+            holder.status.setBackgroundResource(R.drawable.custom_label_belum);
+        }
 
         return convertView;
     }

@@ -97,9 +97,9 @@ public class FragmentBap extends Fragment {
     @OnItemClick(R.id.lvBap)
     void goToDetailBap(int position) {
         Intent intent = new Intent(getActivity(), ActivityBapDetail.class);
-        intent.putExtra("MK", baps[position].kodeMataKuliah);
-        intent.putExtra("MATA_KULIAH", baps[position].mataKuliah);
-        Log.d("DETAIL", baps[position].mataKuliah);
+        intent.putExtra("MK", baps[position - 1].kodeMataKuliah);
+        intent.putExtra("MATA_KULIAH", baps[position - 1].mataKuliah);
+        Log.d("DETAIL", baps[position - 1].mataKuliah);
         startActivity(intent);
     }
 
