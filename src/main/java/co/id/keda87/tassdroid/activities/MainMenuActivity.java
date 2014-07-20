@@ -8,8 +8,10 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,13 +55,18 @@ public class MainMenuActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        Fragment fragment = new FragmentHome();
-        this.drawerList.setItemChecked(0, true);
-        this.drawerList.setSelection(0);
-        this.setTitle(this.sliderMenuTitle[0]);
-        this.drawerLayout.closeDrawer(this.drawerList);
-        getFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
-        Log.d("TOMBOL KEMBALI", "Tombol kembali ditekan, tapi gk bisa keluar :P");
+        if (this.drawerLayout.isDrawerVisible(GravityCompat.START)) {
+            this.drawerLayout.closeDrawer(this.drawerList);
+            Log.d("NAVIGATION", "Keadaan terbuka..");
+        } else {
+            Fragment fragment = new FragmentHome();
+            this.drawerList.setItemChecked(0, true);
+            this.drawerList.setSelection(0);
+            this.setTitle(this.sliderMenuTitle[0]);
+            this.drawerLayout.closeDrawer(this.drawerList);
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
+            Log.d("NAVIGATION", "Keadaan fragment selain home");
+        }
     }
 
     @Override
