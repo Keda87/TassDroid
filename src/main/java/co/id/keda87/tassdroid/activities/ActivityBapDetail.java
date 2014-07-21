@@ -1,6 +1,8 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +12,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemLongClick;
@@ -44,6 +45,7 @@ public class ActivityBapDetail extends Activity {
     private SessionManager session;
     private BapDetailTask bapDetailTask;
     private String kodeMk;
+    private AlertDialog.Builder confirmApprove;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,19 +125,32 @@ public class ActivityBapDetail extends Activity {
     }
 
     @OnItemLongClick(R.id.lvApBap)
-    boolean approveBap(int position) {
-        Toast.makeText(this, "Pertemuan : " + detailBap[position - 1].pertemuan, Toast.LENGTH_LONG).show();
-
-        if (TassUtilities.isConnected(this)) {
-            new BapDetailTask().execute(TassUtilities.uriBuilder(
-                    user.get(SessionManager.KEY_USERNAME),
-                    user.get(SessionManager.KEY_PASSWORD),
-                    "approve",
-                    this.kodeMk,
-                    detailBap[position - 1].pertemuan
-            ));
+    boolean approveBap(final int position) {
+        if (detailBap[position - 1].statusApproveMk.equalsIgnoreCase("Sudah Approve Ketua Kelas")) {
+            TassUtilities.showToastMessage(ActivityBapDetail.this, R.string.bap_detail_aprove_sudah, 0);
         } else {
-            TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+            if (confirmApprove == null) {
+                confirmApprove = new AlertDialog.Builder(this)
+                        .setTitle(getResources().getString(R.string.bap_detail_aprove_dialog_title))
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (TassUtilities.isConnected(ActivityBapDetail.this)) {
+                                    new BapDetailTask().execute(TassUtilities.uriBuilder(
+                                            user.get(SessionManager.KEY_USERNAME),
+                                            user.get(SessionManager.KEY_PASSWORD),
+                                            "approve",
+                                            kodeMk,
+                                            detailBap[position - 1].pertemuan
+                                    ));
+                                } else {
+                                    TassUtilities.showToastMessage(ActivityBapDetail.this, R.string.login_page_alert_no_connection, 0);
+                                }
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null);
+            }
+            confirmApprove.show();
         }
 
         Log.d("URL APPROVAL", TassUtilities.uriBuilder(
@@ -152,10 +167,7 @@ public class ActivityBapDetail extends Activity {
     private class BapDetailTask extends AsyncTask<String, Void, BapDetail[]> {
 
         @Override
-        protected BapDetail[] doInBackground(String... params) {
-            String detailBapApi = TassUtilities.uriBuilder(params[0], params[1], "dftap", params[2]);
-            Log.d("BAP DETAIL API", detailBapApi);
-
+        protected BapDetail[] doInBackground(final String... params) {
             try {
                 switch (params.length) {
                     case 1:
@@ -163,6 +175,8 @@ public class ActivityBapDetail extends Activity {
                         Log.d("Mode Async", "Approve BAP");
                         break;
                     case 3:
+                        String detailBapApi = TassUtilities.uriBuilder(params[0], params[1], "dftap", params[2]);
+                        Log.d("BAP DETAIL API", detailBapApi);
                         detailBap = gson.fromJson(TassUtilities.doGetJson(detailBapApi), BapDetail[].class);
                         Log.d("Mode Async", "Lihat Detail BAP");
                         break;
@@ -173,7 +187,13 @@ public class ActivityBapDetail extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        kosong.setVisibility(View.VISIBLE);
+                        if (params.length == 1) {
+                            TassUtilities.showToastMessage(ActivityBapDetail.this, R.string.bap_detail_gagal_approve, 0);
+                            return;
+                        } else {
+                            kosong.setVisibility(View.VISIBLE);
+                            return;
+                        }
                     }
                 });
             }
@@ -204,6 +224,7 @@ public class ActivityBapDetail extends Activity {
             } else {
                 kosong.setVisibility(View.VISIBLE);
                 lvDetailBap.setVisibility(View.GONE);
+                Log.e("Kesalahan", "Detail BAP bernilai null");
             }
         }
     }

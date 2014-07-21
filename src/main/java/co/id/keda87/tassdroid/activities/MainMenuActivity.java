@@ -244,6 +244,7 @@ public class MainMenuActivity extends Activity {
             Log.d("FRAGMENT", "Fragment TAK mode KM");
         } else if (position == PASSWORD_POSITION) {
             startActivity(new Intent(getApplication(), ActivityGantiPassword.class));
+            this.drawerLayout.closeDrawer(this.drawerList);
             Log.d("ACTIVITY", "Activity Ganti Password created");
         } else {
             Log.d("FRAGMENT", "No fragment created");
