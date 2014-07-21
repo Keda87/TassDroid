@@ -50,11 +50,12 @@ public class BapDetailListAdapter extends BaseAdapter {
             holder = new BapDetailHolder(convertView);
 
             //set typeface
-            holder.namaMatkul.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 1));
+            holder.labelPertemuan.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.labelDosen.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.labelHariTanggal.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.labelWaktu.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.dosen.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
+            holder.pertemuan.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.hariTanggal.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.waktu.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 0));
             holder.status.setTypeface(TassUtilities.getFontFace(convertView.getContext(), 1));
@@ -64,7 +65,7 @@ public class BapDetailListAdapter extends BaseAdapter {
         }
 
         //set value
-        holder.namaMatkul.setText(bapDetails[position].namaMataKuliah);
+        holder.pertemuan.setText(": " + bapDetails[position].pertemuan);
         holder.dosen.setText(": " + bapDetails[position].dosen);
 
         //detect current locale on device and format into current language
@@ -85,8 +86,11 @@ public class BapDetailListAdapter extends BaseAdapter {
     }
 
     static class BapDetailHolder {
-        @InjectView(R.id.apBapMataKuliah)
-        TextView namaMatkul;
+        @InjectView(R.id.apBapLabelPertemuan)
+        TextView labelPertemuan;
+
+        @InjectView(R.id.apBapPertemuan)
+        TextView pertemuan;
 
         @InjectView(R.id.apBapLabelDosen)
         TextView labelDosen;

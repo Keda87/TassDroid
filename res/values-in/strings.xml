@@ -139,4 +139,5 @@
 
     <!--approval BAP-->
     <string name="bap_detail_hari_tanggal">Hari dan Tanggal</string>
+    <string name="bap_detail_pertemuan">Pertemuan</string>
 </resources>

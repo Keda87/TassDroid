@@ -249,6 +249,10 @@ public class TassUtilities {
         return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&kdmk=" + param[0] + "&tipe=1";
     }
 
+    private static String getApproveBap(String nim, String pass, int random, String... param) {
+        return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=dftap&tipe=2&kdmk=" + param[0] + "&pertemuan=" + param[1] + "&status=1";
+    }
+
     /**
      * Fungsi untuk mengenerate alamat url API siap pakai
      *
@@ -297,6 +301,8 @@ public class TassUtilities {
                 return getTassApiURL(nim, password, type[0], random);
             case "ubahpwd":
                 return getUpdatePasswordURL(nim, password, type[0], random, type[1]);
+            case "approve":
+                return getApproveBap(nim, password, random, type[1], type[2]);
             default:
                 return getTassApiURL(nim, password, type[0], random);
         }

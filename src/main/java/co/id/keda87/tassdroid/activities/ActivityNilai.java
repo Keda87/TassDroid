@@ -205,9 +205,9 @@ public class ActivityNilai extends Activity {
             if (nilaiMentahs != null) {
                 NilaiListAdapter adapterNilai = new NilaiListAdapter(ActivityNilai.this, nilaiMentahs);
                 lvNilaiMentah.setAdapter(adapterNilai);
-
                 if (adapterNilai.getCount() > 0) {
                     lvNilaiMentah.setVisibility(View.VISIBLE);
+                    tvNilaiKosong.setVisibility(View.GONE);
                     Log.d("HASIL NILAI MENTAH", "Data telah ditampung ke ListView");
                 } else {
                     tvNilaiKosong.setVisibility(View.VISIBLE);

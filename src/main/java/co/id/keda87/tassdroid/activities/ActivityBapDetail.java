@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemLongClick;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.BapDetailListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -41,6 +43,7 @@ public class ActivityBapDetail extends Activity {
     private HashMap<String, String> user;
     private SessionManager session;
     private BapDetailTask bapDetailTask;
+    private String kodeMk;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class ActivityBapDetail extends Activity {
         this.user = this.session.getUserDetails();
         this.detailBap = new BapDetail[0];
         this.bapDetailTask = new BapDetailTask();
+        this.kodeMk = getIntent().getStringExtra("MK");
 
         kosong.setTypeface(TassUtilities.getFontFace(this, 0));
         kosong.setVisibility(View.GONE);
@@ -72,7 +76,7 @@ public class ActivityBapDetail extends Activity {
             this.bapDetailTask.execute(
                     this.user.get(SessionManager.KEY_USERNAME),
                     this.user.get(SessionManager.KEY_PASSWORD),
-                    getIntent().getStringExtra("MK")
+                    kodeMk
             );
         } else {
             TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
@@ -97,6 +101,7 @@ public class ActivityBapDetail extends Activity {
                 return true;
             case R.id.app_item_refresh:
                 if (TassUtilities.isConnected(this)) {
+                    kosong.setVisibility(View.GONE);
                     this.bapDetailTask = new BapDetailTask();
                     this.bapDetailTask.execute(
                             this.user.get(SessionManager.KEY_USERNAME),
@@ -117,6 +122,33 @@ public class ActivityBapDetail extends Activity {
         return true;
     }
 
+    @OnItemLongClick(R.id.lvApBap)
+    boolean approveBap(int position) {
+        Toast.makeText(this, "Pertemuan : " + detailBap[position - 1].pertemuan, Toast.LENGTH_LONG).show();
+
+        if (TassUtilities.isConnected(this)) {
+            new BapDetailTask().execute(TassUtilities.uriBuilder(
+                    user.get(SessionManager.KEY_USERNAME),
+                    user.get(SessionManager.KEY_PASSWORD),
+                    "approve",
+                    this.kodeMk,
+                    detailBap[position - 1].pertemuan
+            ));
+        } else {
+            TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
+        }
+
+        Log.d("URL APPROVAL", TassUtilities.uriBuilder(
+                        user.get(SessionManager.KEY_USERNAME),
+                        user.get(SessionManager.KEY_PASSWORD),
+                        "approve",
+                        this.kodeMk,
+                        detailBap[position - 1].pertemuan
+                )
+        );
+        return true;
+    }
+
     private class BapDetailTask extends AsyncTask<String, Void, BapDetail[]> {
 
         @Override
@@ -125,7 +157,18 @@ public class ActivityBapDetail extends Activity {
             Log.d("BAP DETAIL API", detailBapApi);
 
             try {
-                detailBap = gson.fromJson(TassUtilities.doGetJson(detailBapApi), BapDetail[].class);
+                switch (params.length) {
+                    case 1:
+                        detailBap = gson.fromJson(TassUtilities.doGetJson(params[0]), BapDetail[].class);
+                        Log.d("Mode Async", "Approve BAP");
+                        break;
+                    case 3:
+                        detailBap = gson.fromJson(TassUtilities.doGetJson(detailBapApi), BapDetail[].class);
+                        Log.d("Mode Async", "Lihat Detail BAP");
+                        break;
+                    default:
+                        break;
+                }
             } catch (JsonSyntaxException e) {
                 runOnUiThread(new Runnable() {
                     @Override
@@ -153,6 +196,7 @@ public class ActivityBapDetail extends Activity {
                 lvDetailBap.setAdapter(adapter);
                 if (adapter.getCount() > 0) {
                     lvDetailBap.setVisibility(View.VISIBLE);
+                    kosong.setVisibility(View.GONE);
                 } else {
                     kosong.setVisibility(View.VISIBLE);
                     lvDetailBap.setVisibility(View.GONE);

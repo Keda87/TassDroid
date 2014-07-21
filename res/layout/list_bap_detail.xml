@@ -10,15 +10,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="-"
-            android:id="@+id/apBapMataKuliah" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:text="@string/bap_detail_pertemuan"
+            android:id="@+id/apBapLabelPertemuan" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/detail_absen_dosen"
-            android:id="@+id/apBapLabelDosen" android:layout_below="@+id/apBapMataKuliah" android:layout_alignParentLeft="true"
+            android:id="@+id/apBapLabelDosen" android:layout_below="@+id/apBapLabelPertemuan" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
@@ -66,4 +66,11 @@
             android:layout_alignTop="@+id/apBapWaktu"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=": -"
+            android:id="@+id/apBapPertemuan" android:layout_alignParentTop="true" android:layout_alignLeft="@+id/apBapDosen"
+            android:layout_alignStart="@+id/apBapDosen"/>
 </RelativeLayout>
