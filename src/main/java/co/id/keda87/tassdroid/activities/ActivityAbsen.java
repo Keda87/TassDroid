@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class ActivityAbsen extends Activity {
     private SessionManager session;
     private HashMap<String, String> user;
     private AbsenTask absenTask;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,12 @@ public class ActivityAbsen extends Activity {
         this.absenTask = new AbsenTask();
         this.user = this.session.getUserDetails();
         this.absensi = new Absensi[0];
+        this.preferences = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);
+
+        //launched showcase at the first time launch
+        if (this.preferences.getBoolean("showcase_absen", true)) {
+            startActivity(new Intent(this, ShowcaseItemActivity.class));
+        }
 
         this.tvKosong.setVisibility(View.GONE);
         this.tvKosong.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));

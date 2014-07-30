@@ -77,5 +77,8 @@
         <activity
                 android:name=".activities.ActivityBapDetail"
                 android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
+        <activity
+                android:name=".activities.ShowcaseItemActivity"
+                android:theme="@style/Transparent"/>
     </application>
 </manifest>
