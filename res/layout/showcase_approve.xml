@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/showcase_approve"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textStyle="bold" android:gravity="center_horizontal"/>
+    <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/showcase_button_ok"
+            android:id="@+id/buttonShowApprove"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/custom_button_showcase"/>
+</FrameLayout>

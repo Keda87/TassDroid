@@ -90,6 +90,7 @@
     <string name="showcase_tugas_nav">GESER KE KANAN ATAU KE KIRI UNTUK PINDAH MENU</string>
     <string name="showcase_button_ok">MENGERTI !</string>
     <string name="showcase_item_pres">PILIH TIAP ITEM UNTUK LEBIH DETAIL</string>
+    <string name="showcase_approve">TAHAN TIAP ITEM UNTUK APPROVE</string>
 
     <!--activity presensi absen-->
     <string name="act_absen_persentase">Persentase:</string>

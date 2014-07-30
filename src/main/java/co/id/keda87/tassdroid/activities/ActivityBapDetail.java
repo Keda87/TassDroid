@@ -3,6 +3,8 @@ package co.id.keda87.tassdroid.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +48,7 @@ public class ActivityBapDetail extends Activity {
     private BapDetailTask bapDetailTask;
     private String kodeMk;
     private AlertDialog.Builder confirmApprove;
+    private SharedPreferences preferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,13 @@ public class ActivityBapDetail extends Activity {
         this.detailBap = new BapDetail[0];
         this.bapDetailTask = new BapDetailTask();
         this.kodeMk = getIntent().getStringExtra("MK");
+        this.preferences = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);
+
+        //launched showcase at the first time launch
+        if (this.preferences.getBoolean("showcase_approve", true)) {
+            Intent i = new Intent(this, ShowcaseApproveActivity.class);
+            startActivity(i);
+        }
 
         kosong.setTypeface(TassUtilities.getFontFace(this, 0));
         kosong.setVisibility(View.GONE);

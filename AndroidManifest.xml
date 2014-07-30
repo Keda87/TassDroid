@@ -80,5 +80,8 @@
         <activity
                 android:name=".activities.ShowcaseItemActivity"
                 android:theme="@style/Transparent"/>
+        <activity
+                android:name=".activities.ShowcaseApproveActivity"
+                android:theme="@style/Transparent"/>
     </application>
 </manifest>
