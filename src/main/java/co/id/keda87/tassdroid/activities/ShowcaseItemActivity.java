@@ -35,7 +35,17 @@ public class ShowcaseItemActivity extends Activity {
 
     @OnClick(R.id.buttonShowAbsen)
     void closeShowcase() {
-        this.preferences.edit().putBoolean("showcase_absen", false).commit();
+        switch (getIntent().getStringExtra("pref")) {
+            case "absen":
+                this.preferences.edit().putBoolean("showcase_absen", false).commit();
+                break;
+            case "nilai":
+                this.preferences.edit().putBoolean("showcase_nilai", false).commit();
+                break;
+            case "bap":
+                this.preferences.edit().putBoolean("showcase_bap", false).commit();
+                break;
+        }
         finish();
     }
 }

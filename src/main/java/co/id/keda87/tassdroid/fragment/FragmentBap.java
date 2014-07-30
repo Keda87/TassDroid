@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.activities.ActivityBapDetail;
+import co.id.keda87.tassdroid.activities.ShowcaseItemActivity;
 import co.id.keda87.tassdroid.adapter.BapListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
@@ -46,6 +48,7 @@ public class FragmentBap extends Fragment {
     private SessionManager session;
     private HashMap<String, String> user;
     private ApproveBapTask bapTask;
+    private SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +60,14 @@ public class FragmentBap extends Fragment {
         this.session = new SessionManager(v.getContext());
         this.user = this.session.getUserDetails();
         this.bapTask = new ApproveBapTask();
+        this.preferences = getActivity().getSharedPreferences("co.id.keda87.tassdroid", getActivity().MODE_PRIVATE);
+
+        //launched showcase at the first time launch
+        if (this.preferences.getBoolean("showcase_bap", true)) {
+            Intent i = new Intent(v.getContext(), ShowcaseItemActivity.class);
+            i.putExtra("pref", "bap");
+            startActivity(i);
+        }
 
         this.tvBapKosong.setTypeface(TassUtilities.getFontFace(v.getContext(), 0));
         this.tvBapKosong.setVisibility(View.GONE);

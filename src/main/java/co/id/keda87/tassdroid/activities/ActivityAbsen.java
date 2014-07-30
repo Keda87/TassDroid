@@ -65,7 +65,9 @@ public class ActivityAbsen extends Activity {
 
         //launched showcase at the first time launch
         if (this.preferences.getBoolean("showcase_absen", true)) {
-            startActivity(new Intent(this, ShowcaseItemActivity.class));
+            Intent i = new Intent(this, ShowcaseItemActivity.class);
+            i.putExtra("pref", "absen");
+            startActivity(i);
         }
 
         this.tvKosong.setVisibility(View.GONE);

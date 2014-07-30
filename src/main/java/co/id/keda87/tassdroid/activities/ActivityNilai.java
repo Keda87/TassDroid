@@ -2,6 +2,7 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class ActivityNilai extends Activity {
     private HashMap<String, String> userCredential;
     private NilaiTask nilaiTask;
     private NilaiMentah[] nilaiList;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,14 @@ public class ActivityNilai extends Activity {
         this.sessionManager = new SessionManager(this);
         this.userCredential = sessionManager.getUserDetails();
         this.nilaiList = new NilaiMentah[0];
+        this.preferences = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);
+
+        //launched showcase at the first time launch
+        if (this.preferences.getBoolean("showcase_nilai", true)) {
+            Intent i = new Intent(this, ShowcaseItemActivity.class);
+            i.putExtra("pref", "nilai");
+            startActivity(i);
+        }
 
         this.tvNilaiKosong.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tvNilaiKosong.setVisibility(View.GONE);
