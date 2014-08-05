@@ -143,6 +143,8 @@
     <string name="bap_detail_hari_tanggal">Day and Date</string>
     <string name="bap_detail_pertemuan">Meeting</string>
     <string name="bap_detail_gagal_approve">Failed to approve BAP</string>
-    <string name="bap_detail_aprove_dialog_title">Approve BAP ?</string>
+    <string name="bap_detail_sukses_approve">BAP successfully approved</string>
+    <string name="bap_detail_pesan">BAP approve ? </string>
+    <string name="bap_detail_aprove_dialog_title">Approve</string>
     <string name="bap_detail_aprove_sudah">Meeting already approved</string>
 </resources>
