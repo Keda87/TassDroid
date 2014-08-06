@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -24,12 +23,12 @@ import java.util.HashMap;
  */
 public class ActivityBiodataEdit extends Activity {
 
-    @InjectView(R.id.bioEditTelp)
-    EditText telepon;
-    @InjectView(R.id.bioJudulEdit)
-    TextView headerLabel;
-    @InjectView(R.id.spinnerJenisKelamin)
-    Spinner jenisKelamin;
+    @InjectView(R.id.bioEditNama)
+    EditText nama;
+    @InjectView(R.id.bioEditAsal)
+    TextView asal;
+    @InjectView(R.id.bioEditTanggal)
+    TextView tanggal;
     @InjectView(R.id.bioEditButton)
     Button btEditBio;
 
@@ -39,18 +38,21 @@ public class ActivityBiodataEdit extends Activity {
 
     @OnClick(R.id.bioEditButton)
     void aksiUpdateBiodata() {
-        if (!this.telepon.getText().toString().trim().isEmpty() && this.jenisKelamin.getSelectedItemPosition() != 0) {
+        if (!this.nama.getText().toString().trim().isEmpty() && !this.asal.getText().toString().trim().isEmpty() &&
+                !this.tanggal.getText().toString().trim().isEmpty()) {
             if (TassUtilities.isConnected(this)) {
                 new EditBioTask().execute(
                         this.user.get(SessionManager.KEY_USERNAME),
                         this.user.get(SessionManager.KEY_PASSWORD),
-                        this.telepon.getText().toString().trim(),
-                        this.jenisKelamin.getSelectedItemPosition() == 1 ? "L" : "P"
+                        this.nama.getText().toString().trim(),
+                        this.asal.getText().toString().trim(),
+                        this.tanggal.getText().toString().trim()
                 );
             } else {
                 TassUtilities.showToastMessage(this, R.string.login_page_alert_no_connection, 0);
             }
         } else {
+            TassUtilities.showToastMessage(this, R.string.bio_edit_required, 0);
             Log.e("KESALAHAN", "Isi yang bener bro formnya");
             return;
         }
@@ -69,13 +71,15 @@ public class ActivityBiodataEdit extends Activity {
 
         this.dialog.setCancelable(false);
         this.dialog.setMessage(getResources().getString(R.string.bio_edit_update_loading));
-        this.telepon.setTypeface(TassUtilities.getFontFace(this, 0));
-        this.headerLabel.setTypeface(TassUtilities.getFontFace(this, 1));
+        this.nama.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.asal.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.tanggal.setTypeface(TassUtilities.getFontFace(this, 0));
         this.btEditBio.setTypeface(TassUtilities.getFontFace(this, 0));
 
         //populate bio edit form
-        this.telepon.setText(getIntent().getStringExtra("editPhone"));
-        this.jenisKelamin.setSelection(getIntent().getStringExtra("editSex").equals("L") ? 1 : 2);
+        this.nama.setText(getIntent().getStringExtra("editNama"));
+        this.asal.setText(getIntent().getStringExtra("editAsal"));
+        this.tanggal.setText(getIntent().getStringExtra("editTanggal"));
 
         getActionBar().setTitle(getResources().getString(R.string.bio_edit_header));
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -96,8 +100,8 @@ public class ActivityBiodataEdit extends Activity {
         @Override
         protected Void doInBackground(String... params) {
             //urutan index params
-            //0 user, 1 pass, 2 telp, 3 jenisKelamin
-            String bioUpdURL = TassUtilities.uriBuilder(params[0], params[1], "biodata", params[2], params[3]);
+            //0 user, 1 pass, 2 telp, 3 tanggal
+            String bioUpdURL = TassUtilities.uriBuilder(params[0], params[1], "biodata", params[2], params[3], params[4]);
             Log.d("URL UPDATE BIO", bioUpdURL);
             try {
                 TassUtilities.doGetJson(bioUpdURL);

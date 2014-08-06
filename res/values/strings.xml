@@ -130,14 +130,13 @@
     <!--activity edit bio-->
     <string name="bio_edit_header">Bio Edit</string>
     <string name="error_bind_data">No data to send</string>
-    <string-array name="bio_edit_kelamin">
-        <item> - </item>
-        <item>Male</item>
-        <item>Female</item>
-    </string-array>
     <string name="bio_edit_berhasil">Bio has successfully updated</string>
     <string name="bio_edit_gagal">Failed to update bio</string>
     <string name="bio_edit_update_loading">Updating..</string>
+    <string name="bio_edit_nama">Name</string>
+    <string name="bio_edit_tempat">Origin</string>
+    <string name="bio_edit_tanggal">Birth date, yyyy-mm-dd</string>
+    <string name="bio_edit_required">All forms are required</string>
 
     <!--approval BAP-->
     <string name="bap_detail_hari_tanggal">Day and Date</string>

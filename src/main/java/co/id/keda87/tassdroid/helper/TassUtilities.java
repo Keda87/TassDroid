@@ -21,6 +21,8 @@ import org.apache.http.params.HttpParams;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -216,7 +218,6 @@ public class TassUtilities {
             client.getConnectionManager().shutdown();
             Log.d("CONNECTION", "Koneksi ditutup..");
         }
-
         return hasil;
     }
 
@@ -237,8 +238,17 @@ public class TassUtilities {
         return BASE_API_URL + md5(password) + "&nim=" + nim + "&type=" + type + "&kdmk=" + kodeMk + "&a=" + random + "&hsl=" + generateToken(random);
     }
 
-    private static String getUpdateBioURL(String nim, String pass, String type, int random, String... param) {
-        return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&tipeupdate=1&telp=" + param[0] + "&jk=" + param[1] + "&a=" + random + "&hsl=" + generateToken(random);
+    private static String getUpdateBioURL(String nim, String pass, String type, int random, String... args) {
+        //return BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=" + type + "&tipeupdate=1&telp=" + param[0] + "&jk=" + param[1] + "&a=" + random + "&hsl=" + generateToken(random);
+        String urlupdate = null;
+        try {
+            urlupdate = BASE_API_URL + md5(pass) + "&nim=" + nim + "&type=biodata" + "&tipeupdate=1&a=" + random + "&hsl"
+                    + generateToken(random) + "&nmmhs=" + URLEncoder.encode(args[0], "utf-8") + "&tmpmhs="
+                    + URLEncoder.encode(args[1], "utf-8") + "&tgllahir=" + args[2];
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return urlupdate;
     }
 
     private static String getUpdatePasswordURL(String nim, String pass, String type, int random, String newPassword) {
@@ -277,7 +287,7 @@ public class TassUtilities {
                 }
             case "biodata":
                 if (type.length > 1) {
-                    return getUpdateBioURL(nim, password, type[0], random, type[1], type[2]);
+                    return getUpdateBioURL(nim, password, type[0], random, type[1], type[2], type[3]);
                 } else {
                     return getTassApiURL(nim, password, type[0], random);
                 }
@@ -382,6 +392,6 @@ public class TassUtilities {
         String pwd = "240294";
 
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap", "MI2193"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata", "ADIYAT MUBARAK", "MALANG", "1992-12-10"));
     }
 }

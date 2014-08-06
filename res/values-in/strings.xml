@@ -130,14 +130,13 @@
     <!--activity edit bio-->
     <string name="bio_edit_header">Sunting Biodata</string>
     <string name="error_bind_data">Tidak ada data untuk dikirim</string>
-    <string-array name="bio_edit_kelamin">
-        <item> - </item>
-        <item>Laki laki</item>
-        <item>Perempuan</item>
-    </string-array>
     <string name="bio_edit_berhasil">Biodata berhasil diperbarui</string>
     <string name="bio_edit_gagal">Gagal memperbarui biodata</string>
     <string name="bio_edit_update_loading">Memperbarui..</string>
+    <string name="bio_edit_nama">Nama</string>
+    <string name="bio_edit_tempat">Tempat Asal</string>
+    <string name="bio_edit_tanggal">Tanggal lahir, yyyy-mm-dd</string>
+    <string name="bio_edit_required">Semua form wajib terisi</string>
 
     <!--approval BAP-->
     <string name="bap_detail_hari_tanggal">Hari dan Tanggal</string>

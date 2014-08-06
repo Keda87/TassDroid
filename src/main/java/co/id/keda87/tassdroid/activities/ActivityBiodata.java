@@ -175,10 +175,10 @@ public class ActivityBiodata extends Activity {
                 }
                 return true;
             case R.id.app_item_editbio:
-                if (this.biodata.telepon != null && biodata.jenisKelamin != null) {
+                if (this.biodata.nama != null && biodata.tempatLahir != null) {
                     Intent intent = new Intent(this, ActivityBiodataEdit.class);
-                    intent.putExtra("editPhone", bioPhone.getText());
-                    intent.putExtra("editSex", biodata.jenisKelamin);
+                    intent.putExtra("editNama", bioNama.getText());
+                    intent.putExtra("editAsal", bioTempatLahir.getText());
                     startActivity(intent);
                 } else {
                     TassUtilities.showToastMessage(this, R.string.error_bind_data, 0);

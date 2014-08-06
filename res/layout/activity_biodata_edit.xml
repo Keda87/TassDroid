@@ -26,26 +26,42 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
+                android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/bioEditTelp"
+                android:id="@+id/bioEditNama"
                 android:layout_gravity="center_horizontal"
-                android:hint="@string/bio_label_telepon"
+                android:hint="@string/bio_edit_nama"
                 android:background="@drawable/edit_text_top"
                 android:padding="10dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp" android:layout_marginTop="10dp"/>
-        <Spinner
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"/>
+        <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:background="@drawable/edit_text_bottom"
-                android:id="@+id/spinnerJenisKelamin"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/bioEditAsal"
                 android:layout_gravity="center_horizontal"
-                android:entries="@array/bio_edit_kelamin"
-                android:spinnerStyle="@android:style/Widget.Spinner.DropDown"
+                android:hint="@string/bio_edit_tempat"
+                android:background="@drawable/edit_text_mid"
+                android:padding="10dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/bioEditTanggal"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/bio_edit_tanggal"
+                android:background="@drawable/edit_text_bottom"
+                android:padding="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
