@@ -144,7 +144,7 @@
     <string name="bap_detail_pertemuan">Pertemuan</string>
     <string name="bap_detail_gagal_approve">Gagal terima BAP</string>
     <string name="bap_detail_sukses_approve">BAP berhasil di setujui</string>
-    <string name="bap_detail_pesan">Setujui BAP?</string>
+    <string name="bap_detail_pesan">Setujui BAP pada pertemuan: </string>
     <string name="bap_detail_aprove_dialog_title">Setujui</string>
     <string name="bap_detail_aprove_sudah">Pertemuan telah di setujui</string>
 </resources>

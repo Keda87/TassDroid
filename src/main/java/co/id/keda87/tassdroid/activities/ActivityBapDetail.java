@@ -149,11 +149,12 @@ public class ActivityBapDetail extends Activity implements DialogInterface.OnCli
             if (confirmApprove == null) {
                 confirmApprove = new AlertDialog.Builder(this)
                         .setTitle(getResources().getString(R.string.bap_detail_aprove_dialog_title))
-                        .setMessage(getResources().getString(R.string.bap_detail_pesan))
                         .setPositiveButton(android.R.string.yes, this)
                         .setNegativeButton(android.R.string.no, null);
             }
-            confirmApprove.show();
+            confirmApprove
+                    .setMessage(getResources().getString(R.string.bap_detail_pesan) + holder.position)
+                    .show();
         }
         return true;
     }
