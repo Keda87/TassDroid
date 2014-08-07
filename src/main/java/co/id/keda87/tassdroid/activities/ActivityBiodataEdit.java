@@ -1,14 +1,15 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -16,25 +17,30 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * Created by Keda87 on 7/14/2014.
  */
-public class ActivityBiodataEdit extends Activity {
+public class ActivityBiodataEdit extends Activity implements DatePickerDialog.OnDateSetListener {
 
     @InjectView(R.id.bioEditNama)
     EditText nama;
     @InjectView(R.id.bioEditAsal)
-    TextView asal;
+    EditText asal;
     @InjectView(R.id.bioEditTanggal)
-    TextView tanggal;
+    EditText tanggal;
     @InjectView(R.id.bioEditButton)
     Button btEditBio;
 
     private SessionManager session;
     private HashMap<String, String> user;
     private ProgressDialog dialog;
+    private DatePickerDialog picker;
+    private Calendar calendar;
 
     @OnClick(R.id.bioEditButton)
     void aksiUpdateBiodata() {
@@ -58,6 +64,14 @@ public class ActivityBiodataEdit extends Activity {
         }
     }
 
+    @OnClick(R.id.bioEditTanggal)
+    void dateDialogPicker() {
+        if (picker == null) {
+            picker = new DatePickerDialog(this, this, calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
+        }
+        picker.show();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +89,7 @@ public class ActivityBiodataEdit extends Activity {
         this.asal.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tanggal.setTypeface(TassUtilities.getFontFace(this, 0));
         this.btEditBio.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.calendar = Calendar.getInstance();
 
         //populate bio edit form
         this.nama.setText(getIntent().getStringExtra("editNama"));
@@ -93,6 +108,16 @@ public class ActivityBiodataEdit extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        this.calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        this.calendar.set(Calendar.MONTH, monthOfYear);
+        this.calendar.set(Calendar.YEAR, year);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        tanggal.setText(sdf.format(this.calendar.getTime()));
     }
 
     private class EditBioTask extends AsyncTask<String, Void, Void> {

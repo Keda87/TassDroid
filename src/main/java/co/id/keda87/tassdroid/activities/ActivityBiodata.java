@@ -39,6 +39,8 @@ public class ActivityBiodata extends Activity {
     TextView bioNim;
     @InjectView(R.id.bioTempatLahir)
     TextView bioTempatLahir;
+    @InjectView(R.id.bioTanggalLahir)
+    TextView bioTanggalLahir;
     @InjectView(R.id.bioStatus)
     TextView bioStatus;
     @InjectView(R.id.bioJenisKelamin)
@@ -65,7 +67,8 @@ public class ActivityBiodata extends Activity {
     ImageView bioFoto;
 
     @InjectViews({R.id.bioLstatus, R.id.bioLtempatLahir, R.id.bioLkelamin, R.id.bioLtelp, R.id.bioLortuTelp, R.id.bioLemail,
-            R.id.bioLalamat, R.id.bioLsemester, R.id.bioLprimer, R.id.bioLsekunder, R.id.bioLdosenWali, R.id.bioLipk})
+            R.id.bioLalamat, R.id.bioLsemester, R.id.bioLprimer, R.id.bioLsekunder, R.id.bioLdosenWali, R.id.bioLipk,
+            R.id.bioLtanggalLahir})
     List<TextView> labelBio;
 
     private BiodataTask bioTask;
@@ -106,6 +109,7 @@ public class ActivityBiodata extends Activity {
         this.bioSekunder.setTypeface(TassUtilities.getFontFace(this, 0));
         this.bioDosenWali.setTypeface(TassUtilities.getFontFace(this, 0));
         this.bioIpk.setTypeface(TassUtilities.getFontFace(this, 0));
+        this.bioTanggalLahir.setTypeface(TassUtilities.getFontFace(this, 0));
 
         //set label typeface throught for loop
         for (TextView label : this.labelBio) {
@@ -179,6 +183,7 @@ public class ActivityBiodata extends Activity {
                     Intent intent = new Intent(this, ActivityBiodataEdit.class);
                     intent.putExtra("editNama", bioNama.getText());
                     intent.putExtra("editAsal", bioTempatLahir.getText());
+                    intent.putExtra("editTanggal", bioTanggalLahir.getText());
                     startActivity(intent);
                 } else {
                     TassUtilities.showToastMessage(this, R.string.error_bind_data, 0);
@@ -260,6 +265,7 @@ public class ActivityBiodata extends Activity {
                 bioNama.setText(biodata.nama);
                 bioNim.setText(biodata.nim);
                 bioTempatLahir.setText(biodata.tempatLahir);
+                bioTanggalLahir.setText(biodata.tanggalLahir);
                 bioStatus.setText(biodata.status);
                 try {
                     bioJenisKelamin.setText(getLocalizedSex(biodata.jenisKelamin, Locale.getDefault().getDisplayLanguage()));

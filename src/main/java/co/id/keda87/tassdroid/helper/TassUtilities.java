@@ -384,14 +384,14 @@ public class TassUtilities {
 
     public static void main(String[] args) {
 //        nim adit
-//        String nim = "6301114139";
-//        String pwd = "asaibae";
+        String nim = "6301114139";
+        String pwd = "asaibae";
 
 //        nim percobaan
-        String nim = "6301124173";
-        String pwd = "240294";
+//        String nim = "6301124173";
+//        String pwd = "240294";
 
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
-        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata", "ADIYAT MUBARAK", "MALANG", "1992-12-10"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
     }
 }

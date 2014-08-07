@@ -115,6 +115,7 @@
 
     <!--activity bio-->
     <string name="bio_label_tempat_lahir">Birth Place</string>
+    <string name="bio_label_tanggal_lahir">Birth Date</string>
     <string name="bio_label_status">Status</string>
     <string name="bio_label_jenis_kelamin">Sex</string>
     <string name="bio_label_telepon">Phone</string>

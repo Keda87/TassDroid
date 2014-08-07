@@ -37,6 +37,9 @@ public class Biodata {
     @SerializedName("EMAIL")
     public String email;
 
+    @SerializedName("TANGGAL_LAHIR")
+    public String tanggalLahir;
+
     @SerializedName("ALAMAT")
     public String alamat;
 
