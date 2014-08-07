@@ -164,7 +164,7 @@ public class ActivityAbsen extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_refresh_chart, menu);
+        getMenuInflater().inflate(R.menu.menu_refresh, menu);
         return true;
     }
 
