@@ -57,6 +57,9 @@ public class MyActivity extends Activity {
         inpUser.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
         inpPass.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
         btLogin.setTypeface(TassUtilities.getFontFace(getApplicationContext(), 0));
+
+        inpUser.setError(getResources().getString(R.string.login_user_field), getResources().getDrawable(android.R.drawable.presence_busy));
+        inpPass.setError(getResources().getString(R.string.login_pass_field), getResources().getDrawable(android.R.drawable.presence_busy));
     }
 
     @Override

@@ -11,6 +11,8 @@
     <string name="login_page_alert_invalid">Invalid Login</string>
     <string name="login_page_alert_no_connection">Connection Unavailable</string>
     <string name="error_time_request">Internal server error</string>
+    <string name="login_user_field">Username is required</string>
+    <string name="login_pass_field">Password is required</string>
 
     <!--login activity string value-->
     <string name="login_page_button_login">Login</string>

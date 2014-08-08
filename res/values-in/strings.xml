@@ -11,6 +11,8 @@
     <string name="login_page_alert_invalid">Login tidak valid</string>
     <string name="login_page_alert_no_connection">Tidak ada koneksi</string>
     <string name="error_time_request">Kesalahan pada server</string>
+    <string name="login_user_field">Nama pengguna wajib diisi</string>
+    <string name="login_pass_field">Kata sandi wajib diisi</string>
 
     <!--login activity string value-->
     <string name="login_page_button_login">Masuk</string>
