@@ -188,12 +188,12 @@ public class TassUtilities {
 
         //set request timeout
         HttpParams httpParams = new BasicHttpParams();
-        int timeout = (int) (30 * DateUtils.SECOND_IN_MILLIS);
-        HttpConnectionParams.setConnectionTimeout(httpParams, timeout);
-        HttpConnectionParams.setSoTimeout(httpParams, timeout);
+        HttpConnectionParams.setConnectionTimeout(httpParams, 20000);
+        HttpConnectionParams.setSoTimeout(httpParams, 30000);
 
         HttpClient client = new DefaultHttpClient(httpParams);
         HttpGet request = new HttpGet(uri);
+        request.setParams(httpParams);
         request.setHeader("Content-type", "application/json");
 
         try {

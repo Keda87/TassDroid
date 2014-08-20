@@ -155,6 +155,7 @@ public class ActivityJadwal extends Activity {
                 lvJadwal.setAdapter(adapterJadwal);
                 if (adapterJadwal.getCount() > 0) {
                     lvJadwal.setVisibility(View.VISIBLE);
+                    tvUnload.setVisibility(View.GONE);
                     Log.d("JADWAL", "Data tidak kosong kok ;)");
                 } else {
                     tvUnload.setVisibility(View.VISIBLE);
