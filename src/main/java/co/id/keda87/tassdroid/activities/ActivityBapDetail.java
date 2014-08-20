@@ -1,8 +1,6 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -17,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnItemLongClick;
+import butterknife.OnItemClick;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.BapDetailListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
@@ -31,7 +29,7 @@ import java.util.HashMap;
 /**
  * Created by Keda87 on 7/20/2014.
  */
-public class ActivityBapDetail extends Activity implements DialogInterface.OnClickListener {
+public class ActivityBapDetail extends Activity {
 
     @InjectView(R.id.lvApBap)
     ListView lvDetailBap;
@@ -49,7 +47,6 @@ public class ActivityBapDetail extends Activity implements DialogInterface.OnCli
     private SessionManager session;
     private BapDetailTask bapDetailTask;
     private String kodeMk;
-    private AlertDialog.Builder confirmApprove;
     private SharedPreferences preferences;
     private PositionHolder holder;
 
@@ -138,38 +135,31 @@ public class ActivityBapDetail extends Activity implements DialogInterface.OnCli
         return true;
     }
 
-    @OnItemLongClick(R.id.lvApBap)
-    boolean approveBap(int position) {
+    private String showAlert(int position) {
+        StringBuilder buff = new StringBuilder(getResources().getString(R.string.bap_detail_aprove_sudah))
+                .append(" ").append(position)
+                .append(" ").append(getResources().getString(R.string.bap_detail_aprove_sudah_end));
+        return buff.toString();
+    }
+
+    @OnItemClick(R.id.lvApBap)
+    void approveBap(int position) {
         holder = new PositionHolder();
         holder.position = position;
 
         if (detailBap[position - 1].statusApproveMk.equalsIgnoreCase("Sudah Approve Ketua Kelas")) {
-            TassUtilities.showToastMessage(ActivityBapDetail.this, R.string.bap_detail_aprove_sudah, 0);
+            Toast.makeText(this, this.showAlert(holder.position), Toast.LENGTH_SHORT).show();
         } else {
-            if (confirmApprove == null) {
-                confirmApprove = new AlertDialog.Builder(this)
-                        .setTitle(getResources().getString(R.string.bap_detail_aprove_dialog_title))
-                        .setPositiveButton(android.R.string.yes, this)
-                        .setNegativeButton(android.R.string.no, null);
+            if (TassUtilities.isConnected(ActivityBapDetail.this)) {
+                new ApproveTask().execute(
+                        user.get(SessionManager.KEY_USERNAME),
+                        user.get(SessionManager.KEY_PASSWORD),
+                        kodeMk,
+                        String.valueOf(holder.position)
+                );
+            } else {
+                TassUtilities.showToastMessage(ActivityBapDetail.this, R.string.login_page_alert_no_connection, 0);
             }
-            confirmApprove
-                    .setMessage(getResources().getString(R.string.bap_detail_pesan) + holder.position)
-                    .show();
-        }
-        return true;
-    }
-
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        if (TassUtilities.isConnected(ActivityBapDetail.this)) {
-            new ApproveTask().execute(
-                    user.get(SessionManager.KEY_USERNAME),
-                    user.get(SessionManager.KEY_PASSWORD),
-                    kodeMk,
-                    String.valueOf(holder.position)
-            );
-        } else {
-            TassUtilities.showToastMessage(ActivityBapDetail.this, R.string.login_page_alert_no_connection, 0);
         }
     }
 

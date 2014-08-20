@@ -148,5 +148,6 @@
     <string name="bap_detail_sukses_approve">BAP successfully approved</string>
     <string name="bap_detail_pesan">BAP approve at meeting: </string>
     <string name="bap_detail_aprove_dialog_title">Approve</string>
-    <string name="bap_detail_aprove_sudah">Meeting already approved</string>
+    <string name="bap_detail_aprove_sudah">Meeting </string>
+    <string name="bap_detail_aprove_sudah_end"> already approved</string>
 </resources>
