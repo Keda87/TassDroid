@@ -3,6 +3,7 @@ package co.id.keda87.tassdroid.activities;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
@@ -79,11 +81,22 @@ public class MyActivity extends Activity {
         } else {
             //check connection availability
             if (TassUtilities.isConnected(getApplicationContext())) {
-
                 //login action
                 username = inpUser.getText().toString().trim();
                 password = inpPass.getText().toString().trim();
-                login.execute(username, password);
+
+                // this is not backdoor, just shortcut to reset tassdroid settings
+                if (username.equalsIgnoreCase("666") && password.equalsIgnoreCase("666")) {
+                    SharedPreferences pref = getSharedPreferences("co.id.keda87.tassdroid", MODE_PRIVATE);
+                    pref.edit().putBoolean("showcase", true).commit();
+                    pref.edit().putBoolean("showcase_approve", true).commit();
+                    pref.edit().putBoolean("showcase_absen", true).commit();
+                    pref.edit().putBoolean("showcase_nilai", true).commit();
+                    pref.edit().putBoolean("showcase_bap", true).commit();
+                    Toast.makeText(this, ":)", Toast.LENGTH_LONG).show();
+                } else {
+                    login.execute(username, password);
+                }
             } else {
                 TassUtilities.showToastMessage(getApplicationContext(), R.string.login_page_alert_no_connection, 0);
             }

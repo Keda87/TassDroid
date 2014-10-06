@@ -393,5 +393,6 @@ public class TassUtilities {
 
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "ubahpwd", "54321"));
     }
 }
