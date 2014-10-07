@@ -21,6 +21,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.koushikdutta.ion.Ion;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -257,7 +260,7 @@ public class ActivityBiodata extends Activity {
         protected void onPostExecute(Biodata biodata) {
             super.onPostExecute(biodata);
 
-            if (dialog.isShowing() && dialog != null) {
+            if (dialog.isShowing()) {
                 dialog.dismiss();
             }
 
@@ -265,7 +268,18 @@ public class ActivityBiodata extends Activity {
                 bioNama.setText(biodata.nama);
                 bioNim.setText(biodata.nim);
                 bioTempatLahir.setText(biodata.tempatLahir);
-                bioTanggalLahir.setText(biodata.tanggalLahir);
+
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
+                    Date date = sdf.parse(biodata.tanggalLahir);
+                    System.out.println(sdf.format(date));
+
+                    SimpleDateFormat fr = new SimpleDateFormat("dd MMM yyyy");
+                    bioTanggalLahir.setText(fr.format(date));
+                }catch(Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
                 bioStatus.setText(biodata.status);
                 try {
                     bioJenisKelamin.setText(getLocalizedSex(biodata.jenisKelamin, Locale.getDefault().getDisplayLanguage()));
