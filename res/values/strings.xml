@@ -150,4 +150,9 @@
     <string name="bap_detail_aprove_dialog_title">Approve</string>
     <string name="bap_detail_aprove_sudah">Meeting </string>
     <string name="bap_detail_aprove_sudah_end"> already approved</string>
+
+    <!--notification-->
+    <string name="notif_title">Task Notification</string>
+    <string name="notif_content">Task available</string>
+    <string name="notif_thicker">Notification!</string>
 </resources>

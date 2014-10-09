@@ -21,7 +21,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
@@ -65,8 +64,12 @@ public class MainMenuActivity extends Activity {
     private SliderListAdapter sliderAdapter;
     private SessionManager sessionManager;
     private SharedPreferences preferences;
-    private SessionManager session;
     private Integer TUGAS_COUNT = 0;
+
+    SessionManager session;
+    Gson gson;
+    String username;
+    String password;
 
     @Override
     public void onBackPressed() {
@@ -96,7 +99,8 @@ public class MainMenuActivity extends Activity {
         } else {
             Log.d("SESSION", "Masih ada session tersimpan");
             if (TassUtilities.isConnected(this)) {
-                new CheckTugasTask().execute("tgsi", "tgsk");
+                new CheckIndividu().execute();
+                new CheckKelompok().execute();
             }
         }
     }
@@ -108,23 +112,15 @@ public class MainMenuActivity extends Activity {
         setContentView(R.layout.main_menu_activity);
         ButterKnife.inject(this);
 
+        session = new SessionManager(MainMenuActivity.this);
+        gson = new Gson();
+        username = session.getUserDetails().get(SessionManager.KEY_USERNAME);
+        password = session.getUserDetails().get(SessionManager.KEY_PASSWORD);
+
         // check if tugas count > 0, display the notification
         if (TUGAS_COUNT > 0) {
 
-            // create notification
-            this.notification = new Notification.Builder(getApplicationContext())
-                    .setContentTitle(getResources().getString(R.string.notif_title))
-                    .setContentText(TUGAS_COUNT + " " + getResources().getString(R.string.notif_content))
-                    .setTicker(getResources().getString(R.string.notif_thicker))
-                    .setWhen(System.currentTimeMillis())
-                    .setDefaults(Notification.DEFAULT_SOUND)
-                    .setSmallIcon(R.drawable.ic_tugas)
-                    .setAutoCancel(true)
-                    .getNotification(); // use .build instead .getNotification for api 16 or above
 
-            // displaying notificaton
-            this.notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(TASK_NOTIFICATION_ID, notification);
         }
 
         //instance session manager
@@ -301,49 +297,73 @@ public class MainMenuActivity extends Activity {
         }
     }
 
-    private class CheckTugasTask extends AsyncTask<String, Void, Integer> {
-
+    private class CheckIndividu extends AsyncTask<String, Void, TugasIndividu[]> {
         @Override
-        protected Integer doInBackground(String... params) {
-            SessionManager session = new SessionManager(MainMenuActivity.this);
-            Gson gson = new Gson();
-            String username = session.getUserDetails().get(SessionManager.KEY_USERNAME);
-            String password = session.getUserDetails().get(SessionManager.KEY_PASSWORD);
-
-            String URL_IND = TassUtilities.uriBuilder(username, password, params[0]);
+        protected TugasIndividu[] doInBackground(String... params) {
+            String URL_IND = TassUtilities.uriBuilder(username, password, "tgsi");
             Log.d("API INDIVIDU", URL_IND);
 
-            String URL_KEL = TassUtilities.uriBuilder(username, password, params[1]);
-            Log.d("API KELOMPOK", URL_KEL);
-
-            int TOTAL = 0;
+            TugasIndividu[] individu = null;
             try {
-                TugasIndividu[] indv = gson.fromJson(TassUtilities.doGetJson(URL_IND), TugasIndividu[].class);
-                TugasKelompok[] kelo = gson.fromJson(TassUtilities.doGetJson(URL_KEL), TugasKelompok[].class);
-
-                // count tugas kelompok through loop
-                for (TugasKelompok in : kelo) {
-                    Log.d("INFO", in.namaTugas);
-                    TOTAL += 1;
-                }
-
-                // count tugas individu through loop
-                for (TugasIndividu in : indv) {
-                    Log.d("INFO", in.namaTugas);
-                    TOTAL += 1;
-                }
-
+                individu = gson.fromJson(TassUtilities.doGetJson(URL_IND), TugasIndividu[].class);
             } catch (JsonSyntaxException e) {
                 e.printStackTrace();
             }
 
-            return TOTAL;
+            return individu;
         }
 
         @Override
-        protected void onPostExecute(Integer integer) {
-            super.onPostExecute(integer);
-            Toast.makeText(MainMenuActivity.this, "Total: " + integer, Toast.LENGTH_SHORT).show();
+        protected void onPostExecute(TugasIndividu[] tugasIndividus) {
+            super.onPostExecute(tugasIndividus);
+            if (tugasIndividus != null) {
+                TUGAS_COUNT += tugasIndividus.length;
+            }
+        }
+    }
+
+    private class CheckKelompok extends AsyncTask<String, Void, TugasKelompok[]> {
+        @Override
+        protected TugasKelompok[] doInBackground(String... params) {
+            String URL_KEL = TassUtilities.uriBuilder(username, password, "tgsk");
+            Log.d("API KELOMPOK", URL_KEL);
+
+            TugasKelompok[] kels = null;
+            try {
+                kels = gson.fromJson(TassUtilities.doGetJson(URL_KEL), TugasKelompok[].class);
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+            }
+
+            return kels;
+        }
+
+        @Override
+        protected void onPostExecute(TugasKelompok[] kel) {
+            super.onPostExecute(kel);
+            if (kel != null) {
+                TUGAS_COUNT += kel.length;
+            }
+
+            if (TUGAS_COUNT > 0) {
+                // create notification
+                notification = new Notification.Builder(getApplicationContext())
+                        .setContentTitle(getResources().getString(R.string.notif_title))
+                        .setContentText(TUGAS_COUNT + " " + getResources().getString(R.string.notif_content))
+                        .setTicker(getResources().getString(R.string.notif_thicker))
+                        .setWhen(System.currentTimeMillis())
+                        .setDefaults(Notification.DEFAULT_SOUND)
+                        .setSmallIcon(R.drawable.ic_tugas)
+                        .setAutoCancel(true)
+                        .getNotification(); // use .build instead .getNotification for api 16 or above
+
+                // displaying notificaton
+                notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(TASK_NOTIFICATION_ID, notification);
+
+                // set TUGAS_COUNT to 0
+                TUGAS_COUNT = 0;
+            }
         }
     }
 }

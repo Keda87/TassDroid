@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.Toast;
 import org.apache.http.HttpResponse;
@@ -384,15 +383,16 @@ public class TassUtilities {
 
     public static void main(String[] args) {
 //        nim adit
-        String nim = "6301114139";
-        String pwd = "asaibae";
+//        String nim = "6301114139";
+//        String pwd = "asaibae";
 
 //        nim percobaan
-//        String nim = "6301124173";
-//        String pwd = "240294";
+        String nim = "6301124173";
+        String pwd = "240294";
 
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "dftap"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "biodata"));
         System.out.println(TassUtilities.uriBuilder(nim, pwd, "ubahpwd", "54321"));
+        System.out.println(TassUtilities.uriBuilder(nim, pwd, "jadwal"));
     }
 }

@@ -150,4 +150,9 @@
     <string name="bap_detail_aprove_dialog_title">Setujui</string>
     <string name="bap_detail_aprove_sudah">Pertemuan </string>
     <string name="bap_detail_aprove_sudah_end"> telah di setujui</string>
+
+    <!--notification-->
+    <string name="notif_title">Pemberitahuan Tugas</string>
+    <string name="notif_content">Tugas tersedia</string>
+    <string name="notif_thicker">Pemberitahuan!</string>
 </resources>
