@@ -1,29 +1,39 @@
 package co.id.keda87.tassdroid.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.SliderListAdapter;
 import co.id.keda87.tassdroid.fragment.*;
 import co.id.keda87.tassdroid.helper.SessionManager;
+import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.SliderItem;
+import co.id.keda87.tassdroid.pojos.TugasIndividu;
+import co.id.keda87.tassdroid.pojos.TugasKelompok;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +52,10 @@ public class MainMenuActivity extends Activity {
     @InjectView(R.id.list_slider)
     ListView drawerList;
 
+    private static final int TASK_NOTIFICATION_ID = 1;
+    private NotificationManager notificationManager;
+    private Notification notification;
+
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
     private CharSequence title;
@@ -52,6 +66,7 @@ public class MainMenuActivity extends Activity {
     private SessionManager sessionManager;
     private SharedPreferences preferences;
     private SessionManager session;
+    private Integer TUGAS_COUNT = 0;
 
     @Override
     public void onBackPressed() {
@@ -80,14 +95,37 @@ public class MainMenuActivity extends Activity {
             startActivity(i);
         } else {
             Log.d("SESSION", "Masih ada session tersimpan");
+            if (TassUtilities.isConnected(this)) {
+                new CheckTugasTask().execute("tgsi", "tgsk");
+            }
         }
     }
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
         ButterKnife.inject(this);
+
+        // check if tugas count > 0, display the notification
+        if (TUGAS_COUNT > 0) {
+
+            // create notification
+            this.notification = new Notification.Builder(getApplicationContext())
+                    .setContentTitle(getResources().getString(R.string.notif_title))
+                    .setContentText(TUGAS_COUNT + " " + getResources().getString(R.string.notif_content))
+                    .setTicker(getResources().getString(R.string.notif_thicker))
+                    .setWhen(System.currentTimeMillis())
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setSmallIcon(R.drawable.ic_tugas)
+                    .setAutoCancel(true)
+                    .getNotification(); // use .build instead .getNotification for api 16 or above
+
+            // displaying notificaton
+            this.notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(TASK_NOTIFICATION_ID, notification);
+        }
 
         //instance session manager
         this.sessionManager = new SessionManager(getApplicationContext());
@@ -260,6 +298,52 @@ public class MainMenuActivity extends Activity {
             this.drawerLayout.closeDrawer(this.drawerList);
         } else {
             Log.e("KESALAHAN", "Gagal membuat fragment");
+        }
+    }
+
+    private class CheckTugasTask extends AsyncTask<String, Void, Integer> {
+
+        @Override
+        protected Integer doInBackground(String... params) {
+            SessionManager session = new SessionManager(MainMenuActivity.this);
+            Gson gson = new Gson();
+            String username = session.getUserDetails().get(SessionManager.KEY_USERNAME);
+            String password = session.getUserDetails().get(SessionManager.KEY_PASSWORD);
+
+            String URL_IND = TassUtilities.uriBuilder(username, password, params[0]);
+            Log.d("API INDIVIDU", URL_IND);
+
+            String URL_KEL = TassUtilities.uriBuilder(username, password, params[1]);
+            Log.d("API KELOMPOK", URL_KEL);
+
+            int TOTAL = 0;
+            try {
+                TugasIndividu[] indv = gson.fromJson(TassUtilities.doGetJson(URL_IND), TugasIndividu[].class);
+                TugasKelompok[] kelo = gson.fromJson(TassUtilities.doGetJson(URL_KEL), TugasKelompok[].class);
+
+                // count tugas kelompok through loop
+                for (TugasKelompok in : kelo) {
+                    Log.d("INFO", in.namaTugas);
+                    TOTAL += 1;
+                }
+
+                // count tugas individu through loop
+                for (TugasIndividu in : indv) {
+                    Log.d("INFO", in.namaTugas);
+                    TOTAL += 1;
+                }
+
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+            }
+
+            return TOTAL;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            Toast.makeText(MainMenuActivity.this, "Total: " + integer, Toast.LENGTH_SHORT).show();
         }
     }
 }
