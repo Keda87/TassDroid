@@ -345,7 +345,9 @@ public class MainMenuActivity extends Activity {
                 TUGAS_COUNT += kel.length;
             }
 
+            // display tugas if TUGAS_COUNT > 0
             if (TUGAS_COUNT > 0) {
+
                 // create notification
                 notification = new Notification.Builder(getApplicationContext())
                         .setContentTitle(getResources().getString(R.string.notif_title))

@@ -43,6 +43,10 @@
                 android:theme="@style/theme_activity_jadwal"
                 android:icon="@drawable/ic_jadwal"/>
         <activity
+                android:name=".activities.ActivityJadwalTerpilih"
+                android:theme="@style/theme_activity_jadwal"
+                android:icon="@drawable/ic_jadwal"/>
+        <activity
                 android:name=".activities.ActivityAbsen"
                 android:theme="@style/theme_activity_absen"
                 android:icon="@drawable/ic_absen"/>
@@ -83,5 +87,8 @@
         <activity
                 android:name=".activities.ShowcaseApproveActivity"
                 android:theme="@style/Transparent"/>
+        <activity
+                android:name=".activities.ActivityChart"
+                android:icon="@drawable/ic_absen"/>
     </application>
 </manifest>

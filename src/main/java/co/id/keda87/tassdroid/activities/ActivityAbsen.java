@@ -23,7 +23,9 @@ import co.id.keda87.tassdroid.pojos.Absensi;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -156,7 +158,28 @@ public class ActivityAbsen extends Activity {
                 }
                 return true;
             case R.id.app_item_chart:
-                startActivity(new Intent(this, ActivityGraphAbsen.class));
+                Intent intent = new Intent(this, ActivityChart.class);
+
+                List<Absensi> absens = new ArrayList<>();
+
+                for (Absensi data : absensi) {
+                    Absensi absen = new Absensi();
+                    absen.kodeKelas = data.kodeKelas;
+                    absen.kodeDosen = data.kodeDosen;
+                    absen.namaDosen = data.namaDosen;
+                    absen.kodeMk = data.kodeMk;
+                    absen.namaMk = data.namaMk;
+                    absen.tahunAjaran = data.tahunAjaran;
+                    absen.semester = data.semester;
+                    absen.jumlahPertemuan = data.jumlahPertemuan;
+                    absen.jumlahHadir = data.jumlahHadir;
+                    absen.prosenHadir = data.prosenHadir;
+
+                    absens.add(absen);
+                }
+
+                intent.putParcelableArrayListExtra("dataAbsensi", (ArrayList<? extends android.os.Parcelable>) absens);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -164,7 +187,7 @@ public class ActivityAbsen extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_refresh, menu);
+        getMenuInflater().inflate(R.menu.menu_refresh_chart, menu);
         return true;
     }
 

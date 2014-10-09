@@ -1,18 +1,18 @@
 package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
+import co.id.keda87.tassdroid.adapter.JadwalHariListAdapter;
 import co.id.keda87.tassdroid.adapter.JadwalListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
@@ -20,7 +20,7 @@ import co.id.keda87.tassdroid.pojos.Jadwal;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,6 +41,7 @@ public class ActivityJadwal extends Activity {
     private SessionManager sessionManager;
     private HashMap<String, String> userCredential;
     private JadwalKelasTask jadwalTask;
+    private HashSet<String> dayset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +55,6 @@ public class ActivityJadwal extends Activity {
         this.userCredential = sessionManager.getUserDetails();
         this.jadwalKelas = new Jadwal[0];
 
-        this.lvJadwal.addHeaderView(new View(this));
-        this.lvJadwal.addFooterView(new View(this));
         this.tvUnload.setTypeface(TassUtilities.getFontFace(this, 0));
         this.tvUnload.setVisibility(View.GONE);
 
@@ -64,6 +63,43 @@ public class ActivityJadwal extends Activity {
 
         //set activity title
         getActionBar().setTitle(getResources().getString(R.string.mnJadwalKuliah));
+
+        // set item click listener
+        this.lvJadwal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // convert hashset to list
+                List<String> hari = new ArrayList<>(dayset);
+
+                // user selected data
+                List<Jadwal> selectedDay = new ArrayList<>();
+
+                // display selected day data
+                for (Jadwal data : jadwalKelas) {
+                    if (data.hari.equalsIgnoreCase(hari.get(position))) {
+                        Jadwal jadwal = new Jadwal();
+                        jadwal.hari = data.hari;
+                        jadwal.kodeDosen = data.kodeDosen;
+                        jadwal.kodeKelas = data.kodeKelas;
+                        jadwal.kodeMk = data.kodeMk;
+                        jadwal.kodeRuang = data.kodeRuang;
+                        jadwal.namaDosen = data.namaDosen;
+                        jadwal.mataKuliah = data.mataKuliah;
+                        jadwal.waktuMulai = data.waktuMulai;
+                        jadwal.waktuSelesai = data.waktuSelesai;
+
+                        // add to list
+                        selectedDay.add(jadwal);
+                    }
+                }
+
+                // send list to another activity
+                Intent intent = new Intent(getApplicationContext(), ActivityJadwalTerpilih.class);
+                intent.putParcelableArrayListExtra("hariTerpilih", (ArrayList<? extends android.os.Parcelable>) selectedDay);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -123,7 +159,7 @@ public class ActivityJadwal extends Activity {
             //url jadwal API
             String apiJadwal = TassUtilities.uriBuilder(params[0], params[1], "jadwal");
 
-//            parse json to object gson
+            // parse json to object gson
             try {
                 jadwalKelas = gson.fromJson(TassUtilities.doGetJson(apiJadwal), Jadwal[].class);
             } catch (JsonSyntaxException e) {
@@ -151,8 +187,17 @@ public class ActivityJadwal extends Activity {
             pbJadwal.setVisibility(View.GONE);
 
             if (jadwals != null) {
-                JadwalListAdapter adapterJadwal = new JadwalListAdapter(ActivityJadwal.this, jadwals);
+
+                // assign to HashSet for unique days
+                dayset = new HashSet<>();
+                for(Jadwal d : jadwals) {
+                    dayset.add(d.hari);
+                }
+
+                // set to day adapter
+                JadwalHariListAdapter adapterJadwal = new JadwalHariListAdapter(ActivityJadwal.this, dayset);
                 lvJadwal.setAdapter(adapterJadwal);
+
                 if (adapterJadwal.getCount() > 0) {
                     lvJadwal.setVisibility(View.VISIBLE);
                     tvUnload.setVisibility(View.GONE);
