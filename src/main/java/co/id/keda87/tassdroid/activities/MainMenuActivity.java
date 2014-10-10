@@ -65,6 +65,7 @@ public class MainMenuActivity extends Activity {
     private SessionManager sessionManager;
     private SharedPreferences preferences;
     private Integer TUGAS_COUNT = 0;
+    private boolean isChecked = false;
 
     SessionManager session;
     Gson gson;
@@ -99,8 +100,11 @@ public class MainMenuActivity extends Activity {
         } else {
             Log.d("SESSION", "Masih ada session tersimpan");
             if (TassUtilities.isConnected(this)) {
-                new CheckIndividu().execute();
-                new CheckKelompok().execute();
+                if (!isChecked) {
+                    new CheckIndividu().execute();
+                    new CheckKelompok().execute();
+                    isChecked = true;
+                }
             }
         }
     }
@@ -116,12 +120,6 @@ public class MainMenuActivity extends Activity {
         gson = new Gson();
         username = session.getUserDetails().get(SessionManager.KEY_USERNAME);
         password = session.getUserDetails().get(SessionManager.KEY_PASSWORD);
-
-        // check if tugas count > 0, display the notification
-        if (TUGAS_COUNT > 0) {
-
-
-        }
 
         //instance session manager
         this.sessionManager = new SessionManager(getApplicationContext());
