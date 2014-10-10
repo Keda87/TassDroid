@@ -12,6 +12,7 @@ import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Jadwal;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -19,22 +20,22 @@ import java.util.Locale;
  */
 public class JadwalListAdapter extends BaseAdapter {
 
-    private Jadwal[] jadwals;
+    private List<Jadwal> jadwals;
     private LayoutInflater inflater;
 
-    public JadwalListAdapter(Context ctx, Jadwal[] jadwals) {
+    public JadwalListAdapter(Context ctx, List<Jadwal> jadwals) {
         this.jadwals = jadwals;
         this.inflater = LayoutInflater.from(ctx);
     }
 
     @Override
     public int getCount() {
-        return this.jadwals.length;
+        return this.jadwals.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.jadwals[position];
+        return this.jadwals.get(position);
     }
 
     @Override
@@ -60,14 +61,14 @@ public class JadwalListAdapter extends BaseAdapter {
         }
 
         //set textview value
-        holder.kode.setText(jadwals[position].mataKuliah + " - " + jadwals[position].kodeMk);
+        holder.kode.setText(jadwals.get(position).mataKuliah + " - " + jadwals.get(position).kodeMk);
 
         //detect current locale on device
-        String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? TassUtilities.toDayID(jadwals[position].hari, "en") : TassUtilities.toDayID(jadwals[position].hari, "id");
-        holder.jam.setText(hari + ", " + jadwals[position].waktuMulai.substring(0, 5) + " - " + jadwals[position].waktuSelesai.substring(0, 5));
+        String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? TassUtilities.toDayID(jadwals.get(position).hari, "en") : TassUtilities.toDayID(jadwals.get(position).hari, "id");
+        holder.jam.setText(hari + ", " + jadwals.get(position).waktuMulai.substring(0, 5) + " - " + jadwals.get(position).waktuSelesai.substring(0, 5));
 
-        holder.ruang.setText(jadwals[position].kodeRuang);
-        holder.dosen.setText(jadwals[position].namaDosen + " (" + jadwals[position].kodeDosen + ")");
+        holder.ruang.setText(jadwals.get(position).kodeRuang);
+        holder.dosen.setText(jadwals.get(position).namaDosen + " (" + jadwals.get(position).kodeDosen + ")");
 
         return convertView;
     }

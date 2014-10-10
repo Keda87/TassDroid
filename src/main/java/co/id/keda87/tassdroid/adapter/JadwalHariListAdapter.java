@@ -1,6 +1,8 @@
 package co.id.keda87.tassdroid.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +12,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.helper.TassUtilities;
-import co.id.keda87.tassdroid.pojos.Jadwal;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Created by Keda87 on 10/8/2014.
@@ -59,10 +57,51 @@ public class JadwalHariListAdapter extends BaseAdapter {
             holder = (HariHolder) convertView.getTag();
         }
 
-        String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? TassUtilities.toDayID(jadwalHari.get(position), "en") : TassUtilities.toDayID(jadwalHari.get(position), "id");
-        holder.hari.setText(hari);
+        try {
+            String hari = Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English") ? TassUtilities.toDayID(jadwalHari.get(position), "en") : TassUtilities.toDayID(jadwalHari.get(position), "id");
+            holder.hari.setText(hari);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // get current date
+        Calendar calendar = Calendar.getInstance();
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // if day same as today, change the background color
+        if (this.dayToInt(jadwalHari.get(position)) == today) {
+            convertView.setBackgroundColor(Color.rgb(252, 196, 73));
+        }
 
         return convertView;
+    }
+
+    private int dayToInt(String day) {
+        int result = 0;
+        switch (day) {
+            case "SUN":
+                result = 1;
+                break;
+            case "MON":
+                result = 2;
+                break;
+            case "TUE":
+                result = 3;
+                break;
+            case "WED":
+                result = 4;
+                break;
+            case "THU":
+                result = 5;
+                break;
+            case "FRI":
+                result = 6;
+                break;
+            case "SAT":
+                result = 7;
+                break;
+        }
+        return result;
     }
 
     static class HariHolder {

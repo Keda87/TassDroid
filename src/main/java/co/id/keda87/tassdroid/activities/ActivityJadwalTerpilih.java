@@ -21,14 +21,14 @@ public class ActivityJadwalTerpilih extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jadwal);
+        setContentView(R.layout.activity_jadwal_terpilih);
 
         this.jadwalLv = (ListView) findViewById(R.id.lvJadwalPilih);
 
         List<Jadwal> jadwalkoe = getIntent().getParcelableArrayListExtra("hariTerpilih");
-        dataJadwal = jadwalkoe.toArray(new Jadwal[jadwalkoe.size()]);
+//        dataJadwal = jadwalkoe.toArray(new Jadwal[jadwalkoe.size()]);
 
-        JadwalListAdapter adapter = new JadwalListAdapter(getApplicationContext(), this.dataJadwal);
+        JadwalListAdapter adapter = new JadwalListAdapter(this, jadwalkoe);
         this.jadwalLv.setAdapter(adapter);
     }
 }
