@@ -46,15 +46,17 @@ import java.util.List;
  */
 public class MainMenuActivity extends Activity {
 
+    private static final int TASK_NOTIFICATION_ID = 1;
     @InjectView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
     @InjectView(R.id.list_slider)
     ListView drawerList;
-
-    private static final int TASK_NOTIFICATION_ID = 1;
+    SessionManager session;
+    Gson gson;
+    String username;
+    String password;
     private NotificationManager notificationManager;
     private Notification notification;
-
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
     private CharSequence title;
@@ -66,11 +68,6 @@ public class MainMenuActivity extends Activity {
     private SharedPreferences preferences;
     private Integer TUGAS_COUNT = 0;
     private boolean isChecked = false;
-
-    SessionManager session;
-    Gson gson;
-    String username;
-    String password;
 
     @Override
     public void onBackPressed() {

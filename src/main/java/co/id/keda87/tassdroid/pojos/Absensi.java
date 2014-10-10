@@ -9,32 +9,34 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Absensi implements Parcelable {
 
+    public static final Creator<Absensi> CREATOR = new Creator<Absensi>() {
+        @Override
+        public Absensi createFromParcel(Parcel source) {
+            return new Absensi(source);
+        }
+
+        @Override
+        public Absensi[] newArray(int size) {
+            return new Absensi[size];
+        }
+    };
     @SerializedName("kd_kelas")
     public String kodeKelas;
-
     @SerializedName("kd_dosen")
     public String kodeDosen;
-
     @SerializedName("nama_dosen")
     public String namaDosen;
-
     @SerializedName("kd_mk")
     public String kodeMk;
-
     @SerializedName("nama_mk")
     public String namaMk;
-
     @SerializedName("tahun_ajaran")
     public String tahunAjaran;
-
     public String semester;
-
     @SerializedName("jml_pertemuan")
     public String jumlahPertemuan;
-
     @SerializedName("jml_hadir")
     public String jumlahHadir;
-
     @SerializedName("prosen_hadir")
     public String prosenHadir;
 
@@ -72,16 +74,4 @@ public class Absensi implements Parcelable {
         dest.writeString(this.jumlahHadir);
         dest.writeString(this.prosenHadir);
     }
-
-    public static final Creator<Absensi> CREATOR = new Creator<Absensi>() {
-        @Override
-        public Absensi createFromParcel(Parcel source) {
-            return new Absensi(source);
-        }
-
-        @Override
-        public Absensi[] newArray(int size) {
-            return new Absensi[size];
-        }
-    };
 }

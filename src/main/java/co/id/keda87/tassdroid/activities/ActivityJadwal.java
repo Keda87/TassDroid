@@ -8,19 +8,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.JadwalHariListAdapter;
-import co.id.keda87.tassdroid.adapter.JadwalListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Jadwal;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -190,7 +195,7 @@ public class ActivityJadwal extends Activity {
 
                 // assign to HashSet for unique days
                 dayset = new HashSet<>();
-                for(Jadwal d : jadwals) {
+                for (Jadwal d : jadwals) {
                     dayset.add(d.hari);
                 }
 

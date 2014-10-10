@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.koushikdutta.ion.Ion;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -276,7 +275,7 @@ public class ActivityBiodata extends Activity {
 
                     SimpleDateFormat fr = new SimpleDateFormat("dd MMM yyyy");
                     bioTanggalLahir.setText(fr.format(date));
-                }catch(Exception e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
 

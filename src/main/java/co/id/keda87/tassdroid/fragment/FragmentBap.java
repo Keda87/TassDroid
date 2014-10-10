@@ -22,7 +22,6 @@ import co.id.keda87.tassdroid.adapter.BapListAdapter;
 import co.id.keda87.tassdroid.helper.SessionManager;
 import co.id.keda87.tassdroid.helper.TassUtilities;
 import co.id.keda87.tassdroid.pojos.Bap;
-import co.id.keda87.tassdroid.pojos.BapDetail;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 

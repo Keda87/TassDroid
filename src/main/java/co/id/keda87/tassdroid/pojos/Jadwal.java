@@ -9,29 +9,32 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Jadwal implements Parcelable {
 
-    public String hari;
+    public static final Creator<Jadwal> CREATOR = new Creator<Jadwal>() {
+        @Override
+        public Jadwal createFromParcel(Parcel source) {
+            return new Jadwal(source);
+        }
 
+        @Override
+        public Jadwal[] newArray(int size) {
+            return new Jadwal[size];
+        }
+    };
+    public String hari;
     @SerializedName("kd_mk")
     public String kodeMk;
-
     @SerializedName("kd_kelas")
     public String kodeKelas;
-
     @SerializedName("kd_dosen")
     public String kodeDosen;
-
     @SerializedName("kd_ruang")
     public String kodeRuang;
-
     @SerializedName("waktu_mulai")
     public String waktuMulai;
-
     @SerializedName("waktu_selesai")
     public String waktuSelesai;
-
     @SerializedName("nama")
     public String namaDosen;
-
     @SerializedName("nama_matakuliah")
     public String mataKuliah;
 
@@ -67,16 +70,4 @@ public class Jadwal implements Parcelable {
         dest.writeString(this.namaDosen);
         dest.writeString(this.mataKuliah);
     }
-
-    public static final Creator<Jadwal> CREATOR = new Creator<Jadwal>() {
-        @Override
-        public Jadwal createFromParcel(Parcel source) {
-            return new Jadwal(source);
-        }
-
-        @Override
-        public Jadwal[] newArray(int size) {
-            return new Jadwal[size];
-        }
-    };
 }

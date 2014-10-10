@@ -2,7 +2,6 @@ package co.id.keda87.tassdroid.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 import co.id.keda87.tassdroid.R;
 import co.id.keda87.tassdroid.adapter.JadwalListAdapter;
